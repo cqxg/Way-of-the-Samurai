@@ -1,3 +1,15 @@
-ul li{
-  list-style-type: georgian;
+.app-wrapper {
+  display: grid;
+}
+
+.header {
+
+}
+
+.nav {
+
+}
+
+.content {
+  
 }
