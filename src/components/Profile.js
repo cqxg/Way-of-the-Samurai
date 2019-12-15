@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 const Profile = () => {
     return (
         <div className='content'>
