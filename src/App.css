@@ -19,10 +19,10 @@
 
 .nav {
     grid-area: n;
-    background-color: aqua;
+    background-color: rgb(212, 204, 86);
 }
 
 .content {
     grid-area: c;
-    background-color: rgb(233, 224, 235);
+    background-color: rgb(181, 140, 246);
 }
