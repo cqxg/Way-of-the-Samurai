@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 
-import style from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import BACKGROUND_IMG from '../../url_utils/index'
+
+import style from './Profile.module.css';
+
 
 const Profile = () => {
     return (
         <div className='content'>
             <div>
-                <img src='https://a.d-cd.net/870b45as-960.jpg'></img>
+                <img src={BACKGROUND_IMG}></img>
             </div>
             <div>
                 ava+desc
