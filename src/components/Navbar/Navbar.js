@@ -12,7 +12,7 @@ const Navbar = () => {
                 <a href='/dialogs'>Messages</a>
             </div>
             <div className={style.item}>
-                <a href='/'>News</a>
+                <a href='/news'>News</a>
             </div>
             <div className={style.item}>
                 <a href='/'>Music</a>
