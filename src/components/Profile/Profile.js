@@ -8,7 +8,7 @@ import style from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div className='content'>
+        <div>
             <div>
                 <img src={BACKGROUND_IMG}></img>
             </div>
