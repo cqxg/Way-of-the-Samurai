@@ -7,19 +7,19 @@ const Navbar = () => {
     return (
         <nav className={style.nav}>
             <div className={style.item}>
-                <NavLink to='/profile'>Profile</NavLink>
+                <NavLink to='/profile' activeClassName={style.activeLink}>Profile</NavLink>
             </div>
             <div className={`${style.item} ${style.active}`}>
-                <NavLink to='/dialogs'>Messages</NavLink>
+                <NavLink to='/dialogs' activeClassName={style.activeLink}>Messages</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/news'>News</NavLink>
+                <NavLink to='/news' activeClassName={style.activeLink}>News</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/music'>Music</NavLink>
+                <NavLink to='/music' activeClassName={style.activeLink}>Music</NavLink>
             </div>
             <div className={style.item}>
-                <NavLink to='/settings'>Settings</NavLink>
+                <NavLink to='/settings' activeClassName={style.activeLink}>Settings</NavLink>
             </div>
         </nav>
     )
