@@ -6,7 +6,7 @@ import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
 
-    let postData = [
+    const postData = [
         {
             id: '1',
             message: 'Hi, how are you',

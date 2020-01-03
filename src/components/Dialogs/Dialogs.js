@@ -1,7 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import style from './Dialogs.module.css'
-import { NavLink } from 'react-router-dom';
 
 const DialogItem = (props) => {
     let path = '/dialogs/' + props.id;
@@ -13,14 +13,10 @@ const DialogItem = (props) => {
     );
 };
 
-const Message = (props) => {
-    return (
-        <div className={style.message}>{props.message}</div>
-    );
-};
+const Message = (props) => <div className={style.message}>{props.message}</div>;
 
 const Dialogs = (props) => {
-    let dialogsData = [
+    const dialogsData = [
         {
             id: '1',
             name: '105',
@@ -47,7 +43,7 @@ const Dialogs = (props) => {
         },
     ];
 
-    let messageData = [
+    const messageData = [
         {
             id: '1',
             message: 'qq all'

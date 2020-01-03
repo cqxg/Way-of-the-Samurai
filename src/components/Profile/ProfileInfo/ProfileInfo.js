@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import BACKGROUND_IMG from '../../../url_utils/index'
+import BACKGROUND_IMG from '../../../url_utils';
 
 import style from './ProfileInfo.module.css';
 
