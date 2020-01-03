@@ -6,7 +6,7 @@ import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
 
-    const postData = [
+    const posts = [
         {
             id: '1',
             message: 'Hi, how are you',
@@ -18,6 +18,8 @@ const MyPosts = (props) => {
             likesCount: '7'
         }
     ];
+
+    const postsElements = posts.map(p => <Post messag={p.message} likesCount={p.likesCount} />)
 
     return (
         <div className={style.postsBlock}>
@@ -31,8 +33,7 @@ const MyPosts = (props) => {
                 </div>
             </div>
             <div className={style.posts}>
-                <Post messag={postData[0].message} likesCount={postData[0].message.likesCount} />
-                <Post messag={postData[1].message} likesCount={postData[1].message.likesCount} />
+                {postsElements}
             </div>
         </div>
     );
