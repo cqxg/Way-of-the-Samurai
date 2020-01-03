@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import MyPosts from './MyPosts/MyPosts';
-import BACKGROUND_IMG from '../../url_utils/index'
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+
 
 import style from './Profile.module.css';
 
@@ -9,15 +10,10 @@ import style from './Profile.module.css';
 const Profile = () => {
     return (
         <div>
-            <div>
-                <img src={BACKGROUND_IMG}></img>
-            </div>
-            <div>
-                ava+desc
-            </div>
+            <ProfileInfo />
             <MyPosts />
         </div>
-    )
-}
+    );
+};
 
 export default Profile;
