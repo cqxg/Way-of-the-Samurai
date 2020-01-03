@@ -1,34 +1,39 @@
 import React from 'react';
 
 import style from './Dialogs.module.css'
+import { NavLink } from 'react-router-dom';
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id;
+
+    return (
+        <div className={style.dialog + ' ' + style.active}>
+            <NavLink to={path}>{props.name}</NavLink>
+        </div>
+    );
+};
+
+const Message = (props) => {
+    return (
+    <div className={style.message}>{props.message}</div>
+    );
+};
 
 const Dialogs = (props) => {
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
-                <div className={style.dialog + ' ' + style.active}>
-                    105
-                </div>
-                <div className={style.dialog}>
-                    FrinteZz
-                </div>
-                <div className={style.dialog}>
-                    Gaming
-                </div>
-                <div className={style.dialog}>
-                    Pominki
-                </div>
-                <div className={style.dialog}>
-                    Side
-                </div>
-                <div className={style.dialog}>
-                    EFsquad
-                </div>
+                <DialogItem name='105' id='1' />
+                <DialogItem name='FrinteZz' id='2' />
+                <DialogItem name='Gaming' id='3' />
+                <DialogItem name='Pominki' id='4' />
+                <DialogItem name='Side' id='5' />
+                <DialogItem name='EFsquad' id='6' />
             </div>
             <div className={style.messages}>
-                <div className={style.message}>qq all</div>
-                <div className={style.message}>How are you?</div>
-                <div className={style.message}>gl gg wp</div>
+                <Message message='qq all'/>
+                <Message message='hello world'/>
+                <Message message='priveti4 ot Marmeladi4a'/>
             </div>
         </div>
     )
