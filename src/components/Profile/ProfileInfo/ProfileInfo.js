@@ -10,7 +10,7 @@ const ProfileInfo = () => (
       <img src={BACKGROUND_IMG} />
     </div>
     <div className={style.descriptionBlock}>
-                ava+desc
+            ava+desc
     </div>
   </div>
 );
