@@ -1,13 +1,11 @@
 import React from 'react';
 
-import style from './News.module.css'
+import style from './News.module.css';
 
-const News = (props) => {
-    return (
-        <div>
+const News = (props) => (
+  <div>
             News
-        </div>
-    );
-};
+  </div>
+);
 
 export default News;

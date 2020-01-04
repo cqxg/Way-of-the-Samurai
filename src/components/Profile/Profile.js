@@ -7,13 +7,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import style from './Profile.module.css';
 
 
-const Profile = () => {
-    return (
-        <div>
-            <ProfileInfo />
-            <MyPosts />
-        </div>
-    );
-};
+const Profile = () => (
+  <div>
+    <ProfileInfo />
+    <MyPosts />
+  </div>
+);
 
 export default Profile;
