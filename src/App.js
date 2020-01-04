@@ -12,19 +12,19 @@ import Settings from './components/Settings/Settings';
 import './App.css';
 
 const App = () => (
-    <BrowserRouter>
-        <div className="app-wrapper">
-            <Header />
-            <Navbar />
-            <div className="app-wrapper-content">
-                <Route path="/dialogs" component={Dialogs} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/news" component={News} />
-                <Route path="/music" component={Music} />
-                <Route path="/Settings" component={Settings} />
-            </div>
-        </div>
-    </BrowserRouter>
+  <BrowserRouter>
+    <div className="app-wrapper">
+      <Header />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Route path="/dialogs" component={Dialogs} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
+        <Route path="/Settings" component={Settings} />
+      </div>
+    </div>
+  </BrowserRouter>
 );
 
 export default App;
