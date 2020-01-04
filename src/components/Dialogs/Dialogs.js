@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import style from './Dialogs.module.css'
 
 const DialogItem = (props) => {
-    let path = '/dialogs/' + props.id;
+    const path = '/dialogs/' + props.id;
 
     return (
         <div className={style.dialog + ' ' + style.active}>
@@ -15,7 +17,7 @@ const DialogItem = (props) => {
 
 const Message = (props) => <div className={style.message}>{props.message}</div>;
 
-const Dialogs = (props) => {
+const Dialogs = () => {
     const dialogs = [
         {
             id: '1',

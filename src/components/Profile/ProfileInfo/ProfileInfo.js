@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import BACKGROUND_IMG from '../../../url_utils';
 
 import style from './ProfileInfo.module.css';
-
 
 const ProfileInfo = () => {
     return (
