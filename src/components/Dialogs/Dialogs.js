@@ -1,15 +1,13 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import style from './Dialogs.module.css'
+import style from './Dialogs.module.css';
 
 const DialogItem = (props) => {
     const path = '/dialogs/' + props.id;
 
     return (
-        <div className={style.dialog + ' ' + style.active}>
+        <div className={`${style.dialog} ${style.active}`}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     );
@@ -48,20 +46,20 @@ const Dialogs = () => {
     const messages = [
         {
             id: '1',
-            message: 'qq all'
+            message: 'qq all',
         },
         {
             id: '2',
-            message: 'hello world'
+            message: 'hello world',
         },
         {
             id: '3',
-            message: 'priveti4 ot Marmeladi4a'
-        }
+            message: 'priveti4 ot Marmeladi4a',
+        },
     ];
 
-    const dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
-    const messagesElements = messages.map(m => <Message message={m.message} />);
+    const dialogsElements = dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
+    const messagesElements = messages.map((m) => <Message message={m.message} />);
 
     return (
         <div className={style.dialogs}>

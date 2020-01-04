@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 
 import BACKGROUND_IMG from '../../../url_utils';
@@ -12,7 +13,7 @@ const ProfileInfo = () => {
             </div>
             <div className={style.descriptionBlock}>
                 ava+desc
-            </div>
+    </div>
         </div>
     );
 };
