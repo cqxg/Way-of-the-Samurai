@@ -1,23 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Post from './Post/Post';
+import { posts } from '../../../index';
 
 import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
-  const posts = [
-    {
-      id: '1',
-      message: 'Hi, how are you',
-      likesCount: '12',
-    },
-    {
-      id: '2',
-      message: 'It`s my first posts',
-      likesCount: '7',
-    },
-  ];
-
   const postsElements = posts.map((p) => <Post messag={p.message} likesCount={p.likesCount} />);
 
   return (

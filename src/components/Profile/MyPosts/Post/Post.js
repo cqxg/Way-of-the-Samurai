@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import style from './Post.module.css';
 
@@ -8,6 +8,8 @@ const Post = (props) => (
     {props.message}
     <div>
       <span>like</span>
+      {' '}
+      {props.likesCount}
     </div>
   </div>
 );

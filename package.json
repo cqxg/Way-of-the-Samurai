@@ -19,9 +19,6 @@
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix"
     },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
     "browserslist": {
         "production": [
             ">0.2%",

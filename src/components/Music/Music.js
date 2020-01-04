@@ -4,7 +4,7 @@ import style from './Music.module.css';
 
 const Music = (props) => (
   <div>
-            Music
+        Music
   </div>
 );
 
