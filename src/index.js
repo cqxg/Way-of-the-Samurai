@@ -62,9 +62,7 @@ const messages = [
 ];
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App posts={posts} dialogs={dialogs} messages={messages} />, document.getElementById('root'));
 
 
 serviceWorker.unregister();
-
-export { posts, dialogs, messages };

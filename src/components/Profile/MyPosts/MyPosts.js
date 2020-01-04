@@ -1,12 +1,11 @@
 import React from 'react';
 
 import Post from './Post/Post';
-import { posts } from '../../../index';
 
 import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
-  const postsElements = posts.map((p) => <Post messag={p.message} likesCount={p.likesCount} />);
+  const postsElements = props.posts.map((p) => <Post messag={p.message} likesCount={p.likesCount} />);
 
   return (
     <div className={style.postsBlock}>

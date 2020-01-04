@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { dialogs, messages } from '../../index';
-
 import style from './Dialogs.module.css';
 
 const DialogItem = (props) => {
@@ -17,9 +15,9 @@ const DialogItem = (props) => {
 
 const Message = (props) => <div className={style.message}>{props.message}</div>;
 
-const Dialogs = () => {
-  const dialogsElements = dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
-  const messagesElements = messages.map((m) => <Message message={m.message} />);
+const Dialogs = (props) => {
+  const dialogsElements = props.dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
+  const messagesElements = props.messages.map((m) => <Message message={m.message} />);
 
   return (
     <div className={style.dialogs}>
