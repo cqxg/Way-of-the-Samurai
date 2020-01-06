@@ -8,6 +8,12 @@ import style from './Dialogs.module.css';
 const Dialogs = (props) => {
   const dialogsElements = props.state.dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
   const messagesElements = props.state.messages.map((m) => <Message message={m.message} />);
+  const newDialogText = React.createRef();
+
+  const showDialogText = () => {
+    const text = newDialogText.current.value;
+    alert(text);
+  };
 
   return (
     <div className={style.dialogs}>
@@ -16,6 +22,10 @@ const Dialogs = (props) => {
       </div>
       <div className={style.messages}>
         {messagesElements}
+      </div>
+      <div>
+        <textarea ref={newDialogText} />
+        <button onClick={showDialogText} />
       </div>
     </div>
   );
