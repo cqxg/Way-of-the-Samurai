@@ -5,11 +5,13 @@ import Post from './Post/Post';
 import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
-  const postsElements = props.posts.map((p) => <Post messag={p.message} likesCount={p.likesCount} />);
+  const postsElements = props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />);
   const newPostElement = React.createRef();
+
   const addPost = () => {
+    debugger;
     const text = newPostElement.current.value;
-    alert(text);
+    props.addPost(text);
   };
 
   return (
