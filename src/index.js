@@ -9,7 +9,10 @@ import { addPost } from './redux/state';
 
 import './index.css';
 
-ReactDOM.render(<App state={state} addPost={addPost} />, document.getElementById('root'));
+const rerenderEntireTree = () => {
+    ReactDOM.render(<App state={state} addPost={addPost} />, document.getElementById('root'));
+};
 
+rerenderEntireTree();
 
 serviceWorker.unregister();

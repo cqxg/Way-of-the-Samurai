@@ -59,7 +59,6 @@ const state = {
 };
 
 export const addPost = (postMessage) => {
-  debugger;
   const newPost = {
     id: 7,
     message: postMessage,
