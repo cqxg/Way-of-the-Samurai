@@ -1,25 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import { dialogs, messages } from '../../index';
+import DialogItem from './DialogsItem/DialogsItem';
+import Message from './Message/Message';
 
 import style from './Dialogs.module.css';
 
-const DialogItem = (props) => {
-  const path = `/dialogs/${props.id}`;
+const Dialogs = (props) => {
+  const { dialogs } = props.state;
+  const { messages } = props.state;
 
-  return (
-    <div className={`${style.dialog} ${style.active}`}>
-      <NavLink to={path}>{props.name}</NavLink>
-    </div>
-  );
-};
+  const dialogsElements = dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
+  const messagesElements = messages.map((message) => <Message message={message.message} />);
+  const newDialogText = React.createRef();
 
-const Message = (props) => <div className={style.message}>{props.message}</div>;
-
-const Dialogs = () => {
-  const dialogsElements = dialogs.map((d) => <DialogItem name={d.name} id={d.id} />);
-  const messagesElements = messages.map((m) => <Message message={m.message} />);
+  const showDialogText = () => {
+    const text = newDialogText.current.value;
+    alert(text);
+  };
 
   return (
     <div className={style.dialogs}>
@@ -28,6 +25,10 @@ const Dialogs = () => {
       </div>
       <div className={style.messages}>
         {messagesElements}
+      </div>
+      <div>
+        <textarea ref={newDialogText} />
+        <button onClick={showDialogText} />
       </div>
     </div>
   );
