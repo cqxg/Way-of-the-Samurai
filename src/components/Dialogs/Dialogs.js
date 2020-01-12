@@ -1,22 +1,41 @@
 import React from 'react';
 
+import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/actionCreators';
+
 import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 
 import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const { dialogs } = props.state;
-  const { messages } = props.state;
+  const state = props.store.getState().dialogsPage;
+  const dialogsElements = state.dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
+  const messagesElements = state.messages.map((message) => <Message message={message.message} />);
 
-  const dialogsElements = dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
-  const messagesElements = messages.map((message) => <Message message={message.message} />);
-  const newDialogText = React.createRef();
-
-  const showDialogText = () => {
-    const text = newDialogText.current.value;
-    alert(text);
+  const onSendMessageClick = () => {
+    props.store.dispatch(sendMessageCreator());
   };
+
+  const onNewMessageChange = (e) => {
+    const { value: body } = e.target;
+    props.store.dispatch(updateNewMessageBodyCreator(body));
+  };
+
+  const textareaRender = () => (
+    <div>
+      <textarea
+        value={state.newMessageBody}
+        onChange={onNewMessageChange}
+        placeholder="Add u message"
+      />
+    </div>
+  );
+
+  const buttonRender = () => (
+    <div>
+      <button onClick={onSendMessageClick}>Send</button>
+    </div>
+  );
 
   return (
     <div className={style.dialogs}>
@@ -25,10 +44,8 @@ const Dialogs = (props) => {
       </div>
       <div className={style.messages}>
         {messagesElements}
-      </div>
-      <div>
-        <textarea ref={newDialogText} />
-        <button onClick={showDialogText} />
+        {textareaRender()}
+        {buttonRender()}
       </div>
     </div>
   );

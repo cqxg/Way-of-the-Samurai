@@ -1,4 +1,3 @@
-import { rerenderEntireTree } from '../render';
 
 const state = {
   profilePage: {
@@ -14,8 +13,10 @@ const state = {
         likesCount: '7',
       },
     ],
+
     newPostText: '',
   },
+
   dialogsPage: {
     dialogs: [
       {
@@ -58,25 +59,10 @@ const state = {
         message: 'priveti4 ot Marmeladi4a',
       },
     ],
+
+    newMessageBody: '',
+
   },
 };
-
-export const addPost = () => {
-  const newPost = {
-    id: 7,
-    message: state.profilePage.newPostText,
-    likesCount: 0,
-  };
-
-  state.profilePage.posts.push(newPost);
-  state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
-};
-
-export const updateNewPostText = (newText) => {
-  state.profilePage.newPostText = newText;
-  rerenderEntireTree(state);
-};
-
 
 export default state;
