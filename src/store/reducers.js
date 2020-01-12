@@ -17,7 +17,9 @@ const store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
+        const { type, newText, body } = action;
+
+        if (type === ADD_POST) {
             const newPost = {
                 id: 7,
                 message: state.profilePage.newPostText,
@@ -27,13 +29,13 @@ const store = {
             state.profilePage.posts.push(newPost);
             state.profilePage.newPostText = '';
             this.callSubscriber(state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            state.profilePage.newPostText = action.newText;
+        } else if (type === UPDATE_NEW_POST_TEXT) {
+            state.profilePage.newPostText = newText;
             this.callSubscriber(state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            state.dialogsPage.newMessageBody = action.body;
+        } else if (type === UPDATE_NEW_MESSAGE_BODY) {
+            state.dialogsPage.newMessageBody = body;
             this.callSubscriber(state);
-        } else if (action.type === SEND_MESSAGE) {
+        } else if (type === SEND_MESSAGE) {
             const body = state.dialogsPage.newMessageBody;
             state.dialogsPage.newMessageBody = '';
             state.dialogsPage.messages.push({ id: 8, message: body });
