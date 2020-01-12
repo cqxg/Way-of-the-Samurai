@@ -21,6 +21,22 @@ const Dialogs = (props) => {
     props.store.dispatch(updateNewMessageBodyCreator(body));
   };
 
+  const textareaRender = () => (
+    <div>
+      <textarea
+        value={state.newMessageBody}
+        onChange={onNewMessageChange}
+        placeholder="Add u message"
+      />
+    </div>
+  );
+
+  const buttonRender = () => (
+    <div>
+      <button onClick={onSendMessageClick}>Send</button>
+    </div>
+  );
+
   return (
     <div className={style.dialogs}>
       <div className={style.dialogsItems}>
@@ -28,16 +44,8 @@ const Dialogs = (props) => {
       </div>
       <div className={style.messages}>
         {messagesElements}
-        <div>
-          <div>
-            <textarea
-              value={state.newMessageBody}
-              onChange={onNewMessageChange}
-              placeholder="Add u message"
-            />
-          </div>
-          <div><button onClick={onSendMessageClick}>Send</button></div>
-        </div>
+        {textareaRender()}
+        {buttonRender()}
       </div>
     </div>
   );
