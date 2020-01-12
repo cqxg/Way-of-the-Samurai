@@ -109,18 +109,18 @@ const store = {
     },
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+const addPostActionCreator = () => ({ type: ADD_POST });
 
-export const updateNewPostTextActionCreator = (text) => ({
+const updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text,
 });
 
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
+const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-export const updateNewMessageBodyCreator = (body) => ({
+const updateNewMessageBodyCreator = (body) => ({
     type: UPDATE_NEW_MESSAGE_BODY,
     body,
 });
 
-export default store;
+export { store, addPostActionCreator, updateNewPostTextActionCreator, sendMessageCreator, updateNewMessageBodyCreator };
