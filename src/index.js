@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import App from './App';
 import { store } from './redux/state';
 
-
 import './index.css';
 
 const rerenderEntireTree = (state) => {
