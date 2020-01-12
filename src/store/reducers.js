@@ -18,27 +18,33 @@ const store = {
 
     dispatch(action) {
         const { type, newText, body } = action;
+        const { profilePage, dialogsPage } = state;
 
         if (type === ADD_POST) {
             const newPost = {
                 id: 7,
-                message: state.profilePage.newPostText,
+                message: profilePage.newPostText,
                 likesCount: 0,
             };
 
-            state.profilePage.posts.push(newPost);
-            state.profilePage.newPostText = '';
+            profilePage.posts.push(newPost);
+            profilePage.newPostText = '';
+
             this.callSubscriber(state);
         } else if (type === UPDATE_NEW_POST_TEXT) {
-            state.profilePage.newPostText = newText;
+            profilePage.newPostText = newText;
+
             this.callSubscriber(state);
         } else if (type === UPDATE_NEW_MESSAGE_BODY) {
-            state.dialogsPage.newMessageBody = body;
+            dialogsPage.newMessageBody = body;
+
             this.callSubscriber(state);
         } else if (type === SEND_MESSAGE) {
-            const body = state.dialogsPage.newMessageBody;
-            state.dialogsPage.newMessageBody = '';
-            state.dialogsPage.messages.push({ id: 8, message: body });
+            const body = dialogsPage.newMessageBody;
+
+            dialogsPage.newMessageBody = '';
+            dialogsPage.messages.push({ id: 8, message: body });
+
             this.callSubscriber(state);
         }
     },
