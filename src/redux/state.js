@@ -5,122 +5,124 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 
 const store = {
 
-    state: {
-        profilePage: {
-            posts: [
-                {
-                    id: '1',
-                    message: 'Hi, how are you',
-                    likesCount: '12',
-                },
-                {
-                    id: '2',
-                    message: 'It`s my first posts',
-                    likesCount: '7',
-                },
-            ],
-
-            newPostText: '',
+  state: {
+    profilePage: {
+      posts: [
+        {
+          id: '1',
+          message: 'Hi, how are you',
+          likesCount: '12',
         },
-
-        dialogsPage: {
-            dialogs: [
-                {
-                    id: '1',
-                    name: '105',
-                },
-                {
-                    id: '2',
-                    name: 'FrinteZz',
-                },
-                {
-                    id: '3',
-                    name: 'Gaming',
-                },
-                {
-                    id: '4',
-                    name: 'Pominki',
-                },
-                {
-                    id: '5',
-                    name: 'Side',
-                },
-                {
-                    id: '6',
-                    name: 'EFsquad',
-                },
-            ],
-
-            messages: [
-                {
-                    id: '1',
-                    message: 'qq all',
-                },
-                {
-                    id: '2',
-                    message: 'hello world',
-                },
-                {
-                    id: '3',
-                    message: 'priveti4 ot Marmeladi4a',
-                },
-            ],
-
-            newMessageBody: '',
-
+        {
+          id: '2',
+          message: 'It`s my first posts',
+          likesCount: '7',
         },
+      ],
+
+      newPostText: '',
     },
 
-    getState() {
-        return this.state;
-    },
+    dialogsPage: {
+      dialogs: [
+        {
+          id: '1',
+          name: '105',
+        },
+        {
+          id: '2',
+          name: 'FrinteZz',
+        },
+        {
+          id: '3',
+          name: 'Gaming',
+        },
+        {
+          id: '4',
+          name: 'Pominki',
+        },
+        {
+          id: '5',
+          name: 'Side',
+        },
+        {
+          id: '6',
+          name: 'EFsquad',
+        },
+      ],
 
-    callSubscriber() {
-        console.log('changed');
-    },
+      messages: [
+        {
+          id: '1',
+          message: 'qq all',
+        },
+        {
+          id: '2',
+          message: 'hello world',
+        },
+        {
+          id: '3',
+          message: 'priveti4 ot Marmeladi4a',
+        },
+      ],
 
-    subscribe(observer) {
-        this.callSubscriber = observer;
-    },
+      newMessageBody: '',
 
-    dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost = {
-                id: 7,
-                message: this.state.profilePage.newPostText,
-                likesCount: 0,
-            };
-
-            this.state.profilePage.posts.push(newPost);
-            this.state.profilePage.newPostText = '';
-            this.callSubscriber(this.state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this.state.profilePage.newPostText = action.newText;
-            this.callSubscriber(this.state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this.state.dialogsPage.newMessageBody = action.body;
-            this.callSubscriber(this.state);
-        } else if (action.type === SEND_MESSAGE) {
-            const body = this.state.dialogsPage.newMessageBody;
-            this.state.dialogsPage.newMessageBody = '';
-            this.state.dialogsPage.messages.push({ id: 8, message: body });
-            this.callSubscriber(this.state);
-        }
     },
+  },
+
+  getState() {
+    return this.state;
+  },
+
+  callSubscriber() {
+    console.log('changed');
+  },
+
+  subscribe(observer) {
+    this.callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === ADD_POST) {
+      const newPost = {
+        id: 7,
+        message: this.state.profilePage.newPostText,
+        likesCount: 0,
+      };
+
+      this.state.profilePage.posts.push(newPost);
+      this.state.profilePage.newPostText = '';
+      this.callSubscriber(this.state);
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
+      this.state.profilePage.newPostText = action.newText;
+      this.callSubscriber(this.state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this.state.dialogsPage.newMessageBody = action.body;
+      this.callSubscriber(this.state);
+    } else if (action.type === SEND_MESSAGE) {
+      const body = this.state.dialogsPage.newMessageBody;
+      this.state.dialogsPage.newMessageBody = '';
+      this.state.dialogsPage.messages.push({ id: 8, message: body });
+      this.callSubscriber(this.state);
+    }
+  },
 };
 
 const addPostActionCreator = () => ({ type: ADD_POST });
 
 const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text,
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
 });
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
 const updateNewMessageBodyCreator = (body) => ({
-    type: UPDATE_NEW_MESSAGE_BODY,
-    body,
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body,
 });
 
-export { store, addPostActionCreator, updateNewPostTextActionCreator, sendMessageCreator, updateNewMessageBodyCreator };
+export {
+  store, addPostActionCreator, updateNewPostTextActionCreator, sendMessageCreator, updateNewMessageBodyCreator,
+};
