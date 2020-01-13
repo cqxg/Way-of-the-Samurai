@@ -1,4 +1,4 @@
-import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from './actionTypes';
+import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from './actions/actionTypes';
 
 const initialState = {
   dialogs: [
@@ -64,11 +64,4 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-const sendMessageCreator = () => ({ type: SEND_MESSAGE });
-
-const updateNewMessageBodyCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body,
-});
-
-export { sendMessageCreator, updateNewMessageBodyCreator, dialogsReducer };
+export { dialogsReducer };
