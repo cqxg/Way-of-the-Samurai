@@ -5,9 +5,9 @@ import { dialogsReducer } from '../store/dialogsReducer';
 import { sidebarReducer } from '../store/sidebarReducer';
 
 const reducers = combineReducers({
-    profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
-    sidebar: sidebarReducer,
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  sidebar: sidebarReducer,
 });
 
 const store = createStore(reducers);
