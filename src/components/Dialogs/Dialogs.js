@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/actionCreators';
+import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/dialogsReducer';
 
 import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';

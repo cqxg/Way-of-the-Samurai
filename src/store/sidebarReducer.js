@@ -1,5 +1,1 @@
-export const sidebarReducer = (state, action) => {
-    
-
-    return state
-};
+export const sidebarReducer = (state, action) => state;

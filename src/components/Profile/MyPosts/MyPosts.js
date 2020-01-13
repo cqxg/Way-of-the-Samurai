@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../store/actionCreators';
+import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../store/profileReducer';
 
 import Post from './Post/Post';
 

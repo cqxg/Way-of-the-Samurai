@@ -5,25 +5,25 @@ import state from './state';
 
 const store = {
 
-    getState() {
-        return state;
-    },
+  getState() {
+    return state;
+  },
 
-    callSubscriber() {
-        console.log('changed');
-    },
+  callSubscriber() {
+    console.log('changed');
+  },
 
-    subscribe(observer) {
-        this.callSubscriber = observer;
-    },
+  subscribe(observer) {
+    this.callSubscriber = observer;
+  },
 
-    dispatch(action) {
-        state.profilePage = profileReducer(state.profilePage, action);
-        state.dialogsPage = dialogsReducer(state.dialogsPage, action);
-        state.sidebar = sidebarReducer(state.sidebarReducer, action);
+  dispatch(action) {
+    state.profilePage = profileReducer(state.profilePage, action);
+    state.dialogsPage = dialogsReducer(state.dialogsPage, action);
+    state.sidebar = sidebarReducer(state.sidebarReducer, action);
 
-        this.callSubscriber(state);
-    },
+    this.callSubscriber(state);
+  },
 };
 
 export { store };
