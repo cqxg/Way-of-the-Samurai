@@ -12,7 +12,7 @@ import Settings from './components/Settings/Settings';
 import './App.css';
 
 const App = (props) => {
-  const profileRender = () => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />;
+  const profileRender = () => <Profile store={props.store} />;
 
   return (
     <BrowserRouter>

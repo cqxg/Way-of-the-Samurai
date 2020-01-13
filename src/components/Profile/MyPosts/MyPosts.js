@@ -1,35 +1,36 @@
 import React from 'react';
 
-import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../store/actionCreators';
-
 import Post from './Post/Post';
 
 import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
-  const { posts, dispatch } = props;
+  const {
+    posts, addPost, updateNewPostText, newPostText,
+  } = props;
+
   const postsElements = posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />);
   const newPostElement = React.createRef();
 
-  const textRender = () => (
-    <div>
-      <div>
-        <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
-      </div>
-      <div>
-        <button onClick={addPost}>Add Post</button>
-      </div>
-    </div>
-  );
-
-  const addPost = () => {
-    dispatch(addPostActionCreator());
+  const onAddPost = () => {
+    addPost();
   };
 
   const onPostChange = () => {
     const text = newPostElement.current.value;
-    dispatch(updateNewPostTextActionCreator(text));
+    updateNewPostText(text);
   };
+
+  const textRender = () => (
+    <div>
+      <div>
+        <textarea onChange={onPostChange} ref={newPostElement} value={newPostText} />
+      </div>
+      <div>
+        <button onClick={onAddPost}>Add Post</button>
+      </div>
+    </div>
+  );
 
   return (
     <div className={style.postsBlock}>
