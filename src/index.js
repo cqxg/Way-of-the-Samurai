@@ -3,27 +3,25 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 
-import App from './App';
+import { Provider } from './store/storeContext';
+
 import store from './redux/reduxStore';
+import App from './App';
 
 import './index.css';
-import storeContext from './store/storeContext';
 
 const rerenderEntireTree = () => {
     ReactDOM.render(
-        <storeContext.Provider value={store}>
+        <Provider store={store}>
             <App />
-        </storeContext.Provider >, document.getElementById('root')
+        </Provider>, document.getElementById('root')
     );
 };
 
-const initState = () => {
-    const state = store.getState();
-    rerenderEntireTree(state);
-};
+rerenderEntireTree();
 
-initState();
-
-store.subscribe(initState);
+store.subscribe(() => {
+    rerenderEntireTree();
+});
 
 serviceWorker.unregister();

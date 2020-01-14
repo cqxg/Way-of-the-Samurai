@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/actions/actionCreators';
-import storeContext from '../../store/storeContext';
+import { storeContext } from '../../store/storeContext';
 
 import Dialogs from './Dialogs';
 

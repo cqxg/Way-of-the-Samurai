@@ -3,7 +3,7 @@ import React from 'react';
 import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../store/actions/actionCreators';
 
 import MyPosts from './MyPosts';
-import storeContext from '../../../store/storeContext';
+import { storeContext } from '../../../store/storeContext';
 
 const MyPostsContainer = () => {
 
