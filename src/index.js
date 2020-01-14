@@ -11,17 +11,17 @@ import App from './App';
 import './index.css';
 
 const rerenderEntireTree = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App />
-        </Provider>, document.getElementById('root')
-    );
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>, document.getElementById('root'),
+  );
 };
 
 rerenderEntireTree();
 
 store.subscribe(() => {
-    rerenderEntireTree();
+  rerenderEntireTree();
 });
 
 serviceWorker.unregister();

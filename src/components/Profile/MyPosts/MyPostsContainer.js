@@ -5,32 +5,29 @@ import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../s
 import MyPosts from './MyPosts';
 import { storeContext } from '../../../store/storeContext';
 
-const MyPostsContainer = () => {
+const MyPostsContainer = () => (
+  <storeContext.Consumer>
+    {(store) => {
+      const { getState, dispatch } = store;
 
-    return (
-        <storeContext.Consumer>
-            {(store) => {
-                const { getState, dispatch } = store;
+      const state = getState();
+      const addPost = () => dispatch(addPostActionCreator());
 
-                const state = getState();
-                const addPost = () => dispatch(addPostActionCreator());
+      const onPostChange = (text) => {
+        const action = updateNewPostTextActionCreator(text);
+        dispatch(action);
+      };
 
-                const onPostChange = (text) => {
-                    const action = updateNewPostTextActionCreator(text);
-                    dispatch(action);
-                };
-
-                return (
-                    <MyPosts
-                        updateNewPostText={onPostChange}
-                        addPost={addPost}
-                        posts={state.profilePage.posts}
-                        newPostText={state.profilePage.newPostText}
-                    />
-                )
-            }}
-        </storeContext.Consumer>
-    );
-};
+      return (
+        <MyPosts
+          updateNewPostText={onPostChange}
+          addPost={addPost}
+          posts={state.profilePage.posts}
+          newPostText={state.profilePage.newPostText}
+        />
+      );
+    }}
+  </storeContext.Consumer>
+);
 
 export default MyPostsContainer;

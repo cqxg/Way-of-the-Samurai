@@ -5,31 +5,28 @@ import { storeContext } from '../../store/storeContext';
 
 import Dialogs from './Dialogs';
 
-const DialogsContainer = () => {
+const DialogsContainer = () => (
+  <storeContext.Consumer>
+    {(store) => {
+      const { getState, dispatch } = store;
+      const state = getState().dialogsPage;
 
-    return (
-        <storeContext.Consumer>
-            {(store) => {
-                const { getState, dispatch } = store;
-                const state = getState().dialogsPage;
+      const onSendMessageClick = () => {
+        dispatch(sendMessageCreator());
+      };
 
-                const onSendMessageClick = () => {
-                    dispatch(sendMessageCreator());
-                };
-
-                const onNewMessageChange = (body) => {
-                    dispatch(updateNewMessageBodyCreator(body));
-                };
-                return (
-                    <Dialogs
-                        updateNewMessageBody={onNewMessageChange}
-                        sendMessage={onSendMessageClick}
-                        dialogsPage={state} />
-                )
-            }}
-        </storeContext.Consumer>
-    )
-
-};
+      const onNewMessageChange = (body) => {
+        dispatch(updateNewMessageBodyCreator(body));
+      };
+      return (
+        <Dialogs
+          updateNewMessageBody={onNewMessageChange}
+          sendMessage={onSendMessageClick}
+          dialogsPage={state}
+        />
+      );
+    }}
+  </storeContext.Consumer>
+);
 
 export default DialogsContainer;
