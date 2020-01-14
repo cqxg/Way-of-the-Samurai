@@ -7,14 +7,19 @@ import App from './App';
 import store from './redux/reduxStore';
 
 import './index.css';
+import storeContext from './store/storeContext';
 
-const rerenderEntireTree = (state) => {
-  ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} store={store} />, document.getElementById('root'));
+const rerenderEntireTree = () => {
+    ReactDOM.render(
+        <storeContext.Provider value={store}>
+            <App />
+        </storeContext.Provider >, document.getElementById('root')
+    );
 };
 
 const initState = () => {
-  const state = store.getState();
-  rerenderEntireTree(state);
+    const state = store.getState();
+    rerenderEntireTree(state);
 };
 
 initState();
