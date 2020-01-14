@@ -4,19 +4,15 @@ import { updateNewPostTextActionCreator, addPostActionCreator } from '../../../s
 
 import MyPosts from './MyPosts';
 
-const mapStateToProps = (state) => {
-    return {
-        posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
-    };
-};
+const mapStateToProps = (state) => ({
+  posts: state.profilePage.posts,
+  newPostText: state.profilePage.newPostText,
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateNewPostText: (text) => dispatch(updateNewPostTextActionCreator(text)),
-        addPost: () => dispatch(addPostActionCreator())
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+  updateNewPostText: (text) => dispatch(updateNewPostTextActionCreator(text)),
+  addPost: () => dispatch(addPostActionCreator()),
+});
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 

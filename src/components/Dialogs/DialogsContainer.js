@@ -4,18 +4,14 @@ import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/act
 
 import Dialogs from './Dialogs';
 
-const mapStateToProps = (state) => {
-    return {
-        dialogsPage: state.dialogsPage
-    };
-};
+const mapStateToProps = (state) => ({
+  dialogsPage: state.dialogsPage,
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        sendMessage: (body) => dispatch(updateNewMessageBodyCreator(body)),
-        updateNewMessageBody: () => dispatch(sendMessageCreator())
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+  sendMessage: (body) => dispatch(updateNewMessageBodyCreator(body)),
+  updateNewMessageBody: () => dispatch(sendMessageCreator()),
+});
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
