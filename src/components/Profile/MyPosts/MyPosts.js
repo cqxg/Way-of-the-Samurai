@@ -6,7 +6,10 @@ import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
   const {
-    posts, addPost, updateNewPostText, newPostText,
+    posts,
+    addPost,
+    updateNewPostText,
+    newPostText,
   } = props;
 
   const postsElements = posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />);
