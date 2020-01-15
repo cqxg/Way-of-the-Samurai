@@ -18,12 +18,13 @@ const initialState = {
 };
 
 const defaultLikesValue = 0;
+const nextId = 8;
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             const newPost = {
-                id: 7,
+                id: nextId,
                 message: state.newPostText,
                 likesCount: defaultLikesValue,
             };
