@@ -66,7 +66,7 @@ const dialogsReducer = (state = initialState, action) => {
 
     default:
       return state;
-  }
+  };
 };
 
 export { dialogsReducer };
