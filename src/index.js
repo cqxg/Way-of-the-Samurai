@@ -1,24 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import * as serviceWorker from './serviceWorker';
-
+import store from './redux/store';
 import App from './App';
-import store from './redux/reduxStore';
 
 import './index.css';
 
-const rerenderEntireTree = (state) => {
-  ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} store={store} />, document.getElementById('root'));
-};
-
-const initState = () => {
-  const state = store.getState();
-  rerenderEntireTree(state);
-};
-
-initState();
-
-store.subscribe(initState);
-
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, document.getElementById('root'),
+);

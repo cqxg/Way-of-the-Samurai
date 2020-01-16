@@ -1,24 +1,23 @@
 import React from 'react';
 
-import { updateNewMessageBodyCreator, sendMessageCreator } from '../../store/actions/actionCreators';
-
 import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 
 import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const state = props.store.getState().dialogsPage;
+  const state = props.dialogsPage;
+
   const dialogsElements = state.dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
   const messagesElements = state.messages.map((message) => <Message message={message.message} />);
 
   const onSendMessageClick = () => {
-    props.store.dispatch(sendMessageCreator());
+    props.sendMessage();
   };
 
   const onNewMessageChange = (e) => {
-    const { value: body } = e.target;
-    props.store.dispatch(updateNewMessageBodyCreator(body));
+    const body = e.target.value;
+    props.updateNewMessageBody(body);
   };
 
   const textareaRender = () => (
