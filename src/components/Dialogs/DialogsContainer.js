@@ -5,12 +5,12 @@ import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/act
 import Dialogs from './Dialogs';
 
 const mapStateToProps = (state) => ({
-    dialogsPage: state.dialogsPage,
+  dialogsPage: state.dialogsPage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    updateNewMessageBody: (body) => dispatch(updateNewMessageBodyCreator(body)),
-    sendMessage: () => dispatch(sendMessageCreator()),
+  updateNewMessageBody: (body) => dispatch(updateNewMessageBodyCreator(body)),
+  sendMessage: () => dispatch(sendMessageCreator()),
 });
 
 

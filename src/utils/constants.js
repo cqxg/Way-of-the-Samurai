@@ -1,4 +1,4 @@
 const DEFAULT_LIKES_VALUE = 0;
 const NEXT_ID = 8;
 
-export { DEFAULT_LIKES_VALUE, NEXT_ID }
+export { DEFAULT_LIKES_VALUE, NEXT_ID };
