@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_NEW_POST_TEXT } from './actions/actionTypes';
+import { ADD_POST, UPDATE_NEW_POST_TEXT } from '../actions/actionTypes';
 
 const initialState = {
   posts: [

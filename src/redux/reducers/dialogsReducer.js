@@ -1,4 +1,4 @@
-import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from './actions/actionTypes';
+import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from '../actions/actionTypes';
 
 const initialState = {
   dialogs: [
