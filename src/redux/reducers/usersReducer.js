@@ -37,10 +37,4 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-const followActionCreator = (userID) => ({ type: FOLLOW, userID });
-const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
-const setUsersActionCreator = (users) => ({ type: UNFOLLOW, users });
-
-export {
-  usersReducer, followActionCreator, unfollowActionCreator, setUsersActionCreator,
-};
+export { usersReducer };
