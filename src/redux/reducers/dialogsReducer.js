@@ -1,4 +1,6 @@
-import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from './actions/actionTypes';
+import { NEXT_ID } from '../../utils/constants';
+
+import { UPDATE_NEW_MESSAGE_BODY, SEND_MESSAGE } from '../actions/actionTypes';
 
 const initialState = {
   dialogs: [
@@ -46,8 +48,6 @@ const initialState = {
   newMessageBody: '',
 };
 
-const nextId = 8;
-
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_BODY:
@@ -61,12 +61,12 @@ const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         newMessageBody: '',
-        messages: [...state.messages, { id: nextId, message: body }],
+        messages: [...state.messages, { id: NEXT_ID, message: body }],
       };
 
     default:
       return state;
-  };
+  }
 };
 
 export { dialogsReducer };
