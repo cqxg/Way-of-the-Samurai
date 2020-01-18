@@ -6,38 +6,46 @@ import userPhoto from '../../assets/images/unnamed.jpg'
 
 import styles from './Users.module.css';
 
-// user.photos.small != null ? user.photos.small : { userPhoto }
+class Users extends React.Component {
 
-const Users = (props) => {
-
-    const getUsers = () => {
-        if (props.users.length === 0) {
+    getUsers = () => {
+        if (this.props.users.length === 0) {
             axios.get('https://social-network.samuraijs.com/api/1.0/users')
                 .then(response => {
-                    props.setUsers(response.data.items);
+                    this.props.setUsers(response.data.items);
                     console.log(response)
                 });
         }
     };
 
-    const span1 = (user) => {
+    goMap = () => {
+        const newMap = this.props.users.map((user) => (
+            <div key={user.id}>
+                {this.span1(user)}
+                {this.span2(user)}
+            </div>
+        ));
+
+        return newMap
+    };
+
+    span1 = (user) => {
 
         return (
             <span>
                 <div>
-                    <img src={userPhoto} className={styles.Photo} />
+                    <img src={user.photos.small != null ? user.photos.small : { userPhoto }} className={styles.Photo} />
                 </div>
                 <div>
                     {user.followed
-                        ? <button onClick={() => { props.unfollow(user.id); }}>Unfollow</button>
-                        : <button onClick={() => { props.follow(user.id); }}>Follow</button>}
+                        ? <button onClick={() => { this.props.unfollow(user.id); }}>Unfollow</button>
+                        : <button onClick={() => { this.props.follow(user.id); }}>Follow</button>}
                 </div>
             </span>
         );
     };
 
-    const span2 = (user) => {
-        const { name, status } = user;
+    span2 = (user) => {
 
         return (
             <span>
@@ -53,19 +61,14 @@ const Users = (props) => {
         );
     };
 
-    const newMap = props.users.map((user) => (
-        <div key={user.id}>
-            {span1(user)}
-            {span2(user)}
-        </div>
-    ));
-
-    return (
-        <div>
-            <button onClick={getUsers}>Get Users</button>
-            {newMap}
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                <button onClick={this.getUsers}>Get Users</button>
+                {this.goMap()}
+            </div>
+        )
+    };
 };
 
-export default Users;
+export default Users

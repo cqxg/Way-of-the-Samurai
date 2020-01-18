@@ -1,25 +1,25 @@
 import {
-    ADD_POST,
-    UPDATE_NEW_POST_TEXT,
-    UPDATE_NEW_MESSAGE_BODY,
-    SEND_MESSAGE,
-    FOLLOW,
-    UNFOLLOW,
-    SET_USERS
+  ADD_POST,
+  UPDATE_NEW_POST_TEXT,
+  UPDATE_NEW_MESSAGE_BODY,
+  SEND_MESSAGE,
+  FOLLOW,
+  UNFOLLOW,
+  SET_USERS,
 } from './actionTypes';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
 const updateNewMessageBodyCreator = (body) => ({
-    type: UPDATE_NEW_MESSAGE_BODY,
-    body,
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body,
 });
 
 const addPostActionCreator = () => ({ type: ADD_POST });
 
 const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text,
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
 });
 
 const followActionCreator = (userID) => ({ type: FOLLOW, userID });
@@ -27,11 +27,11 @@ const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
 const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
 
 export {
-    followActionCreator,
-    unfollowActionCreator,
-    setUsersActionCreator,
-    sendMessageCreator,
-    updateNewMessageBodyCreator,
-    addPostActionCreator,
-    updateNewPostTextActionCreator,
+  followActionCreator,
+  unfollowActionCreator,
+  setUsersActionCreator,
+  sendMessageCreator,
+  updateNewMessageBodyCreator,
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
 };
