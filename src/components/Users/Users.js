@@ -59,16 +59,22 @@ class Users extends React.Component {
         );
     };
 
+    pagination = () => {
+        return (
+            <div>
+                <span>1</span>
+                <span className={styles.selectedPage}>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+        );
+    };
+
     render() {
         return (
             <div>
-                <div>
-                    <span>1</span>
-                    <span className={styles.selectedPage}>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                </div>
+                {this.pagination()}
                 {this.goMap()}
             </div>
         )
