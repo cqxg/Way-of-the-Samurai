@@ -1,8 +1,8 @@
 const initialState = {
   users: [],
   pageSize: 5,
-  totalUsersCount: 19,
-  currentPage: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 export { initialState };

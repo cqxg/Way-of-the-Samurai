@@ -1,7 +1,11 @@
 import { initialState } from '../../utils/initialState';
 
 import {
-  FOLLOW, UNFOLLOW, SET_USERS, SET_CURRENT_PAGE,
+  FOLLOW,
+  UNFOLLOW,
+  SET_USERS,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USERS_COUNT,
 } from '../actions/actionTypes';
 
 const usersReducer = (state = initialState, action) => {
@@ -38,6 +42,12 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.currentPage,
+      };
+
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.count,
       };
 
     default:

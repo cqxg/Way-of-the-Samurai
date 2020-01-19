@@ -5,6 +5,7 @@ import {
   unfollowActionCreator,
   setUsersActionCreator,
   setCurrentPageActionCreator,
+  setTotalUsersCountActionCreator,
 } from '../../redux/actions/actionCreators';
 
 import Users from './Users';
@@ -28,6 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setCurrentPage: (pageNumber) => {
     dispatch(setCurrentPageActionCreator(pageNumber));
+  },
+  setTotalUsersCount: (totalCount) => {
+    dispatch(setTotalUsersCountActionCreator(totalCount));
   },
 });
 
