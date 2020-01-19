@@ -62,7 +62,7 @@ class Users extends React.Component {
     pagination = () => {
         const pages = [];
 
-        const pagesCount = this.props.totalUsersCount / this.props.pageSize;
+        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i)
         };
