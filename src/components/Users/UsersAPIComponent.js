@@ -2,7 +2,7 @@ import React from 'react';
 
 import axios from 'axios';
 
-import userPhoto from '../../assets/images/unnamed.jpg'
+import Users from './Users';
 
 import styles from './Users.module.css';
 
@@ -14,49 +14,6 @@ class UsersAPIComponent extends React.Component {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
             });
-    };
-
-    goMap = () => {
-        const newMap = this.props.users.map((user) => (
-            <div key={user.id}>
-                {this.span1(user)}
-                {this.span2(user)}
-            </div>
-        ));
-
-        return newMap
-    };
-
-    span1 = (user) => {
-
-        return (
-            <span>
-                <div>
-                    <img src={user.photos.small != null ? user.photos.small : { userPhoto }} className={styles.Photo} />
-                </div>
-                <div>
-                    {user.followed
-                        ? <button onClick={() => { this.props.unfollow(user.id); }}>Unfollow</button>
-                        : <button onClick={() => { this.props.follow(user.id); }}>Follow</button>}
-                </div>
-            </span>
-        );
-    };
-
-    span2 = (user) => {
-
-        return (
-            <span>
-                <span>
-                    <div>
-                        {user.name}
-                    </div>
-                    <div>
-                        {user.status}
-                    </div>
-                </span>
-            </span>
-        );
     };
 
     onPageChanged = (pageNumber) => {
@@ -89,12 +46,7 @@ class UsersAPIComponent extends React.Component {
     };
 
     render() {
-        return (
-            <div>
-                {this.pagination()}
-                {this.goMap()}
-            </div>
-        )
+        return <Users />
     };
 };
 
