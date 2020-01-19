@@ -28,7 +28,7 @@ const followActionCreator = (userID) => ({ type: FOLLOW, userID });
 const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
 const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
 const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount });
+const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 
 export {
   followActionCreator,
