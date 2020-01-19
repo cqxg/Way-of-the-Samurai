@@ -59,6 +59,15 @@ class Users extends React.Component {
         );
     };
 
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                console.log(response)
+            });
+    };
+
     pagination = () => {
         const pages = [];
 
@@ -70,7 +79,10 @@ class Users extends React.Component {
         return (
             <div>
                 {pages.map(page => {
-                    return <span className={this.props.currentPage === page && styles.selectedPage}>{page}</span>
+                    return <span
+                        className={this.props.currentPage === page && styles.selectedPage}
+                        onClick={() => { this.onPageChanged(page) }}>{page}
+                    </span>
                 })}
             </div >
         );
