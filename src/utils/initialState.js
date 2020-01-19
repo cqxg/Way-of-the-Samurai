@@ -1,7 +1,8 @@
-import { AVATAR_DEFAULT } from './url-utils';
-
 const initialState = {
-  users: [],
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 2
 };
 
 export { initialState };

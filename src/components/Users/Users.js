@@ -60,14 +60,19 @@ class Users extends React.Component {
     };
 
     pagination = () => {
+        const pages = [];
+
+        const pagesCount = this.props.totalUsersCount / this.props.pageSize;
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        };
+
         return (
             <div>
-                <span>1</span>
-                <span className={styles.selectedPage}>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
+                {pages.map(page => {
+                    return <span className={this.props.currentPage === page && styles.selectedPage}>{page}</span>
+                })}
+            </div >
         );
     };
 
