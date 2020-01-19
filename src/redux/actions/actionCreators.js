@@ -5,6 +5,9 @@ import {
   SEND_MESSAGE,
   FOLLOW,
   UNFOLLOW,
+  SET_USERS,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USERS_COUNT,
 } from './actionTypes';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
@@ -23,7 +26,9 @@ const updateNewPostTextActionCreator = (text) => ({
 
 const followActionCreator = (userID) => ({ type: FOLLOW, userID });
 const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
-const setUsersActionCreator = (users) => ({ type: UNFOLLOW, users });
+const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
+const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 
 export {
   followActionCreator,
@@ -33,4 +38,6 @@ export {
   updateNewMessageBodyCreator,
   addPostActionCreator,
   updateNewPostTextActionCreator,
+  setCurrentPageActionCreator,
+  setTotalUsersCountActionCreator,
 };

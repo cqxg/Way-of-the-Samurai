@@ -1,68 +1,43 @@
 import React from 'react';
 
-// import * as axios from 'axios';
+import userPhoto from '../../assets/images/unnamed.jpg';
 
-// axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-//     props.setUsers()
-// });
+const Users = () => {
+  const goMap = () => {
+    const newMap = this.props.users.map((user) => (
+      <div key={user.id}>
+        {this.span1(user)}
+        {this.span2(user)}
+      </div>
+    ));
 
-import styles from './Users.module.css';
-
-const Users = (props) => {
-  const span1 = (user) => {
-    const { photoUrl, id, followed } = user;
-
-    return (
-      <span>
-        <div>
-          <img src={photoUrl} className={styles.Photo} />
-        </div>
-        <div>
-          {followed
-            ? <button onClick={() => { props.unfollow(id); }}>Unfollow</button>
-            : <button onClick={() => { props.follow(id); }}>Follow</button>}
-        </div>
-      </span>
-    );
+    return newMap;
   };
 
-  const span2 = (user) => {
-    const { fullName, status } = user;
-    const { country, city } = user.location;
+  const span1 = (user) => (
+    <span>
+      <div>
+        <img src={user.photos.small != null ? user.photos.small : { userPhoto }} className={styles.Photo} />
+      </div>
+      <div>
+        {user.followed
+          ? <button onClick={() => { this.props.unfollow(user.id); }}>Unfollow</button>
+          : <button onClick={() => { this.props.follow(user.id); }}>Follow</button>}
+      </div>
+    </span>
+  );
 
-    return (
+  const span2 = (user) => (
+    <span>
       <span>
-        <span>
-          <div>
-            {fullName}
-          </div>
-          <div>
-            {status}
-          </div>
-        </span>
-        <span>
-          <div>
-            {country}
-          </div>
-          <div>
-            {city}
-          </div>
-        </span>
+        <div>
+          {user.name}
+        </div>
+        <div>
+          {user.status}
+        </div>
       </span>
-    );
-  };
-
-  const newMap = props.users.map((user) => (
-    <div key={user.id}>
-      {span1(user)}
-      {span2(user)}
-    </div>
-  ));
-
-  return (
-    <div>
-      {newMap}
-    </div>
+    </span>
   );
 };
 
