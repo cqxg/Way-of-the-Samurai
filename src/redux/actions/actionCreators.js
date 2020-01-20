@@ -8,6 +8,7 @@ import {
   SET_USERS,
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
+  TOGGLE_IS_FETCHING
 } from './actionTypes';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });

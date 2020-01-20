@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
+import preloader from '../../assets/images/preloader.svg'
+
 import {
     followActionCreator,
     unfollowActionCreator,
@@ -34,7 +36,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <img /> : null}
+                {this.props.isFetching ? <img src={preloader} /> : null}
                 <Users totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
