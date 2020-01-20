@@ -8,7 +8,7 @@ import {
   SET_USERS,
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
-  TOGGLE_IS_FETCHING
+  TOGGLE_IS_FETCHING,
 } from './actionTypes';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
@@ -30,6 +30,7 @@ const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
 const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
 const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
+const toggleIsFetchingActionCreator = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export {
   followActionCreator,
@@ -41,4 +42,5 @@ export {
   updateNewPostTextActionCreator,
   setCurrentPageActionCreator,
   setTotalUsersCountActionCreator,
+  toggleIsFetchingActionCreator,
 };

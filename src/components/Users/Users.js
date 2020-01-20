@@ -5,70 +5,71 @@ import userPhoto from '../../assets/images/unnamed.jpg';
 import styles from './Users.module.css';
 
 const Users = (props) => {
+  const pagination = () => {
+    const pages = [];
 
-    const pagination = () => {
-        const pages = [];
-
-        const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i)
-        };
-
-        return (
-            <div>
-                {pages.map(page => {
-                    return <span
-                        className={props.currentPage === page && styles.selectedPage}
-                        onClick={() => { props.onPageChanged(page) }}>{page}
-                    </span>
-                })}
-            </div >
-        );
-    };
-
-    const goMap = () => {
-        const newMap = props.users.map((user) => (
-            <div key={user.id}>
-                {span1(user)}
-                {span2(user)}
-            </div>
-        ));
-
-        return newMap;
-    };
-
-    const span1 = (user) => (
-        <span>
-            <div>
-                <img src={user.photos.small != null ? user.photos.small : { userPhoto }} className={styles.Photo} />
-            </div>
-            <div>
-                {user.followed
-                    ? <button onClick={() => { props.unfollow(user.id); }}>Unfollow</button>
-                    : <button onClick={() => { props.follow(user.id); }}>Follow</button>}
-            </div>
-        </span>
-    );
-
-    const span2 = (user) => (
-        <span>
-            <span>
-                <div>
-                    {user.name}
-                </div>
-                <div>
-                    {user.status}
-                </div>
-            </span>
-        </span>
-    );
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
 
     return (
+      <div>
+        {pages.map((page) => (
+          <span
+            className={props.currentPage === page && styles.selectedPage}
+            onClick={() => { props.onPageChanged(page); }}
+          >
+            {page}
+          </span>
+        ))}
+      </div>
+    );
+  };
+
+  const goMap = () => {
+    const newMap = props.users.map((user) => (
+      <div key={user.id}>
+        {span1(user)}
+        {span2(user)}
+      </div>
+    ));
+
+    return newMap;
+  };
+
+  const span1 = (user) => (
+    <span>
+      <div>
+        <img src={user.photos.small != null ? user.photos.small : { userPhoto }} className={styles.Photo} />
+      </div>
+      <div>
+        {user.followed
+          ? <button onClick={() => { props.unfollow(user.id); }}>Unfollow</button>
+          : <button onClick={() => { props.follow(user.id); }}>Follow</button>}
+      </div>
+    </span>
+  );
+
+  const span2 = (user) => (
+    <span>
+      <span>
         <div>
-            {pagination()}
-            {goMap()}
+          {user.name}
         </div>
-    )
+        <div>
+          {user.status}
+        </div>
+      </span>
+    </span>
+  );
+
+  return (
+    <div>
+      {pagination()}
+      {goMap()}
+    </div>
+  );
 };
 
 export default Users;
