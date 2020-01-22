@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Preloader from '../../utils/preloader';
+import Loader from '../../utils/loader';
 
 import axios from 'axios';
 
@@ -41,7 +41,7 @@ class UsersContainer extends Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <Preloader /> : null}
+                {this.props.isFetching ? <Loader /> : null}
                 < Users totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
