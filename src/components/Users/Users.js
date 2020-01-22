@@ -16,7 +16,7 @@ const Users = (props) => {
         const pagesMap = pages.map((page) => (
             <span
                 className={props.currentPage === page && styles.selectedPage}
-                onClick={() => { props.onPageChanged(page); }}
+                onClick={() => props.onPageChanged(page)}
             >
                 {page}
             </span>
@@ -47,8 +47,8 @@ const Users = (props) => {
             </div>
             <div>
                 {user.followed
-                    ? <button onClick={() => { props.unfollow(user.id); }}>Unfollow</button>
-                    : <button onClick={() => { props.follow(user.id); }}>Follow</button>}
+                    ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button>
+                    : <button onClick={() => props.follow(user.id)}>Follow</button>}
             </div>
         </span>
     );
