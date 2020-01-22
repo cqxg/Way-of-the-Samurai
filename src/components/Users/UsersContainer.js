@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Preloader from '../../utils/preloader';
@@ -16,7 +16,7 @@ import {
 
 import Users from './Users';
 
-class UsersContainer extends React.Component {
+class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
