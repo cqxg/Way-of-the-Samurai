@@ -6,6 +6,7 @@ import {
   SET_USERS,
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
+  TOGGLE_IS_FETCHING,
 } from '../actions/actionTypes';
 
 const usersReducer = (state = initialState, action) => {
@@ -48,6 +49,12 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalUsersCount: action.totalUsersCount,
+      };
+
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
       };
 
     default:

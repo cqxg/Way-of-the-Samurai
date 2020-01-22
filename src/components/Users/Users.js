@@ -2,12 +2,35 @@ import React from 'react';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
 
-const Users = () => {
+import styles from './Users.module.css';
+
+const Users = (props) => {
+  const pagination = () => {
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    const pages = [...Array(pagesCount).keys()];
+
+    const pagesMap = pages.map((page) => (
+      <span
+        className={props.currentPage === page && styles.selectedPage}
+        onClick={() => props.onPageChanged(page)}
+      >
+        {page}
+      </span>
+    ));
+
+    return (
+      <div>
+        {pagesMap}
+      </div>
+    );
+  };
+
   const goMap = () => {
-    const newMap = this.props.users.map((user) => (
+    const newMap = props.users.map((user) => (
       <div key={user.id}>
-        {this.span1(user)}
-        {this.span2(user)}
+        {span1(user)}
+        {span2(user)}
       </div>
     ));
 
@@ -21,8 +44,8 @@ const Users = () => {
       </div>
       <div>
         {user.followed
-          ? <button onClick={() => { this.props.unfollow(user.id); }}>Unfollow</button>
-          : <button onClick={() => { this.props.follow(user.id); }}>Follow</button>}
+          ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button>
+          : <button onClick={() => props.follow(user.id)}>Follow</button>}
       </div>
     </span>
   );
@@ -38,6 +61,13 @@ const Users = () => {
         </div>
       </span>
     </span>
+  );
+
+  return (
+    <div>
+      {pagination()}
+      {goMap()}
+    </div>
   );
 };
 
