@@ -10,6 +10,7 @@ const ProfileInfo = () => (
       <img src={BACKGROUND_IMG} />
     </div>
     <div className={style.descriptionBlock}>
+        <img src={}/> 
             ava+desc
     </div>
   </div>

@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import { PROFILE_URL } from '../../utils/url-utils';
 
-class ProfileContainer {
+import Profile from './Profile';
+
+class ProfileContainer extends Component {
+
+    componentDidMount() {
+        axios.get(PROFILE_URL)
+            .then(response => {
+                // this.props.setUserProfile(response.data);
+                console.log(response.data)
+            })
+    }
+
     render() {
         return (
             <div>
-                <ProfileInfo />
-                <MyPostsContainer />
+                <Profile {...this.props} profile={this.props.profile} />
             </div>
         );
     };
 };
 
-export default Profile;
+const mapStateToProps = () => ({
+    profile: state.profilePage.profile
+});
+
+export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);
