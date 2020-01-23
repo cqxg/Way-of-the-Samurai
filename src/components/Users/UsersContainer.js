@@ -7,12 +7,12 @@ import Loader from '../../utils/loader';
 import axios from 'axios';
 
 import {
-    followActionCreator,
-    unfollowActionCreator,
-    setUsersActionCreator,
-    setCurrentPageActionCreator,
-    setTotalUsersCountActionCreator,
-    toggleIsFetchingActionCreator
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toggleIsFetching
 } from '../../redux/actions/actionCreators';
 
 import Users from './Users';
@@ -65,25 +65,12 @@ const mapStateToProps = (state) => ({
     isFetching: state.usersPage.isFetching
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    follow: (userID) => {
-        dispatch(followActionCreator(userID));
-    },
-    unfollow: (userID) => {
-        dispatch(unfollowActionCreator(userID));
-    },
-    setUsers: (users) => {
-        dispatch(setUsersActionCreator(users));
-    },
-    setCurrentPage: (pageNumber) => {
-        dispatch(setCurrentPageActionCreator(pageNumber));
-    },
-    setTotalUsersCount: (totalCount) => {
-        dispatch(setTotalUsersCountActionCreator(totalCount));
-    },
-    toggleIsFetching: (isFetching) => {
-        dispatch(toggleIsFetchingActionCreator(isFetching));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(
+    mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toggleIsFetching
+})(UsersContainer);

@@ -25,22 +25,22 @@ const updateNewPostTextActionCreator = (text) => ({
   newText: text,
 });
 
-const followActionCreator = (userID) => ({ type: FOLLOW, userID });
-const unfollowActionCreator = (userID) => ({ type: UNFOLLOW, userID });
-const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
-const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
-const toggleIsFetchingActionCreator = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+const follow = (userID) => ({ type: FOLLOW, userID });
+const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+const setUsers = (users) => ({ type: SET_USERS, users });
+const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
+const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export {
-  followActionCreator,
-  unfollowActionCreator,
-  setUsersActionCreator,
+  follow,
+  unfollow,
+  setUsers,
   sendMessageCreator,
   updateNewMessageBodyCreator,
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-  setCurrentPageActionCreator,
-  setTotalUsersCountActionCreator,
-  toggleIsFetchingActionCreator,
+  addPostActionCreator ,
+  updateNewPostTextActionCreator ,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFetching,
 };
