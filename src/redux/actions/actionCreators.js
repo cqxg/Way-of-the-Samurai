@@ -9,7 +9,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
   TOGGLE_IS_FETCHING,
-  SET_USER_PROFILE
+  SET_USER_PROFILE,
 } from './actionTypes';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
@@ -32,7 +32,7 @@ const setUsers = (users) => ({ type: SET_USERS, users });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
-const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 
 export {
   follow,
@@ -40,10 +40,10 @@ export {
   setUsers,
   sendMessageCreator,
   updateNewMessageBodyCreator,
-  addPostActionCreator ,
-  updateNewPostTextActionCreator ,
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
   setCurrentPage,
   setTotalUsersCount,
   toggleIsFetching,
-  setUserProfile
+  setUserProfile,
 };

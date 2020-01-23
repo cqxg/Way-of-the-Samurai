@@ -4,8 +4,8 @@ const USERS_URL = 'https://social-network.samuraijs.com/api/1.0/users?';
 const PROFILE_URL = 'https://social-network.samuraijs.com/api/1.0/profile/2';
 
 export {
-    BACKGROUND_IMG,
-    AVATAR_DEFAULT,
-    USERS_URL,
-    PROFILE_URL
+  BACKGROUND_IMG,
+  AVATAR_DEFAULT,
+  USERS_URL,
+  PROFILE_URL,
 };
