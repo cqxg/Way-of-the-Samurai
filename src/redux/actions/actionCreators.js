@@ -45,4 +45,5 @@ export {
   setCurrentPage,
   setTotalUsersCount,
   toggleIsFetching,
+  setUserProfile
 };

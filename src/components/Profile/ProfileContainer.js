@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import axios from 'axios';
 
-import { PROFILE_URL } from '../../utils/url-utils';
+// import { PROFILE_URL } from '../../utils/url-utils';
+import { setUserProfile } from '../../redux/actions/actionCreators'
 
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
 
     componentDidMount() {
-        axios.get(PROFILE_URL)
+        axios.get('https://social-network.samuraijs.com/api/1.0/profile/2')
             .then(response => {
-                // this.props.setUserProfile(response.data);
+                this.props.setUserProfile(response.data);
                 console.log(response.data)
             })
     }
 
     render() {
         return (
-            <div>
-                <Profile {...this.props} profile={this.props.profile} />
-            </div>
+            <Profile {...this.props} profile={this.props.profile} />
         );
     };
 };
 
-const mapStateToProps = () => ({
-    profile: state.profilePage.profile
+const mapStateToProps = (state) => ({
+    profile: state.profile
 });
 
 export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);
