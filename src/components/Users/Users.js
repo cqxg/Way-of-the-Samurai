@@ -1,9 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
 
 import styles from './Users.module.css';
-import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
     const pagination = () => {
