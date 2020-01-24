@@ -11,7 +11,8 @@ import Profile from './Profile';
 
 class ProfileContainer extends Component {
     componentDidMount() {
-        axios.get(PROFILE_URL)
+        const userId = this.props.match.params.userId;
+        axios.get(`${PROFILE_URL}${userId}`)
             .then((response) => {
                 this.props.setUserProfile(response.data);
                 console.log(response.data);
