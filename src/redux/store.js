@@ -11,7 +11,7 @@ const reducers = combineReducers({
   dialogsPage: dialogsReducer,
   usersPage: usersReducer,
   sidebar: sidebarReducer,
-  auth: authReducer
+  auth: authReducer,
 });
 
 const store = createStore(
