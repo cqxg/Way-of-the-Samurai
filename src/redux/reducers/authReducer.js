@@ -1,6 +1,6 @@
 import { SET_USER_DATA } from '../actions/actionTypes';
 
-initialState = {
+const initialState = {
     userId: null,
     email: null,
     login: null,
