@@ -48,5 +48,5 @@ export {
   setTotalUsersCount,
   toggleIsFetching,
   setUserProfile,
-  setUserData,
+  setAuthUserData,
 };
