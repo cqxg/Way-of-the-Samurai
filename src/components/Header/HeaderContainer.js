@@ -20,8 +20,8 @@ class HeaderContainer extends Component() {
     };
 };
 
-const mapStateToProps = () => {{
-    
+const mapStateToProps = (state) => {{
+
 }}
 
-export default connect () (HeaderContainer);
+export default connect (mapStateToProps, {}) (HeaderContainer);
