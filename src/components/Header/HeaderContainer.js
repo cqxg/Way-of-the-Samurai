@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { USERS_URL } from '../../utils/url-utils';
 import { setAuthUserData } from '../../redux/actions/actionCreators';
 
 import Header from './Header';
@@ -9,7 +10,7 @@ import Header from './Header';
 class HeaderContainer extends Component {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
+        axios.get(`${USERS_URL}auth/me`, {
             withCredentials: true
         })
             .then(response => {

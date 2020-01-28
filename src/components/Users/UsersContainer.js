@@ -20,7 +20,7 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`${USERS_URL}page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`${USERS_URL}profile/page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
