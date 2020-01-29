@@ -16,7 +16,7 @@ class ProfileContainer extends Component {
       userId = DEFAULT_USER_ID;
     }
 
-    axios.get(`${PROFILE_URL}${userId}`)
+    axios.get(`${PROFILE_URL}profile/${userId}`)
       .then((response) => {
         this.props.setUserProfile(response.data);
         console.log(response.data);
