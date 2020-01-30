@@ -20,7 +20,9 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`${USERS_URL}profile/page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`${USERS_URL}profile/page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -31,7 +33,9 @@ class UsersContainer extends Component {
     onPageChanged = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`${USERS_URL}page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`${USERS_URL}page=${pageNumber}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
