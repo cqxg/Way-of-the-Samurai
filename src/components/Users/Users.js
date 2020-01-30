@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
+import { USERS_URL } from '../../utils/url-utils';
 
 import styles from './Users.module.css';
 
@@ -39,38 +41,46 @@ const Users = (props) => {
     };
 
     const span1 = (user) => {
-        <span>
-            <div>
-                <NavLink to={`/profile/${user.id}`}>
-                    <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.Photo} />
-                </NavLink>
-            </div>
-            <div>
-                {user.followed
+        return (
+            <span>
+                <div>
+                    <NavLink to={`/profile/${user.id}`}>
+                        <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.Photo} />
+                    </NavLink>
+                </div>
+                <div>
+                    {user.followed
 
-                    ? <button onClick={() => {
-                        axios.post(`${USERS_URL}follow/${userid}`, {}, {
-                            withCredentials: true,
-                        })
-                            .then(response => {
-                                if (response.data.resultCode === 0) {
-                                    props.unfollow(user.id)
+                        ? <button onClick={() => {
+                            axios.delete(`${USERS_URL}follow/${user.id}`, {
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': 'a330ffbb-7ace-4dc9-a8ec-7880ecab78ff'
                                 }
-                            });
-                    }}>Unfollow</button>
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.unfollow(user.id)
+                                    }
+                                });
+                        }}>Unfollow</button>
 
-                    : <button onClick={() => {
-                        axios.post(`${USERS_URL}follow/${userid}`, {}, {
-                            withCredentials: true,
-                        })
-                            .then(response => {
-                                if (response.data.resultCode === 0) {
-                                    props.follow(user.id)
+                        : <button onClick={() => {
+                            axios.post(`${USERS_URL}follow/${user.id}`, {}, {
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': 'a330ffbb-7ace-4dc9-a8ec-7880ecab78ff'
                                 }
-                            });
-                    }}>Follow</button>}
-            </div>
-        </span>
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.follow(user.id)
+                                    }
+                                });
+                        }}>Follow</button>}
+                </div>
+            </span>
+        )
     };
 
     const span2 = (user) => (
