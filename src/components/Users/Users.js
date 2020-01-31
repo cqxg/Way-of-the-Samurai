@@ -41,6 +41,21 @@ const Users = (props) => {
     return newMap;
   };
 
+  const goUnfollow = (user) => {
+        axios.delete(`${USERS_URL}follow/${user.id}`, {
+          withCredentials: true,
+          headers: {
+            'API-KEY': API_KEY,
+          },
+        })
+          .then((response) => {
+            if (response.data.resultCode === 0) {
+              props.unfollow(user.id);
+            }
+          });
+      
+  };
+
   const span1 = (user) => (
     <span>
       <div>
@@ -49,28 +64,7 @@ const Users = (props) => {
         </NavLink>
       </div>
       <div>
-        {user.followed
-
-          ? (
-            <button onClick={() => {
-              axios.delete(`${USERS_URL}follow/${user.id}`, {
-                withCredentials: true,
-                headers: {
-                  'API-KEY': API_KEY,
-                },
-              })
-                .then((response) => {
-                  if (response.data.resultCode === 0) {
-                    props.unfollow(user.id);
-                  }
-                });
-            }}
-            >
-Unfollow
-            </button>
-          )
-
-          : (
+        {user.followed ? (<button onClick={goUnfollow}>Unfollow</button>): (
             <button onClick={() => {
               axios.post(`${USERS_URL}follow/${user.id}`, {}, {
                 withCredentials: true,
