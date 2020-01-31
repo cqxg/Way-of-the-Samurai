@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
 import { USERS_URL } from '../../utils/url-utils';
+import { API_KEY } from '../../utils/constants';
 
 import styles from './Users.module.css';
 
@@ -55,7 +56,7 @@ const Users = (props) => {
               axios.delete(`${USERS_URL}follow/${user.id}`, {
                 withCredentials: true,
                 headers: {
-                  'API-KEY': 'a330ffbb-7ace-4dc9-a8ec-7880ecab78ff',
+                  'API-KEY': API_KEY,
                 },
               })
                 .then((response) => {
@@ -74,7 +75,7 @@ Unfollow
               axios.post(`${USERS_URL}follow/${user.id}`, {}, {
                 withCredentials: true,
                 headers: {
-                  'API-KEY': 'a330ffbb-7ace-4dc9-a8ec-7880ecab78ff',
+                  'API-KEY': API_KEY,
                 },
               })
                 .then((response) => {
