@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { USERS_URL } from '../../utils/url-utils';
+import { MAIN_URL } from '../../utils/url-utils';
 import Loader from '../../utils/loader';
 
 import {
@@ -20,7 +20,7 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`${USERS_URL}profile/page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+        axios.get(`${MAIN_URL}users?profile/page=${this.props.currentPage}&count=${this.props.pageSize}`, {
             withCredentials: true,
         })
             .then(response => {
@@ -33,7 +33,7 @@ class UsersContainer extends Component {
     onPageChanged = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`${USERS_URL}page=${pageNumber}&count=${this.props.pageSize}`, {
+        axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${this.props.pageSize}`, {
             withCredentials: true,
         })
             .then(response => {

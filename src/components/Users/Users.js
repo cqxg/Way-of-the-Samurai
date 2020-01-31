@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
-import { USERS_URL } from '../../utils/url-utils';
+import { MAIN_URL } from '../../utils/url-utils';
 import { API_KEY } from '../../utils/constants';
 
 import styles from './Users.module.css';
@@ -42,7 +42,7 @@ const Users = (props) => {
     };
 
     const goUnfollow = (user) => {
-        axios.delete(`${USERS_URL}follow/${user.id}`, {
+        axios.delete(`${MAIN_URL}users?follow/${user.id}`, {
             withCredentials: true,
             headers: {
                 'API-KEY': API_KEY,
@@ -56,7 +56,7 @@ const Users = (props) => {
     };
 
     const goFollow = (user) => {
-        axios.post(`${USERS_URL}follow/${user.id}`, {}, {
+        axios.post(`${MAIN_URL}users?follow/${user.id}`, {}, {
             withCredentials: true,
             headers: {
                 'API-KEY': API_KEY,

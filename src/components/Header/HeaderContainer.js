@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { PROFILE_URL } from '../../utils/url-utils';
+import { MAIN_URL } from '../../utils/url-utils';
 import { setAuthUserData } from '../../redux/actions/actionCreators';
 
 import Header from './Header';
 
 class HeaderContainer extends Component {
   componentDidMount() {
-    axios.get(`${PROFILE_URL}auth/me`, {
+    axios.get(`${MAIN_URL}auth/me`, {
       withCredentials: true,
     })
       .then((response) => {
