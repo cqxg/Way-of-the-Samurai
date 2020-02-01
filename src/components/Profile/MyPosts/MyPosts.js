@@ -30,7 +30,7 @@ const MyPosts = (props) => {
         <textarea onChange={onPostChange} ref={newPostElement} value={newPostText} />
       </div>
       <div>
-        <button onClick={onAddPost}>Add Post</button>
+        <button type="submit" onClick={onAddPost}>Add Post</button>
       </div>
     </div>
   );

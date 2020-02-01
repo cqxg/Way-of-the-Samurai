@@ -38,7 +38,9 @@ const Users = (props) => {
         </NavLink>
       </div>
       <div>
-        {user.followed ? <button onClick={() => goUnfollow(user)}>Unfollow</button> : <button onClick={() => goFollow(user)}>Follow</button>}
+        {user.followed
+          ? <button type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
+          : <button type="submit" onClick={() => goFollow(user)}>Follow</button>}
       </div>
     </span>
   );
@@ -90,7 +92,6 @@ const Users = (props) => {
     })
       .then((response) => {
         if (response.data.resultCode === 0) {
-          debugger;
           props.follow(user.id);
         }
       });
