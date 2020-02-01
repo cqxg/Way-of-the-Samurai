@@ -30,6 +30,32 @@ const Users = (props) => {
     );
   };
 
+  const span1 = (user) => (
+    <span>
+      <div>
+        <NavLink to={`/profile/${user.id}`}>
+          <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.Photo} />
+        </NavLink>
+      </div>
+      <div>
+        {user.followed ? <button onClick={() => goUnfollow(user)}>Unfollow</button> : <button onClick={() => goFollow(user)}>Follow</button>}
+      </div>
+    </span>
+  );
+
+  const span2 = (user) => (
+    <span>
+      <span>
+        <div>
+          {user.name}
+        </div>
+        <div>
+          {user.status}
+        </div>
+      </span>
+    </span>
+  );
+
   const goMap = () => {
     const newMap = props.users.map((user) => (
       <div key={user.id}>
@@ -69,32 +95,6 @@ const Users = (props) => {
         }
       });
   };
-
-  const span1 = (user) => (
-    <span>
-      <div>
-        <NavLink to={`/profile/${user.id}`}>
-          <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.Photo} />
-        </NavLink>
-      </div>
-      <div>
-        {user.followed ? <button onClick={() => goUnfollow(user)}>Unfollow</button> : <button onClick={() => goFollow(user)}>Follow</button>}
-      </div>
-    </span>
-  );
-
-  const span2 = (user) => (
-    <span>
-      <span>
-        <div>
-          {user.name}
-        </div>
-        <div>
-          {user.status}
-        </div>
-      </span>
-    </span>
-  );
 
   return (
     <div>
