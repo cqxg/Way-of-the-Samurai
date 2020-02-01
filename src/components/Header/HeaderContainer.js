@@ -13,15 +13,17 @@ class HeaderContainer extends Component {
       withCredentials: true,
     })
       .then((response) => {
+        const { props } = this;
         if (response.data.resultCode === 0) {
           const { id, email, login } = response.data.data;
-          this.props.setAuthUserData(id, email, login);
+          props.setAuthUserData(id, email, login);
         }
       });
   }
 
   render() {
-    return <Header {...this.props} />;
+    const { props } = this;
+    return <Header {...props} />;
   }
 }
 
