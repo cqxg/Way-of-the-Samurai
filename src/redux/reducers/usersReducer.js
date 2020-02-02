@@ -68,4 +68,4 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export default usersReducer ;
+export default usersReducer;

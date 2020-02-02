@@ -49,6 +49,8 @@ const initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
+  const body = state.newMessageBody;
+
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_BODY:
       return {
@@ -57,7 +59,6 @@ const dialogsReducer = (state = initialState, action) => {
       };
 
     case SEND_MESSAGE:
-      const body = state.newMessageBody;
       return {
         ...state,
         newMessageBody: '',
