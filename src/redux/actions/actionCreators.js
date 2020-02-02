@@ -34,7 +34,9 @@ const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage }
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
+const setAuthUserData = (userId, email, login) => ({
+  type: SET_USER_DATA, data: { userId, email, login },
+});
 
 export {
   follow,

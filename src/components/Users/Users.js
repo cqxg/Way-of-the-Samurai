@@ -10,14 +10,20 @@ import styles from './Users.module.css';
 
 const Users = (props) => {
   const pagination = () => {
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    const {
+      totalUsersCount, pageSize, currentPage, onPageChanged,
+    } = props;
+    const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     const pages = [...Array(pagesCount).keys()];
 
     const pagesMap = pages.map((page) => (
       <span
-        className={props.currentPage === page && styles.selectedPage}
-        onClick={() => props.onPageChanged(page)}
+        role="button"
+        tabIndex={0}
+        className={currentPage === page && styles.selectedPage}
+        onClick={() => onPageChanged(page)}
+        onKeyPress={() => onPageChanged(page)}
       >
         {page}
       </span>
@@ -30,11 +36,44 @@ const Users = (props) => {
     );
   };
 
+  const goUnfollow = (user) => {
+    axios.delete(`${MAIN_URL}follow/${user.id}`, {
+      withCredentials: true,
+      headers: {
+        'API-KEY': API_KEY,
+      },
+    })
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          props.unfollow(user.id);
+        }
+      });
+  };
+
+  const goFollow = (user) => {
+    axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
+      withCredentials: true,
+      headers: {
+        'API-KEY': API_KEY,
+      },
+    })
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          props.follow(user.id);
+        }
+      });
+  };
+
   const span1 = (user) => (
     <span>
       <div>
         <NavLink to={`/profile/${user.id}`}>
-          <img src={user.photos.small != null ? user.photos.small : userPhoto} className={styles.Photo} />
+          <img
+            src={user.photos.small != null
+              ? user.photos.small
+              : userPhoto}
+            className={styles.Photo}
+          />
         </NavLink>
       </div>
       <div>
@@ -67,34 +106,6 @@ const Users = (props) => {
     ));
 
     return newMap;
-  };
-
-  const goUnfollow = (user) => {
-    axios.delete(`${MAIN_URL}follow/${user.id}`, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          props.unfollow(user.id);
-        }
-      });
-  };
-
-  const goFollow = (user) => {
-    axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          props.follow(user.id);
-        }
-      });
   };
 
   return (
