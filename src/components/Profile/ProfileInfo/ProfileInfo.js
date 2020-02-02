@@ -6,22 +6,22 @@ import { BACKGROUND_IMG } from '../../../utils/url-utils';
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-    const { profile } = props;
+  const { profile } = props;
 
-    if (!profile) {
-        return <Loader />;
-    }
-    return (
-        <div>
-            <div>
-                <img src={BACKGROUND_IMG} />
-            </div>
-            <div className={style.descriptionBlock}>
-                <img src={profile.photos.large} />
+  if (!profile) {
+    return <Loader />;
+  }
+  return (
+    <div>
+      <div>
+        <img src={BACKGROUND_IMG} />
+      </div>
+      <div className={style.descriptionBlock}>
+        <img src={profile.photos.large} />
                 ava+desc
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ProfileInfo;
