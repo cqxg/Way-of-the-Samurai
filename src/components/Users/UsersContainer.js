@@ -18,41 +18,53 @@ import Users from './Users';
 
 class UsersContainer extends Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    axios.get(`${MAIN_URL}users?profile/page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+    const {
+      toggleIsFetching, currentPage, pageSize, setUsers, setTotalUsersCount,
+    } = this.props;
+
+    toggleIsFetching(true);
+    axios.get(`${MAIN_URL}users?profile/page=${currentPage}&count=${pageSize}`, {
       withCredentials: true,
     })
       .then((response) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
+        toggleIsFetching(false);
+        setUsers(response.data.items);
+        setTotalUsersCount(response.data.totalCount);
       });
   }
 
     onPageChanged = (pageNumber) => {
-      this.props.toggleIsFetching(true);
-      this.props.setCurrentPage(pageNumber);
-      axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${this.props.pageSize}`, {
+      const {
+        toggleIsFetching, setCurrentPage, pageSize, setUsers,
+      } = this.props;
+
+      toggleIsFetching(true);
+      setCurrentPage(pageNumber);
+      axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${pageSize}`, {
         withCredentials: true,
       })
         .then((response) => {
-          this.props.toggleIsFetching(false);
-          this.props.setUsers(response.data.items);
+          toggleIsFetching(false);
+          setUsers(response.data.items);
         });
     };
 
     render() {
+      const {
+        isFetching, totalUsersCount, pageSize, currentPage, users, follow, unfollow,
+      } = this.props;
+
       return (
         <>
-          {this.props.isFetching ? <Loader /> : null}
+          {isFetching ? <Loader /> : null}
           <Users
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
+            totalUsersCount={totalUsersCount}
+            pageSize={pageSize}
+            currentPage={currentPage}
             onPageChanged={this.onPageChanged}
-            users={this.props.users}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow}
+            users={users}
+            follow={follow}
+            unfollow={unfollow}
           />
         </>
       );
