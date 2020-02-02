@@ -10,28 +10,31 @@ import { setUserProfile } from '../../redux/actions/actionCreators';
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
-  componentDidMount() {
-    let { userId } = this.props.match.params;
-    if (!userId) {
-      userId = DEFAULT_USER_ID;
+    componentDidMount() {
+        const { setUserProfile } = this.props;
+        let { userId } = this.props.match.params;
+        
+        if (!userId) {
+            userId = DEFAULT_USER_ID;
+        }
+
+        axios.get(`${MAIN_URL}profile/${userId}`)
+            .then((response) => {
+                setUserProfile(response.data);
+            });
     }
 
-    axios.get(`${MAIN_URL}profile/${userId}`)
-      .then((response) => {
-        this.props.setUserProfile(response.data);
-        console.log(response.data);
-      });
-  }
+    render() {
+        const { profile } = this.props;
 
-  render() {
-    return (
-      <Profile {...this.props} profile={this.props.profile} />
-    );
-  }
+        return (
+            <Profile {...this.props} profile={profile} />
+        );
+    }
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
+    profile: state.profilePage.profile,
 });
 
 const WithUrlDataContainerComponent = withRouter(ProfileContainer);
