@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { AVATAR_DEFAULT } from '../../../../utils/url-utils';
 import { ALT_PROFILE_AVATAR } from '../../../../utils/constants';
@@ -19,6 +20,16 @@ const Post = (props) => {
       </div>
     </div>
   );
+};
+
+Post.defaultProps = {
+  likesCount: PropTypes.string,
+  message: PropTypes.string,
+};
+
+Post.propTypes = {
+  likesCount: PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default Post;
