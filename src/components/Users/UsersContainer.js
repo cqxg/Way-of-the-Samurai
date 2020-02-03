@@ -98,7 +98,7 @@ UsersContainer.defaultProps = {
 };
 
 UsersContainer.propTypes = {
-  users: PropTypes.array,
+  users: PropTypes.instanceOf(Array),
   pageSize: PropTypes.number,
   currentPage: PropTypes.number,
   totalUsersCount: PropTypes.number,
