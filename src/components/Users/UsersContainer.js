@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import { MAIN_URL } from '../../utils/url-utils';
 import Loader from '../../utils/loader';
@@ -81,6 +82,34 @@ const mapStateToProps = (state) => ({
   currentPage: state.usersPage.currentPage,
   isFetching: state.usersPage.isFetching,
 });
+
+UsersContainer.defaultProps = {
+  users: PropTypes.array,
+  pageSize: PropTypes.number,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
+  isFetching: PropTypes.bool,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
+  setUsers: PropTypes.func,
+  setCurrentPage: PropTypes.func,
+  setTotalUsersCount: PropTypes.func,
+  toggleIsFetching: PropTypes.func,
+};
+
+UsersContainer.propTypes = {
+  users: PropTypes.array,
+  pageSize: PropTypes.number,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
+  isFetching: PropTypes.bool,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
+  setUsers: PropTypes.func,
+  setCurrentPage: PropTypes.func,
+  toggleIsFetching: PropTypes.func,
+  setTotalUsersCount: PropTypes.func,
+};
 
 export default connect(
   mapStateToProps, {
