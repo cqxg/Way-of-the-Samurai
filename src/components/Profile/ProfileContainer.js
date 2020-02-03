@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import { MAIN_URL } from '../../utils/url-utils';
 import { DEFAULT_USER_ID } from '../../utils/constants';
@@ -38,5 +39,17 @@ const mapStateToProps = (state) => ({
 });
 
 const WithUrlDataContainerComponent = withRouter(ProfileContainer);
+
+ProfileContainer.defaultProps = {
+  match: PropTypes.func,
+  setUserProfile: PropTypes.func,
+  profile: PropTypes.number,
+};
+
+ProfileContainer.propTypes = {
+  match: PropTypes.func,
+  setUserProfile: PropTypes.func,
+  profile: PropTypes.number,
+};
 
 export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);
