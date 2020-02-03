@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Loader from '../../../utils/loader';
 import { BACKGROUND_IMG } from '../../../utils/url-utils';
@@ -22,6 +23,14 @@ const ProfileInfo = (props) => {
       </div>
     </div>
   );
+};
+
+ProfileInfo.defaultProps = {
+  profile: PropTypes.number,
+};
+
+ProfileInfo.propTypes = {
+  profile: PropTypes.number,
 };
 
 export default ProfileInfo;
