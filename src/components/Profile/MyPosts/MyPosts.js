@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Post from './Post/Post';
 
@@ -44,6 +45,20 @@ const MyPosts = (props) => {
       </div>
     </div>
   );
+};
+
+MyPosts.defaultProps = {
+  posts: PropTypes.array,
+  addPost: PropTypes.func,
+  updateNewPostText: PropTypes.func,
+  newPostText: PropTypes.string,
+};
+
+MyPosts.propTypes = {
+  posts: PropTypes.instanceOf(Array),
+  addPost: PropTypes.func,
+  updateNewPostText: PropTypes.func,
+  newPostText: PropTypes.string,
 };
 
 export default MyPosts;

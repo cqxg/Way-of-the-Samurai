@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
 import { MAIN_URL } from '../../utils/url-utils';
@@ -115,6 +116,26 @@ const Users = (props) => {
       {goMap()}
     </div>
   );
+};
+
+Users.defaultProps = {
+  users: PropTypes.array,
+  pageSize: PropTypes.number,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
+  onPageChanged: PropTypes.func,
+};
+
+Users.propTypes = {
+  users: PropTypes.instanceOf(Array),
+  pageSize: PropTypes.number,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
+  onPageChanged: PropTypes.func,
 };
 
 export default Users;
