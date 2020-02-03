@@ -11,8 +11,8 @@ import Profile from './Profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    const { setUserProfile } = this.props;
-    let { userId } = this.props.match.params;
+    const { props } = this;
+    let { userId } = props.match.params;
 
     if (!userId) {
       userId = DEFAULT_USER_ID;
@@ -20,7 +20,7 @@ class ProfileContainer extends Component {
 
     axios.get(`${MAIN_URL}profile/${userId}`)
       .then((response) => {
-        setUserProfile(response.data);
+        props.setUserProfile(response.data);
       });
   }
 
