@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import style from '../Dialogs.module.css';
 
@@ -12,6 +13,16 @@ const DialogItem = (props) => {
       <NavLink to={path}>{name}</NavLink>
     </div>
   );
+};
+
+DialogItem.defaultProps = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+};
+
+DialogItem.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default DialogItem;
