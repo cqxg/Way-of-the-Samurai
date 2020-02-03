@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
@@ -51,6 +52,18 @@ const Dialogs = (props) => {
       </div>
     </div>
   );
+};
+
+Dialogs.defaultProps = {
+  sendMessage: PropTypes.func,
+  dialogsPage: PropTypes.func,
+  updateNewMessageBody: PropTypes.func,
+};
+
+Dialogs.propTypes = {
+  sendMessage: PropTypes.func,
+  dialogsPage: PropTypes.func,
+  updateNewMessageBody: PropTypes.func,
 };
 
 export default Dialogs;
