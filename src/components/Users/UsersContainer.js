@@ -18,40 +18,43 @@ import Users from './Users';
 
 class UsersContainer extends Component {
   componentDidMount() {
+    const { props } = this;
     const {
-      toggleIsFetching, currentPage, pageSize, setUsers, setTotalUsersCount,
+      currentPage, pageSize,
     } = this.props;
 
-    toggleIsFetching(true);
+    props.toggleIsFetching(true);
     axios.get(`${MAIN_URL}users?profile/page=${currentPage}&count=${pageSize}`, {
       withCredentials: true,
     })
       .then((response) => {
-        toggleIsFetching(false);
-        setUsers(response.data.items);
-        setTotalUsersCount(response.data.totalCount);
+        props.toggleIsFetching(false);
+        props.setUsers(response.data.items);
+        props.setTotalUsersCount(response.data.totalCount);
       });
   }
 
     onPageChanged = (pageNumber) => {
+      const { props } = this;
       const {
-        toggleIsFetching, setCurrentPage, pageSize, setUsers,
+        pageSize,
       } = this.props;
 
-      toggleIsFetching(true);
-      setCurrentPage(pageNumber);
+      props.toggleIsFetching(true);
+      props.setCurrentPage(pageNumber);
       axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${pageSize}`, {
         withCredentials: true,
       })
         .then((response) => {
-          toggleIsFetching(false);
-          setUsers(response.data.items);
+          props.toggleIsFetching(false);
+          props.setUsers(response.data.items);
         });
     };
 
     render() {
+      const { props, onPageChanged } = this;
       const {
-        isFetching, totalUsersCount, pageSize, currentPage, users, follow, unfollow,
+        isFetching, totalUsersCount, pageSize, currentPage, users,
       } = this.props;
 
       return (
@@ -61,10 +64,10 @@ class UsersContainer extends Component {
             totalUsersCount={totalUsersCount}
             pageSize={pageSize}
             currentPage={currentPage}
-            onPageChanged={this.onPageChanged}
+            onPageChanged={onPageChanged}
             users={users}
-            follow={follow}
-            unfollow={unfollow}
+            follow={props.follow}
+            unfollow={props.unfollow}
           />
         </>
       );

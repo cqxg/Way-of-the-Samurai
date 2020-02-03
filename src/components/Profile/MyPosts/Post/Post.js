@@ -10,7 +10,7 @@ const Post = (props) => {
 
   return (
     <div className={style.item}>
-      <img alt ={ALT_PROFILE_AVATAR} src={AVATAR_DEFAULT} />
+      <img alt={ALT_PROFILE_AVATAR} src={AVATAR_DEFAULT} />
       {message}
       <div>
         <span>like</span>
