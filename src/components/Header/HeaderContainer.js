@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import { MAIN_URL } from '../../utils/url-utils';
 import { setAuthUserData } from '../../redux/actions/actionCreators';
@@ -31,5 +32,15 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   login: state.auth.login,
 });
+
+
+HeaderContainer.defaultProps = {
+  setAuthUserData: PropTypes.func,
+};
+
+HeaderContainer.propTypes = {
+  setAuthUserData: PropTypes.func,
+};
+
 
 export default connect(mapStateToProps, { setAuthUserData })(HeaderContainer);
