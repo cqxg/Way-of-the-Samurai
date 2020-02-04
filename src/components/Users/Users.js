@@ -10,10 +10,10 @@ import { API_KEY, ALT_USER_AVATAR } from '../../utils/constants';
 import styles from './Users.module.css';
 
 const Users = (props) => {
+  const {
+    totalUsersCount, pageSize, currentPage, onPageChanged,
+  } = props;
   const pagination = () => {
-    const {
-      totalUsersCount, pageSize, currentPage, onPageChanged,
-    } = props;
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     const pages = [...Array(pagesCount).keys()];
