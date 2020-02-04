@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-import { PROFILE_URL } from '../../utils/url-utils';
+import { MAIN_URL } from '../../utils/url-utils';
 import { DEFAULT_USER_ID } from '../../utils/constants';
 import { setUserProfile } from '../../redux/actions/actionCreators';
 
@@ -11,21 +12,24 @@ import Profile from './Profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    let { userId } = this.props.match.params;
+    const { props } = this;
+    let { userId } = props.match.params;
+
     if (!userId) {
       userId = DEFAULT_USER_ID;
     }
 
-    axios.get(`${PROFILE_URL}profile/${userId}`)
+    axios.get(`${MAIN_URL}profile/${userId}`)
       .then((response) => {
-        this.props.setUserProfile(response.data);
-        console.log(response.data);
+        props.setUserProfile(response.data);
       });
   }
 
   render() {
+    const { profile } = this.props;
+
     return (
-      <Profile {...this.props} profile={this.props.profile} />
+      <Profile {...this.props} profile={profile} />
     );
   }
 }
@@ -35,5 +39,17 @@ const mapStateToProps = (state) => ({
 });
 
 const WithUrlDataContainerComponent = withRouter(ProfileContainer);
+
+ProfileContainer.defaultProps = {
+  match: PropTypes.func,
+  setUserProfile: PropTypes.func,
+  profile: PropTypes.number,
+};
+
+ProfileContainer.propTypes = {
+  match: PropTypes.func,
+  setUserProfile: PropTypes.func,
+  profile: PropTypes.number,
+};
 
 export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);

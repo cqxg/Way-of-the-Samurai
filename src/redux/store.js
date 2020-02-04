@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 
-import { profileReducer } from './reducers/profileReducer';
-import { dialogsReducer } from './reducers/dialogsReducer';
-import { sidebarReducer } from './reducers/sidebarReducer';
-import { usersReducer } from './reducers/usersReducer';
-import { authReducer } from './reducers/authReducer';
+import profileReducer from './reducers/profileReducer';
+import dialogsReducer from './reducers/dialogsReducer';
+import sidebarReducer from './reducers/sidebarReducer';
+import usersReducer from './reducers/usersReducer';
+import authReducer from './reducers/authReducer';
 
 const reducers = combineReducers({
   profilePage: profileReducer,

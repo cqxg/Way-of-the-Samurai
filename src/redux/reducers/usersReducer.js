@@ -1,5 +1,3 @@
-import { initialState } from '../../utils/initialState';
-
 import {
   FOLLOW,
   UNFOLLOW,
@@ -8,6 +6,14 @@ import {
   SET_TOTAL_USERS_COUNT,
   TOGGLE_IS_FETCHING,
 } from '../actions/actionTypes';
+
+const initialState = {
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: false,
+};
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -62,4 +68,4 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export { usersReducer };
+export default usersReducer;

@@ -55,4 +55,4 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export { profileReducer };
+export default profileReducer;

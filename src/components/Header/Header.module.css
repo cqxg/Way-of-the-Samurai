@@ -1,6 +1,7 @@
 .header {
     grid-area: h;
     background-color: #4F026D;
+    color: white;
 }
 
 .loginBlock {
@@ -8,6 +9,5 @@
 }
 
 .loginBlock a {
-    color: white;
     text-decoration: none;
 }

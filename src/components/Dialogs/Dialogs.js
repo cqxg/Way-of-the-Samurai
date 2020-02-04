@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
@@ -6,18 +7,21 @@ import Message from './Message/Message';
 import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const state = props.dialogsPage;
+  const { sendMessage, updateNewMessageBody, dialogsPage } = props;
+  const state = dialogsPage;
+  const { dialogs, messages } = state;
 
-  const dialogsElements = state.dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
-  const messagesElements = state.messages.map((message) => <Message message={message.message} />);
+
+  const dialogsElements = dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
+  const messagesElements = messages.map((message) => <Message message={message.message} />);
 
   const onSendMessageClick = () => {
-    props.sendMessage();
+    sendMessage();
   };
 
   const onNewMessageChange = (e) => {
     const body = e.target.value;
-    props.updateNewMessageBody(body);
+    updateNewMessageBody(body);
   };
 
   const textareaRender = () => (
@@ -32,7 +36,7 @@ const Dialogs = (props) => {
 
   const buttonRender = () => (
     <div>
-      <button onClick={onSendMessageClick}>Send</button>
+      <button type="submit" onClick={onSendMessageClick}>Send</button>
     </div>
   );
 
@@ -48,6 +52,18 @@ const Dialogs = (props) => {
       </div>
     </div>
   );
+};
+
+Dialogs.defaultProps = {
+  sendMessage: PropTypes.func,
+  dialogsPage: PropTypes.func,
+  updateNewMessageBody: PropTypes.func,
+};
+
+Dialogs.propTypes = {
+  sendMessage: PropTypes.func,
+  dialogsPage: PropTypes.func,
+  updateNewMessageBody: PropTypes.func,
 };
 
 export default Dialogs;
