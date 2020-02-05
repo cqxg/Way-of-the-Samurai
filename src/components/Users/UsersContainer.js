@@ -15,6 +15,8 @@ import {
   toggleIsFetching,
 } from '../../redux/actions/actionCreators';
 
+import getUsers from '../../api/api';
+
 import Users from './Users';
 
 class UsersContainer extends Component {
@@ -25,10 +27,7 @@ class UsersContainer extends Component {
     } = this.props;
 
     props.toggleIsFetching(true);
-    axios.get(`${MAIN_URL}users?profile/page=${currentPage}&count=${pageSize}`, {
-      withCredentials: true,
-    })
-      .then((response) => {
+    getUsers().then((response) => {
         props.toggleIsFetching(false);
         props.setUsers(response.data.items);
         props.setTotalUsersCount(response.data.totalCount);
