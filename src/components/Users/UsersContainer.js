@@ -22,16 +22,13 @@ import Users from './Users';
 class UsersContainer extends Component {
   componentDidMount() {
     const { props } = this;
-    const {
-      currentPage, pageSize,
-    } = this.props;
 
     props.toggleIsFetching(true);
     getUsers().then((response) => {
-        props.toggleIsFetching(false);
-        props.setUsers(response.data.items);
-        props.setTotalUsersCount(response.data.totalCount);
-      });
+      props.toggleIsFetching(false);
+      props.setUsers(response.data.items);
+      props.setTotalUsersCount(response.data.totalCount);
+    });
   }
 
     onPageChanged = (pageNumber) => {
