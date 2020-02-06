@@ -5,6 +5,7 @@ import { MAIN_URL } from '../utils/url-utils';
 const instance = axios.create(
     {
         withCredentials: true,
+        baseURL: MAIN_URL,
     }
 );
 
