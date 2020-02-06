@@ -9,10 +9,8 @@ const instance = axios.create(
     }
 );
 
-const getUsers = (pageNumber, pageSize) => axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${pageSize}`,
-    {
-        withCredentials: true,
-    })
-    .then((response) => response.data);
+const getUsers = (pageNumber, pageSize) => {
+    return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
+};
 
 export default getUsers;
