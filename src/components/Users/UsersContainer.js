@@ -22,10 +22,10 @@ class UsersContainer extends Component {
     const { props } = this;
 
     props.toggleIsFetching(true);
-    getUsers().then((response) => {
+    getUsers().then((data) => {
       props.toggleIsFetching(false);
-      props.setUsers(response.data.items);
-      props.setTotalUsersCount(response.data.totalCount);
+      props.setUsers(data.items);
+      props.setTotalUsersCount(data.totalCount);
     });
   }
 
@@ -34,9 +34,9 @@ class UsersContainer extends Component {
 
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
-      getUsers().then((response) => {
+      getUsers().then((data) => {
         props.toggleIsFetching(false);
-        props.setUsers(response.data.items);
+        props.setUsers(data.items);
       });
     };
 
