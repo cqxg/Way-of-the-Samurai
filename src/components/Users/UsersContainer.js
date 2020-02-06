@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { MAIN_URL } from '../../utils/url-utils';
 import Loader from '../../utils/loader';
 
 import {
@@ -33,19 +31,13 @@ class UsersContainer extends Component {
 
     onPageChanged = (pageNumber) => {
       const { props } = this;
-      const {
-        pageSize,
-      } = this.props;
 
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
-      axios.get(`${MAIN_URL}users?page=${pageNumber}&count=${pageSize}`, {
-        withCredentials: true,
-      })
-        .then((response) => {
-          props.toggleIsFetching(false);
-          props.setUsers(response.data.items);
-        });
+      getUsers().then((response) => {
+        props.toggleIsFetching(false);
+        props.setUsers(response.data.items);
+      });
     };
 
     render() {
