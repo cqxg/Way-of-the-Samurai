@@ -13,9 +13,13 @@ const instance = axios.create(
     }
 );
 
-const getUsers = (pageNumber, pageSize) => {
-    return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
+export default usersAPI = {
+    getUsers (pageNumber, pageSize) {
+        return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
+    },
 };
+
+const
 
 const getFollow = (user) => {
     return instance.post(`follow/${user.id}`, {},)
