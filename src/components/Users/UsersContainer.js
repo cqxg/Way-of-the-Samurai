@@ -11,6 +11,7 @@ import {
   setCurrentPage,
   setTotalUsersCount,
   toggleIsFetching,
+  toggleFollowingProgress
 } from '../../redux/actions/actionCreators';
 
 import {usersAPI} from '../../api/api';
@@ -69,6 +70,7 @@ const mapStateToProps = (state) => ({
   totalUsersCount: state.usersPage.totalUsersCount,
   currentPage: state.usersPage.currentPage,
   isFetching: state.usersPage.isFetching,
+  followingInProgress: state.usersPage.followingInProgress
 });
 
 UsersContainer.defaultProps = {
@@ -107,5 +109,6 @@ export default connect(
     setCurrentPage,
     setTotalUsersCount,
     toggleIsFetching,
+    toggleFollowingProgress
   },
 )(UsersContainer);
