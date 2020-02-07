@@ -13,16 +13,8 @@ const instance = axios.create(
     }
 );
 
-export default usersAPI = {
+export const usersAPI = {
     getUsers (pageNumber, pageSize) {
         return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
     },
 };
-
-const
-
-const getFollow = (user) => {
-    return instance.post(`follow/${user.id}`, {},)
-};
-
-export default getUsers;

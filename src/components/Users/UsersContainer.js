@@ -13,7 +13,7 @@ import {
   toggleIsFetching,
 } from '../../redux/actions/actionCreators';
 
-import getUsers from '../../api/api';
+import {usersAPI} from '../../api/api';
 
 import Users from './Users';
 
@@ -22,7 +22,7 @@ class UsersContainer extends Component {
     const { props } = this;
 
     props.toggleIsFetching(true);
-    getUsers().then((data) => {
+    usersAPI.getUsers().then((data) => {
       props.toggleIsFetching(false);
       props.setUsers(data.items);
       props.setTotalUsersCount(data.totalCount);
@@ -34,7 +34,7 @@ class UsersContainer extends Component {
 
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
-      getUsers().then((data) => {
+      usersAPI.getUsers().then((data) => {
         props.toggleIsFetching(false);
         props.setUsers(data.items);
       });
