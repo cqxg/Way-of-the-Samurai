@@ -53,5 +53,5 @@ export {
   toggleIsFetching,
   setUserProfile,
   setAuthUserData,
-  toggleFollowingProgress
+  toggleFollowingProgress,
 };

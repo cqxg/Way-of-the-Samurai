@@ -38,7 +38,6 @@ const Users = (props) => {
   };
 
   const goUnfollow = (user) => {
-      props.toggleFollowingProgress(true);
     axios.delete(`${MAIN_URL}follow/${user.id}`, {
       withCredentials: true,
       headers: {
@@ -49,12 +48,10 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.unfollow(user.id);
         }
-        props.toggleFollowingProgress(false);
       });
   };
 
   const goFollow = (user) => {
-    props.toggleFollowingProgress(true);
     axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
       withCredentials: true,
       headers: {
@@ -65,7 +62,6 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.follow(user.id);
         }
-        props.toggleFollowingProgress(false);
       });
   };
 
@@ -84,8 +80,8 @@ const Users = (props) => {
       </div>
       <div>
         {user.followed
-          ? <button disabled={props.toggleFollowingProgress} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
-          : <button disabled={props.toggleFollowingProgress} type="submit" onClick={() => goFollow(user)}>Follow</button>}
+          ? <button  type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
+          : <button  type="submit" onClick={() => goFollow(user)}>Follow</button>}
       </div>
     </span>
   );
@@ -104,6 +100,7 @@ const Users = (props) => {
   );
 
   const goMap = () => {
+      debugger
     const newMap = props.users.map((user) => (
       <div key={user.id}>
         {span1(user)}

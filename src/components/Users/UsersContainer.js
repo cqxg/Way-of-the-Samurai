@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Loader from '../../utils/loader';
 
@@ -11,33 +12,37 @@ import {
   setCurrentPage,
   setTotalUsersCount,
   toggleIsFetching,
-  toggleFollowingProgress
+  toggleFollowingProgress,
 } from '../../redux/actions/actionCreators';
 
-import {usersAPI} from '../../api/api';
+import usersAPI from '../../api/api';
 
 import Users from './Users';
 
 class UsersContainer extends Component {
   componentDidMount() {
     const { props } = this;
-
     props.toggleIsFetching(true);
-    usersAPI.getUsers().then((data) => {
+
+    usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
       props.toggleIsFetching(false);
       props.setUsers(data.items);
       props.setTotalUsersCount(data.totalCount);
     });
   }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber, pageSize) => {
       const { props } = this;
-
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
-      usersAPI.getUsers().then((data) => {
+
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`, 
+      {
+          withCredentials:true,
+      })
+      .then((response) => {
         props.toggleIsFetching(false);
-        props.setUsers(data.items);
+        props.setUsers(response.data.items);
       });
     };
 
@@ -58,6 +63,7 @@ class UsersContainer extends Component {
             users={users}
             follow={props.follow}
             unfollow={props.unfollow}
+            toggleFollowingProgress={props.toggleFollowingProgress}
           />
         </>
       );
@@ -70,7 +76,7 @@ const mapStateToProps = (state) => ({
   totalUsersCount: state.usersPage.totalUsersCount,
   currentPage: state.usersPage.currentPage,
   isFetching: state.usersPage.isFetching,
-  followingInProgress: state.usersPage.followingInProgress
+  followingInProgress: state.usersPage.followingInProgress,
 });
 
 UsersContainer.defaultProps = {
@@ -85,6 +91,7 @@ UsersContainer.defaultProps = {
   setCurrentPage: PropTypes.func,
   setTotalUsersCount: PropTypes.func,
   toggleIsFetching: PropTypes.func,
+  toggleFollowingProgress: PropTypes.func,
 };
 
 UsersContainer.propTypes = {
@@ -99,6 +106,7 @@ UsersContainer.propTypes = {
   setCurrentPage: PropTypes.func,
   toggleIsFetching: PropTypes.func,
   setTotalUsersCount: PropTypes.func,
+  toggleFollowingProgress: PropTypes.func,
 };
 
 export default connect(
@@ -109,6 +117,6 @@ export default connect(
     setCurrentPage,
     setTotalUsersCount,
     toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
   },
 )(UsersContainer);

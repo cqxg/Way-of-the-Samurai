@@ -5,7 +5,7 @@ import {
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
   TOGGLE_IS_FETCHING,
-  TOGGLE_IS_FOLLOWING_PROGRESS
+  TOGGLE_IS_FOLLOWING_PROGRESS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -64,12 +64,12 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.isFetching,
       };
-      
-      case TOGGLE_IS_FOLLOWING_PROGRESS:
-        return {
-          ...state,
-          followingInProgress: action.isFetching,
-        };
+
+    case TOGGLE_IS_FOLLOWING_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.isFetching,
+      };
 
     default:
       return state;
