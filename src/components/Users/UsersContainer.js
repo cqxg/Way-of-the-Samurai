@@ -36,14 +36,14 @@ class UsersContainer extends Component {
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
 
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`, 
-      {
-          withCredentials:true,
-      })
-      .then((response) => {
-        props.toggleIsFetching(false);
-        props.setUsers(response.data.items);
-      });
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`,
+        {
+          withCredentials: true,
+        })
+        .then((response) => {
+          props.toggleIsFetching(false);
+          props.setUsers(response.data.items);
+        });
     };
 
     render() {
