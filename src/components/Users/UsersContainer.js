@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 import Loader from '../../utils/loader';
 
@@ -31,19 +30,15 @@ class UsersContainer extends Component {
     });
   }
 
-    onPageChanged = (pageNumber, pageSize) => {
+    onPageChanged = (pageNumber) => {
       const { props } = this;
       props.toggleIsFetching(true);
       props.setCurrentPage(pageNumber);
 
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`,
-        {
-          withCredentials: true,
-        })
-        .then((response) => {
-          props.toggleIsFetching(false);
-          props.setUsers(response.data.items);
-        });
+      usersAPI.getPage(pageNumber, props.pageSize).then((data) => {
+        props.toggleIsFetching(false);
+        props.setUsers(data.items);
+      });
     };
 
     render() {

@@ -17,6 +17,10 @@ const usersAPI = {
   getUsers(currentPage, pageSize) {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then((response) => response.data);
   },
+
+  getPage(pageNumber, pageSize) {
+    return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
+  },
 };
 
 export default usersAPI;
