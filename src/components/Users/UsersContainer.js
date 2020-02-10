@@ -58,7 +58,7 @@ class UsersContainer extends Component {
             users={users}
             follow={props.follow}
             unfollow={props.unfollow}
-            toggleFollowingProgress={props.toggleFollowingProgress}
+            toggleFollowingProgress={toggleFollowingProgress}
           />
         </>
       );
@@ -86,7 +86,6 @@ UsersContainer.defaultProps = {
   setCurrentPage: PropTypes.func,
   setTotalUsersCount: PropTypes.func,
   toggleIsFetching: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
 };
 
 UsersContainer.propTypes = {
@@ -101,7 +100,6 @@ UsersContainer.propTypes = {
   setCurrentPage: PropTypes.func,
   toggleIsFetching: PropTypes.func,
   setTotalUsersCount: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
 };
 
 export default connect(
