@@ -43,7 +43,7 @@ const Users = (props) => {
   };
 
   const goUnfollow = (user) => {
-    toggleFollowingProgress(true);
+    toggleFollowingProgress(true, user.id);
     axios.delete(`${MAIN_URL}follow/${user.id}`, {
       withCredentials: true,
       headers: {
@@ -54,12 +54,12 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.unfollow(user.id);
         }
-        toggleFollowingProgress(false);
+        toggleFollowingProgress(false, user.id);
       });
   };
 
   const goFollow = (user) => {
-    toggleFollowingProgress(true);
+    toggleFollowingProgress(true, user.id);
     axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
       withCredentials: true,
       headers: {
@@ -70,7 +70,7 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.follow(user.id);
         }
-        toggleFollowingProgress(false);
+        toggleFollowingProgress(false, user.id);
       });
   };
 
@@ -89,8 +89,8 @@ const Users = (props) => {
       </div>
       <div>
         {user.followed
-          ? <button disabled={followingInProgress} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
-          : <button disabled={followingInProgress} type="submit" onClick={() => goFollow(user)}>Follow</button>}
+          ? <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
+          : <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goFollow(user)}>Follow</button>}
       </div>
     </span>
   );

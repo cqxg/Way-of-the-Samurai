@@ -68,7 +68,9 @@ const usersReducer = (state = initialState, action) => {
     case TOGGLE_FOLLOWING_PROGRESS:
       return {
         ...state,
-        followingInProgress: action.isFetching,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userID]
+          : state.followingInProgress.filter((id) => id !== action.userID),
       };
 
     default:
