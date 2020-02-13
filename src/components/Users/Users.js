@@ -11,7 +11,12 @@ import styles from './Users.module.css';
 
 const Users = (props) => {
   const {
-    totalUsersCount, pageSize, currentPage, onPageChanged, toggleFollowingProgress,
+    totalUsersCount,
+    pageSize,
+    currentPage,
+    onPageChanged,
+    toggleFollowingProgress,
+    followingInProgress,
   } = props;
   const pagination = () => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
@@ -38,7 +43,7 @@ const Users = (props) => {
   };
 
   const goUnfollow = (user) => {
-    toggleFollowingProgress(true);
+    toggleFollowingProgress(true, user.id);
     axios.delete(`${MAIN_URL}follow/${user.id}`, {
       withCredentials: true,
       headers: {
@@ -49,12 +54,12 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.unfollow(user.id);
         }
-        toggleFollowingProgress(false);
+        toggleFollowingProgress(false, user.id);
       });
   };
 
   const goFollow = (user) => {
-    toggleFollowingProgress(true);
+    toggleFollowingProgress(true, user.id);
     axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
       withCredentials: true,
       headers: {
@@ -65,7 +70,7 @@ const Users = (props) => {
         if (response.data.resultCode === 0) {
           props.follow(user.id);
         }
-        toggleFollowingProgress(false);
+        toggleFollowingProgress(false, user.id);
       });
   };
 
@@ -84,8 +89,8 @@ const Users = (props) => {
       </div>
       <div>
         {user.followed
-          ? <button disabled={toggleFollowingProgress} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
-          : <button disabled={toggleFollowingProgress} type="submit" onClick={() => goFollow(user)}>Follow</button>}
+          ? <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
+          : <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goFollow(user)}>Follow</button>}
       </div>
     </span>
   );
@@ -131,6 +136,7 @@ Users.defaultProps = {
   unfollow: PropTypes.func,
   onPageChanged: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
+  followingInProgress: PropTypes.bool,
 };
 
 Users.propTypes = {
@@ -142,6 +148,7 @@ Users.propTypes = {
   unfollow: PropTypes.func,
   onPageChanged: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
+  followingInProgress: PropTypes.bool,
 };
 
 export default Users;
