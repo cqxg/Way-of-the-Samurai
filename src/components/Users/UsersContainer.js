@@ -21,14 +21,15 @@ import Users from './Users';
 
 class UsersContainer extends Component {
   componentDidMount() {
-    const { props } = this;
-    props.toggleIsFetching(true);
+      this.props.getUsersThunkCreator();
+    // const { props } = this;
+    // props.toggleIsFetching(true);
 
-    usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
-      props.toggleIsFetching(false);
-      props.setUsers(data.items);
-      props.setTotalUsersCount(data.totalCount);
-    });
+    // usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
+    //   props.toggleIsFetching(false);
+    //   props.setUsers(data.items);
+    //   props.setTotalUsersCount(data.totalCount);
+    // });
   }
 
     onPageChanged = (pageNumber) => {
