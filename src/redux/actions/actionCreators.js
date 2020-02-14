@@ -42,6 +42,16 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
+export const getUsersThunk = (dispatch) => {
+    dispath(toggleIsFetching(true));
+
+    usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
+      toggleIsFetching(false);
+      setUsers(data.items);
+      setTotalUsersCount(data.totalCount);
+    });
+};
+
 export {
   follow,
   unfollow,
