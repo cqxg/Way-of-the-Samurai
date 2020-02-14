@@ -44,15 +44,13 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
-const getUsersThunkCreator = (currentPage, pageSize) => {
-    return () => {
-        dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then((data) => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
-    }
+const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  usersAPI.getUsers(currentPage, pageSize).then((data) => {
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
+  });
 };
 
 export {
@@ -69,5 +67,5 @@ export {
   setUserProfile,
   setAuthUserData,
   toggleFollowingProgress,
-  getUsersThunkCreator
+  getUsersThunkCreator,
 };
