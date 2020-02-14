@@ -68,4 +68,5 @@ export {
   setUserProfile,
   setAuthUserData,
   toggleFollowingProgress,
+  getUsersThunkCreator
 };

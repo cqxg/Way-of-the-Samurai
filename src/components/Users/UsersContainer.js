@@ -12,6 +12,7 @@ import {
   setTotalUsersCount,
   toggleIsFetching,
   toggleFollowingProgress,
+  getUsersThunkCreator
 } from '../../redux/actions/actionCreators';
 
 import usersAPI from '../../api/api';
@@ -116,5 +117,6 @@ export default connect(
     setTotalUsersCount,
     toggleIsFetching,
     toggleFollowingProgress,
+    getUsersThunkCreator
   },
 )(UsersContainer);
