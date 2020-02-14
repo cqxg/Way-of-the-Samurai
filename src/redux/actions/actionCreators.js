@@ -42,14 +42,16 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
-export const getUsersThunk = (dispatch) => {
-    dispath(toggleIsFetching(true));
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispath(toggleIsFetching(true));
 
-    usersAPI.getUsers(props.currentPage, props.pageSize).then((data) => {
-      toggleIsFetching(false);
-      setUsers(data.items);
-      setTotalUsersCount(data.totalCount);
-    });
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            dispath(toggleIsFetching(false));
+            dispath(setUsers(data.items));
+            dispath(setTotalUsersCount(data.totalCount));
+        });
+    }
 };
 
 export {
