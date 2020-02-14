@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 import profileReducer from './reducers/profileReducer';
 import dialogsReducer from './reducers/dialogsReducer';
@@ -15,7 +16,8 @@ const reducers = combineReducers({
 });
 
 const store = createStore(
-  reducers, applyMiddleware(),
+  reducers, 
+  applyMiddleware(thunkMiddleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 

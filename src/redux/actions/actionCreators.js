@@ -14,6 +14,8 @@ import {
   SET_USER_DATA,
 } from './actionTypes';
 
+import usersAPI from '../../api/api';
+
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
 const updateNewMessageBodyCreator = (body) => ({
@@ -42,14 +44,13 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispath(toggleIsFetching(true));
-
+const getUsersThunkCreator = (currentPage, pageSize) => {
+    return () => {
+        dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize).then((data) => {
-            dispath(toggleIsFetching(false));
-            dispath(setUsers(data.items));
-            dispath(setTotalUsersCount(data.totalCount));
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
         });
     }
 };
