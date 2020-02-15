@@ -43,21 +43,6 @@ const Users = (props) => {
     );
   };
 
-  const goUnfollow = (user) => {
-    toggleFollowingProgress(true, user.id);
-
-    usersAPI.unfollow(user.id).then((response) => {
-        if (response.data.resultCode === 0) {
-          props.unfollow(user.id);
-        }
-        toggleFollowingProgress(false, user.id);
-      });
-  };
-
-  const goFollow = (user) => {
-   
-  };
-
   const span1 = (user) => (
     <span>
       <div>
