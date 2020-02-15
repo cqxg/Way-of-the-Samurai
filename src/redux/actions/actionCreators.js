@@ -46,6 +46,7 @@ const setAuthUserData = (userId, email, login) => ({
 
 const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
   dispatch(toggleIsFetching(true));
+  dispatch(setCurrentPage(currentPage));
   usersAPI.getUsers(currentPage, pageSize).then((data) => {
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
