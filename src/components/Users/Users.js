@@ -8,6 +8,7 @@ import { MAIN_URL } from '../../utils/url-utils';
 import { API_KEY, ALT_USER_AVATAR } from '../../utils/constants';
 
 import styles from './Users.module.css';
+import usersAPI from '../../api/api';
 
 const Users = (props) => {
   const {
@@ -44,13 +45,8 @@ const Users = (props) => {
 
   const goUnfollow = (user) => {
     toggleFollowingProgress(true, user.id);
-    axios.delete(`${MAIN_URL}follow/${user.id}`, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
+
+    usersAPI.unfollow(user.id).then((response) => {
         if (response.data.resultCode === 0) {
           props.unfollow(user.id);
         }
@@ -60,13 +56,7 @@ const Users = (props) => {
 
   const goFollow = (user) => {
     toggleFollowingProgress(true, user.id);
-    axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
+    usersAPI.follow(user.id).then((response) => {
         if (response.data.resultCode === 0) {
           props.follow(user.id);
         }

@@ -20,11 +20,11 @@ const usersAPI = {
     },
 
     follow(userId) {
-
+        return instance.post(`${MAIN_URL}follow/${userId}`)
     },
 
     unfollow(userId) {
-
+        return instance.delete(`${MAIN_URL}follow/${userId}`)
     }
 };
 
