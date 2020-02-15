@@ -56,13 +56,13 @@ const getUsers = (currentPage, pageSize) => (dispatch) => {
 
 const follow = (userId) => {
     return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, user.id));
+        dispatch(toggleFollowingProgress(true, userId));
    
-        usersAPI.follow(user.id).then((response) => {
+        usersAPI.follow(userId).then((response) => {
             if (response.data.resultCode === 0) {
-              props.follow(user.id);
+              dispatch(followSuccess(userId));
             }
-            toggleFollowingProgress(false, user.id);
+            dispatch(toggleFollowingProgress(false, userId)) 
           });
     }
 };
