@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import Loader from '../../utils/loader';
 
 import {
-  followSuccess,
-  unfollowSuccess,
   getUsers,
   setCurrentPage,
-  toggleFollowingProgress,
+  follow,
+  unfollow,
 } from '../../redux/actions/actionCreators';
 
 import Users from './Users';
@@ -40,9 +39,8 @@ class UsersContainer extends Component {
             currentPage={currentPage}
             onPageChanged={onPageChanged}
             users={users}
-            followSuccess={props.followSuccess}
-            unfollowSuccess={props.unfollowSuccess}
-            toggleFollowingProgress={props.toggleFollowingProgress}
+            follow={props.follow}
+            unfollow={props.unfollow}
             followingInProgress={props.followingInProgress}
           />
         </>
@@ -66,10 +64,9 @@ UsersContainer.defaultProps = {
   totalUsersCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.bool,
-  followSuccess: PropTypes.func,
-  unfollowSuccess: PropTypes.func,
   getUsers: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
 };
 
 UsersContainer.propTypes = {
@@ -79,18 +76,16 @@ UsersContainer.propTypes = {
   totalUsersCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.bool,
-  followSuccess: PropTypes.func,
-  unfollowSuccess: PropTypes.func,
   getUsers: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  follow: PropTypes.func,
+  unfollow: PropTypes.func,
 };
 
 export default connect(
   mapStateToProps, {
-    followSuccess,
-    unfollowSuccess,
     getUsers,
     setCurrentPage,
-    toggleFollowingProgress,
+    follow,
+    unfollow,
   },
 )(UsersContainer);

@@ -1,22 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
-import { MAIN_URL } from '../../utils/url-utils';
-import { API_KEY, ALT_USER_AVATAR } from '../../utils/constants';
+import { ALT_USER_AVATAR } from '../../utils/constants';
 
 import styles from './Users.module.css';
-import usersAPI from '../../api/api';
 
 const Users = (props) => {
   const {
-    totalUsersCount,
+    follow,
+    unfollow,
     pageSize,
     currentPage,
     onPageChanged,
-    toggleFollowingProgress,
+    totalUsersCount,
     followingInProgress,
   } = props;
   const pagination = () => {
@@ -58,8 +56,26 @@ const Users = (props) => {
       </div>
       <div>
         {user.followed
-          ? <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
-          : <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goFollow(user)}>Follow</button>}
+          ? (
+            <button
+              type="submit"
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => unfollow(user.id)}
+            >
+              {' '}
+Unfollow
+            </button>
+          )
+          : (
+            <button
+              type="submit"
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => follow(user.id)}
+            >
+              {' '}
+Follow
+            </button>
+          )}
       </div>
     </span>
   );
@@ -97,27 +113,25 @@ const Users = (props) => {
 };
 
 Users.defaultProps = {
-  users: PropTypes.array,
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
+  pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
   followingInProgress: PropTypes.bool,
+  users: PropTypes.instanceOf(Array),
 };
 
 Users.propTypes = {
-  users: PropTypes.instanceOf(Array),
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
+  pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
   followingInProgress: PropTypes.bool,
+  users: PropTypes.instanceOf(Array),
 };
 
 export default Users;
