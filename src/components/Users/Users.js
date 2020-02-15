@@ -55,13 +55,7 @@ const Users = (props) => {
   };
 
   const goFollow = (user) => {
-    toggleFollowingProgress(true, user.id);
-    usersAPI.follow(user.id).then((response) => {
-        if (response.data.resultCode === 0) {
-          props.follow(user.id);
-        }
-        toggleFollowingProgress(false, user.id);
-      });
+   
   };
 
   const span1 = (user) => (

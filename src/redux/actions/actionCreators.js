@@ -30,8 +30,8 @@ const updateNewPostTextActionCreator = (text) => ({
   newText: text,
 });
 
-const follow = (userID) => ({ type: FOLLOW, userID });
-const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+const followSuccess = (userID) => ({ type: FOLLOW, userID });
+const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
 const setUsers = (users) => ({ type: SET_USERS, users });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
@@ -54,19 +54,38 @@ const getUsers = (currentPage, pageSize) => (dispatch) => {
   });
 };
 
+const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, user.id));
+   
+        usersAPI.follow(user.id).then((response) => {
+            if (response.data.resultCode === 0) {
+              props.follow(user.id);
+            }
+            toggleFollowingProgress(false, user.id);
+          });
+    }
+};
+
+const unfollow = () => {
+
+};
+
 export {
   follow,
   unfollow,
   setUsers,
-  sendMessageCreator,
-  updateNewMessageBodyCreator,
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
+  getUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
+  followSuccess,
+  unfollowSuccess,
   setUserProfile,
   setAuthUserData,
+  toggleIsFetching,
+  setTotalUsersCount,
+  sendMessageCreator,
+  addPostActionCreator,
   toggleFollowingProgress,
-  getUsers,
+  updateNewMessageBodyCreator,
+  updateNewPostTextActionCreator,
 };

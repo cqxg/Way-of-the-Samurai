@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Loader from '../../utils/loader';
 
 import {
-  follow,
-  unfollow,
+  followSuccess,
+  unfollowSuccess,
   getUsers,
   setCurrentPage,
   toggleFollowingProgress,
@@ -40,8 +40,8 @@ class UsersContainer extends Component {
             currentPage={currentPage}
             onPageChanged={onPageChanged}
             users={users}
-            follow={props.follow}
-            unfollow={props.unfollow}
+            followSuccess={props.followSuccess}
+            unfollowSuccess={props.unfollowSuccess}
             toggleFollowingProgress={props.toggleFollowingProgress}
             followingInProgress={props.followingInProgress}
           />
@@ -66,8 +66,8 @@ UsersContainer.defaultProps = {
   totalUsersCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.bool,
-  follow: PropTypes.func,
-  unfollow: PropTypes.func,
+  followSuccess: PropTypes.func,
+  unfollowSuccess: PropTypes.func,
   getUsers: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
 };
@@ -79,16 +79,16 @@ UsersContainer.propTypes = {
   totalUsersCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.bool,
-  follow: PropTypes.func,
-  unfollow: PropTypes.func,
+  followSuccess: PropTypes.func,
+  unfollowSuccess: PropTypes.func,
   getUsers: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
 };
 
 export default connect(
   mapStateToProps, {
-    follow,
-    unfollow,
+    followSuccess,
+    unfollowSuccess,
     getUsers,
     setCurrentPage,
     toggleFollowingProgress,
