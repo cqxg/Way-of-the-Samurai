@@ -7,15 +7,10 @@ import Loader from '../../utils/loader';
 import {
   follow,
   unfollow,
-  setUsers,
+  getUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
   toggleFollowingProgress,
-  getUsersThunkCreator,
 } from '../../redux/actions/actionCreators';
-
-import usersAPI from '../../api/api';
 
 import Users from './Users';
 
@@ -73,10 +68,7 @@ UsersContainer.defaultProps = {
   followingInProgress: PropTypes.bool,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
-  setUsers: PropTypes.func,
   getUsers: PropTypes.func,
-  setCurrentPage: PropTypes.func,
-  toggleIsFetching: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
 };
 
@@ -89,22 +81,16 @@ UsersContainer.propTypes = {
   followingInProgress: PropTypes.bool,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
-  setUsers: PropTypes.func,
   getUsers: PropTypes.func,
-  setCurrentPage: PropTypes.func,
-  toggleIsFetching: PropTypes.func,
   toggleFollowingProgress: PropTypes.func,
 };
 
 export default connect(
   mapStateToProps, {
-    getUsers: getUsersThunkCreator,
     follow,
     unfollow,
-    setUsers,
+    getUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    toggleIsFetching,
     toggleFollowingProgress,
   },
 )(UsersContainer);

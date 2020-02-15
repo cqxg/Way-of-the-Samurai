@@ -44,7 +44,7 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
-const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+const getUsers = (currentPage, pageSize) => (dispatch) => {
   dispatch(toggleIsFetching(true));
   dispatch(setCurrentPage(currentPage));
   usersAPI.getUsers(currentPage, pageSize).then((data) => {
@@ -68,5 +68,5 @@ export {
   setUserProfile,
   setAuthUserData,
   toggleFollowingProgress,
-  getUsersThunkCreator,
+  getUsers,
 };
