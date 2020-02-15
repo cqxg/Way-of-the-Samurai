@@ -68,7 +68,16 @@ const follow = (userId) => {
 };
 
 const unfollow = () => {
-
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+   
+        usersAPI.unfollow(userId).then((response) => {
+            if (response.data.resultCode === 0) {
+              dispatch(unfollowSuccess(userId));
+            }
+            dispatch(toggleFollowingProgress(false, userId)) 
+          });
+    }
 };
 
 export {
