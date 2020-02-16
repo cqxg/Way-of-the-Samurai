@@ -40,6 +40,10 @@ const Users = (props) => {
       </div>
     );
   };
+  
+  const followBtn = () => {
+
+  };
 
   const span1 = (user) => (
     <span>
