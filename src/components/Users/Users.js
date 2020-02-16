@@ -43,15 +43,24 @@ const Users = (props) => {
 
     const followBtn = (user) => {
         return (
-        <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => follow(user.id)}>
+            <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => follow(user.id)}>
                 {' '}
                 Follow
         </button>
         )
     };
 
-    const unfollowBtn = () => {
-
+    const unfollowBtn = (user) => {
+        return (
+            <button
+                type="submit"
+                disabled={followingInProgress.some((id) => id === user.id)}
+                onClick={() => unfollow(user.id)}
+            >
+                {' '}
+                Unfollow
+            </button>
+        )
     };
 
     const span1 = (user) => (
@@ -68,18 +77,7 @@ const Users = (props) => {
                 </NavLink>
             </div>
             <div>
-                {user.followed
-                    ? (
-                        <button
-                            type="submit"
-                            disabled={followingInProgress.some((id) => id === user.id)}
-                            onClick={() => unfollow(user.id)}
-                        >
-                            {' '}
-                            Unfollow
-            </button>
-                    )
-                    : followBtn(user)}
+                {user.followed ? followBtn(user) : unfollowBtn(user)}
             </div>
         </span>
     );
