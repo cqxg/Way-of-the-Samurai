@@ -50,6 +50,10 @@ const Users = (props) => {
         )
     };
 
+    const unfollowBtn = () => {
+
+    };
+
     const span1 = (user) => (
         <span>
             <div>
