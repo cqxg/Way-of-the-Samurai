@@ -13,7 +13,7 @@ const MyPosts = (props) => {
     newPostText,
   } = props;
 
-  const postsElements = posts.map((p) => <Post message={p.message} likesCount={p.likesCount} />);
+  const postsElements = posts.map((p, index) => <Post key={index} message={p.message} likesCount={p.likesCount} />);
   const newPostElement = React.createRef();
 
   const onAddPost = () => {
