@@ -44,7 +44,7 @@ const Users = (props) => {
 
 
   const getButton = (text, handler, user) => (
-    <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => handler(user)}>
+    <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => handler(user.id)}>
       {text}
     </button>
   );
