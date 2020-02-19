@@ -107,7 +107,7 @@ Users.defaultProps = {
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
   totalUsersCount: PropTypes.number,
-  followingInProgress: PropTypes.bool,
+  followingInProgress:PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };
 
@@ -118,7 +118,7 @@ Users.propTypes = {
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
   totalUsersCount: PropTypes.number,
-  followingInProgress: PropTypes.bool,
+  followingInProgress: PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };
 
