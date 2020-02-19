@@ -18,8 +18,12 @@ const usersAPI = {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then((response) => response.data);
   },
 
-  getPage(pageNumber, pageSize) {
-    return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then((response) => response.data);
+  follow(userId) {
+    return instance.post(`${MAIN_URL}follow/${userId}`);
+  },
+
+  unfollow(userId) {
+    return instance.delete(`${MAIN_URL}follow/${userId}`);
   },
 };
 

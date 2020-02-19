@@ -1,23 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import userPhoto from '../../assets/images/unnamed.jpg';
-import { MAIN_URL } from '../../utils/url-utils';
-import { API_KEY, ALT_USER_AVATAR } from '../../utils/constants';
+import { ALT_USER_AVATAR } from '../../utils/constants';
 
 import styles from './Users.module.css';
 
 const Users = (props) => {
   const {
-    totalUsersCount,
+    follow,
+    unfollow,
     pageSize,
     currentPage,
     onPageChanged,
-    toggleFollowingProgress,
+    totalUsersCount,
     followingInProgress,
   } = props;
+
   const pagination = () => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
@@ -42,37 +42,12 @@ const Users = (props) => {
     );
   };
 
-  const goUnfollow = (user) => {
-    toggleFollowingProgress(true, user.id);
-    axios.delete(`${MAIN_URL}follow/${user.id}`, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          props.unfollow(user.id);
-        }
-        toggleFollowingProgress(false, user.id);
-      });
-  };
 
-  const goFollow = (user) => {
-    toggleFollowingProgress(true, user.id);
-    axios.post(`${MAIN_URL}follow/${user.id}`, {}, {
-      withCredentials: true,
-      headers: {
-        'API-KEY': API_KEY,
-      },
-    })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          props.follow(user.id);
-        }
-        toggleFollowingProgress(false, user.id);
-      });
-  };
+  const getButton = (text, handler, user) => (
+    <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => handler(user)}>
+      {text}
+    </button>
+  );
 
   const span1 = (user) => (
     <span>
@@ -88,9 +63,7 @@ const Users = (props) => {
         </NavLink>
       </div>
       <div>
-        {user.followed
-          ? <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goUnfollow(user)}>Unfollow</button>
-          : <button disabled={followingInProgress.some((id) => id === user.id)} type="submit" onClick={() => goFollow(user)}>Follow</button>}
+        {user.followed ? getButton('Unfollow', unfollow, user) : getButton('Follow', follow, user)}
       </div>
     </span>
   );
@@ -128,27 +101,25 @@ const Users = (props) => {
 };
 
 Users.defaultProps = {
-  users: PropTypes.array,
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
+  pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
   followingInProgress: PropTypes.bool,
+  users: PropTypes.instanceOf(Array),
 };
 
 Users.propTypes = {
-  users: PropTypes.instanceOf(Array),
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
   follow: PropTypes.func,
   unfollow: PropTypes.func,
+  pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
-  toggleFollowingProgress: PropTypes.func,
+  currentPage: PropTypes.number,
+  totalUsersCount: PropTypes.number,
   followingInProgress: PropTypes.bool,
+  users: PropTypes.instanceOf(Array),
 };
 
 export default Users;

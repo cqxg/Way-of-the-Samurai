@@ -14,6 +14,8 @@ import {
   SET_USER_DATA,
 } from './actionTypes';
 
+import usersAPI from '../../api/api';
+
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
 const updateNewMessageBodyCreator = (body) => ({
@@ -28,8 +30,8 @@ const updateNewPostTextActionCreator = (text) => ({
   newText: text,
 });
 
-const follow = (userID) => ({ type: FOLLOW, userID });
-const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+const followSuccess = (userID) => ({ type: FOLLOW, userID });
+const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
 const setUsers = (users) => ({ type: SET_USERS, users });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
@@ -42,18 +44,53 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
+const getUsers = (currentPage, pageSize) => (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  dispatch(setCurrentPage(currentPage));
+  usersAPI.getUsers(currentPage, pageSize).then((data) => {
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
+  });
+};
+
+const follow = (userId) => (dispatch) => {
+  dispatch(toggleFollowingProgress(true, userId));
+
+  usersAPI.follow(userId).then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(followSuccess(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
+  });
+};
+
+const unfollow = (userId) => (dispatch) => {
+  dispatch(toggleFollowingProgress(true, userId));
+
+  usersAPI.unfollow(userId).then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(unfollowSuccess(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
+  });
+};
+
 export {
   follow,
   unfollow,
   setUsers,
-  sendMessageCreator,
-  updateNewMessageBodyCreator,
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
+  getUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
+  followSuccess,
+  unfollowSuccess,
   setUserProfile,
   setAuthUserData,
+  toggleIsFetching,
+  setTotalUsersCount,
+  sendMessageCreator,
+  addPostActionCreator,
   toggleFollowingProgress,
+  updateNewMessageBodyCreator,
+  updateNewPostTextActionCreator,
 };
