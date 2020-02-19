@@ -15,11 +15,11 @@ const Profile = (props) => {
 };
 
 Profile.defaultProps = {
-  profile: PropTypes.number,
+  profile: PropTypes.object,
 };
 
 Profile.propTypes = {
-  profile: PropTypes.number,
+  profile: PropTypes.object,
 };
 
 export default Profile;
