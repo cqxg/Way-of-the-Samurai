@@ -41,13 +41,13 @@ const mapStateToProps = (state) => ({
 const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 ProfileContainer.defaultProps = {
-  match: PropTypes.func,
+  match: PropTypes.object,
   setUserProfile: PropTypes.func,
   profile: PropTypes.number,
 };
 
 ProfileContainer.propTypes = {
-  match: PropTypes.func,
+  match: PropTypes.object,
   setUserProfile: PropTypes.func,
   profile: PropTypes.number,
 };
