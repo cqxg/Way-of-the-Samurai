@@ -24,7 +24,7 @@ const Users = (props) => {
     const pages = [...Array(pagesCount).keys()];
 
     const pagesMap = pages.map((page) => (
-      <span
+      <span key={page}
         role="button"
         tabIndex={0}
         className={currentPage === page && styles.selectedPage}
