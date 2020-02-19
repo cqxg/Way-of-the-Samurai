@@ -56,13 +56,13 @@ const Dialogs = (props) => {
 
 Dialogs.defaultProps = {
   sendMessage: PropTypes.func,
-  dialogsPage: PropTypes.func,
+  dialogsPage: PropTypes.object,
   updateNewMessageBody: PropTypes.func,
 };
 
 Dialogs.propTypes = {
   sendMessage: PropTypes.func,
-  dialogsPage: PropTypes.func,
+  dialogsPage: PropTypes.object,
   updateNewMessageBody: PropTypes.func,
 };
 
