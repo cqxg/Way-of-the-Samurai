@@ -41,15 +41,15 @@ const mapStateToProps = (state) => ({
 const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 ProfileContainer.defaultProps = {
-  match: PropTypes.object,
+  match: PropTypes.instanceOf(Object),
   setUserProfile: PropTypes.func,
-  profile: PropTypes.object,
+  profile: PropTypes.instanceOf(Object),
 };
 
 ProfileContainer.propTypes = {
-  match: PropTypes.object,
+  match: PropTypes.instanceOf(Object),
   setUserProfile: PropTypes.func,
-  profile: PropTypes.object,
+  profile: PropTypes.instanceOf(Object),
 };
 
 export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);

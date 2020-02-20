@@ -19,7 +19,7 @@ Profile.defaultProps = {
 };
 
 Profile.propTypes = {
-  profile: PropTypes.object,
+  profile: PropTypes.instanceOf(Object),
 };
 
 export default Profile;

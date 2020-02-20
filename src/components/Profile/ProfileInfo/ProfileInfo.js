@@ -26,11 +26,11 @@ const ProfileInfo = (props) => {
 };
 
 ProfileInfo.defaultProps = {
-  profile: PropTypes.object,
+  profile: PropTypes.instanceOf(Object),
 };
 
 ProfileInfo.propTypes = {
-  profile: PropTypes.object,
+  profile: PropTypes.instanceOf(Object),
 };
 
 export default ProfileInfo;
