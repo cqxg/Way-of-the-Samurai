@@ -7,12 +7,12 @@ const initialState = {
     {
       id: '1',
       message: 'Hi, how are you',
-      likesCount: '12',
+      likesCount: 0,
     },
     {
       id: '2',
       message: 'It`s my first posts',
-      likesCount: '7',
+      likesCount: 0,
     },
   ],
 

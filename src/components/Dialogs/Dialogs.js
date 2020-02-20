@@ -12,8 +12,20 @@ const Dialogs = (props) => {
   const { dialogs, messages } = state;
 
 
-  const dialogsElements = dialogs.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />);
-  const messagesElements = messages.map((message) => <Message key={message + Math.random(1000)} message={message.message} />);
+  const dialogsElements = dialogs.map((dialog) => (
+    <DialogItem
+      name={dialog.name}
+      key={dialog.id}
+      id={dialog.id}
+    />
+
+  ));
+  const messagesElements = messages.map((message) => (
+    <Message
+      key={message + Math.random(1000)}
+      message={message.message}
+    />
+  ));
 
   const onSendMessageClick = () => {
     sendMessage();
