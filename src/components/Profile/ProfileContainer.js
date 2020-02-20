@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { MAIN_URL } from '../../utils/url-utils';
+import usersAPI from '../../api/api';
 import { DEFAULT_USER_ID } from '../../utils/constants';
 import { setUserProfile } from '../../redux/actions/actionCreators';
 
@@ -19,10 +18,7 @@ class ProfileContainer extends Component {
       userId = DEFAULT_USER_ID;
     }
 
-    axios.get(`${MAIN_URL}profile/${userId}`)
-      .then((response) => {
-        props.setUserProfile(response.data);
-      });
+    usersAPI.getProfile(userId).then((response) => { props.setUserProfile(response.data); });
   }
 
   render() {

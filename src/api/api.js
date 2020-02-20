@@ -25,6 +25,10 @@ const usersAPI = {
   unfollow(userId) {
     return instance.delete(`${MAIN_URL}follow/${userId}`);
   },
+
+  getProfile(userId) {
+    return axios.get(`${MAIN_URL}profile/${userId}`);
+  },
 };
 
 export default usersAPI;
