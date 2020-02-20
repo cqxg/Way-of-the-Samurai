@@ -17,7 +17,6 @@ class ProfileContainer extends Component {
     if (!userId) {
       userId = DEFAULT_USER_ID;
     }
-
     usersAPI.getProfile(userId).then((response) => { props.setUserProfile(response.data); });
   }
 
