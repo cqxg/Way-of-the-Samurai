@@ -13,7 +13,7 @@ const Dialogs = (props) => {
 
 
   const dialogsElements = dialogs.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />);
-  const messagesElements = messages.map((message) => <Message message={message.message} />);
+  const messagesElements = messages.map((message) => <Message key={message.message} message={message.message} />);
 
   const onSendMessageClick = () => {
     sendMessage();
