@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import usersAPI from '../../api/api';
+import { usersAPI } from '../../api/api';
 import { DEFAULT_USER_ID } from '../../utils/constants';
 import { setUserProfile } from '../../redux/actions/actionCreators';
 

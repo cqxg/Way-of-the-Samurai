@@ -14,7 +14,7 @@ import {
   SET_USER_DATA,
 } from './actionTypes';
 
-import usersAPI from '../../api/api';
+import { usersAPI } from '../../api/api';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 

@@ -27,16 +27,14 @@ const usersAPI = {
   },
 
   getProfile(userId) {
-    return axios.get(`profile/${userId}`);
+    return instance.get(`profile/${userId}`);
   },
 };
 
 const authAPI = {
-    me() {
-        return     axios.get(`${MAIN_URL}auth/me`, {
-            withCredentials: true,
-          })
-     }
+  me() {
+    return instance.get('auth/me');
+  },
 };
 
-export default usersAPI;
+export { usersAPI, authAPI };
