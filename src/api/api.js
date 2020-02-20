@@ -19,16 +19,24 @@ const usersAPI = {
   },
 
   follow(userId) {
-    return instance.post(`${MAIN_URL}follow/${userId}`);
+    return instance.post(`follow/${userId}`);
   },
 
   unfollow(userId) {
-    return instance.delete(`${MAIN_URL}follow/${userId}`);
+    return instance.delete(`follow/${userId}`);
   },
 
   getProfile(userId) {
-    return axios.get(`${MAIN_URL}profile/${userId}`);
+    return axios.get(`profile/${userId}`);
   },
+};
+
+const authAPI = {
+    me() {
+        return     axios.get(`${MAIN_URL}auth/me`, {
+            withCredentials: true,
+          })
+     }
 };
 
 export default usersAPI;
