@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
-import DialogItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
+import DialogItem from './DialogsItem/DialogsItem';
 
 import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const { sendMessage, updateNewMessageBody, dialogsPage } = props;
+  const {
+    sendMessage, updateNewMessageBody, dialogsPage, isAuth,
+  } = props;
   const state = dialogsPage;
   const { dialogs, messages } = state;
 
@@ -53,6 +56,10 @@ const Dialogs = (props) => {
     </div>
   );
 
+  if (isAuth === false) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div className={style.dialogs}>
       <div className={style.dialogsItems}>
@@ -68,12 +75,14 @@ const Dialogs = (props) => {
 };
 
 Dialogs.defaultProps = {
+  isAuth: PropTypes.bool,
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
   updateNewMessageBody: PropTypes.func,
 };
 
 Dialogs.propTypes = {
+  isAuth: PropTypes.bool,
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
   updateNewMessageBody: PropTypes.func,
