@@ -18,7 +18,6 @@ const Dialogs = (props) => {
       key={dialog.id}
       id={dialog.id}
     />
-
   ));
   const messagesElements = messages.map((message) => (
     <Message
