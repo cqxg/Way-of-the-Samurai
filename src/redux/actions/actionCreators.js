@@ -46,8 +46,14 @@ const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
 
-const getAuthUserData = () => () => {
-    
+const getAuthUserData = () => (dispatch) => {
+    authAPI.me().then((response) => {
+        const { props } = this;
+        if (response.data.resultCode === WELL) {
+          const { id, email, login } = response.data.data;
+          props.setAuthUserData(id, email, login);
+        }
+      });
 };
 
 const getUsers = (currentPage, pageSize) => (dispatch) => {
