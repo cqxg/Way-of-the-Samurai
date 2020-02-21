@@ -11,14 +11,16 @@ const Dialogs = (props) => {
   const state = dialogsPage;
   const { dialogs, messages } = state;
 
-
-  const dialogsElements = dialogs.map((dialog) => (
-    <DialogItem
-      name={dialog.name}
-      key={dialog.id}
-      id={dialog.id}
-    />
-  ));
+  const dialogsElements = dialogs.map((dialog) => {
+    const { name, id } = dialog;
+    return (
+      <DialogItem
+        name={name}
+        key={id}
+        id={id}
+      />
+    );
+  });
   const messagesElements = messages.map((message) => (
     <Message
       key={message + Math.random(1000)}
