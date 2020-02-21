@@ -1,3 +1,5 @@
+import { WELL } from '../../utils/constants';
+
 import {
   ADD_POST,
   UPDATE_NEW_POST_TEXT,
@@ -14,7 +16,7 @@ import {
   SET_USER_DATA,
 } from './actionTypes';
 
-import { usersAPI } from '../../api/api';
+import { usersAPI, authAPI } from '../../api/api';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
@@ -47,13 +49,12 @@ const setAuthUserData = (userId, email, login) => ({
 });
 
 const getAuthUserData = () => (dispatch) => {
-    authAPI.me().then((response) => {
-        const { props } = this;
-        if (response.data.resultCode === WELL) {
-          const { id, email, login } = response.data.data;
-          props.setAuthUserData(id, email, login);
-        }
-      });
+  authAPI.me().then((response) => {
+    if (response.data.resultCode === WELL) {
+      const { id, email, login } = response.data.data;
+      dispatch(setAuthUserData(id, email, login));
+    }
+  });
 };
 
 const getUsers = (currentPage, pageSize) => (dispatch) => {
@@ -105,6 +106,7 @@ export {
   unfollowSuccess,
   setUserProfile,
   setAuthUserData,
+  getAuthUserData,
   toggleIsFetching,
   setTotalUsersCount,
   sendMessageCreator,
