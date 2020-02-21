@@ -39,7 +39,13 @@ const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching
 const toggleFollowingProgress = (isFetching, userID) => ({
   type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID,
 });
-const getUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+// const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+const getUserProfile = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId).then((response) => { 
+        dispatch(setUserProfile(response.data)); 
+    });
+};
+
 const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
