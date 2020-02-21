@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {WELL} from '../../utils/constants';
+import { WELL } from '../../utils/constants';
 import { authAPI } from '../../api/api';
 import { setAuthUserData } from '../../redux/actions/actionCreators';
 

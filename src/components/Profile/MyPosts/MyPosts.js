@@ -13,13 +13,16 @@ const MyPosts = (props) => {
     newPostText,
   } = props;
 
-  const postsElements = posts.map((p) => (
-    <Post
-      key={p.message}
-      message={p.message}
-      likesCount={p.likesCount}
-    />
-  ));
+  const postsElements = posts.map((post) => {
+    const { message, likesCount } = post;
+    return (
+      <Post
+        key={message}
+        message={message}
+        likesCount={likesCount}
+      />
+    );
+  });
 
   const newPostElement = React.createRef();
 
