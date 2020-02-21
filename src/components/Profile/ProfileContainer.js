@@ -3,9 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { usersAPI } from '../../api/api';
 import { DEFAULT_USER_ID } from '../../utils/constants';
-import { setUserProfile } from '../../redux/actions/actionCreators';
+import { getUserProfile } from '../../redux/actions/actionCreators';
 
 import Profile from './Profile';
 
@@ -17,7 +16,7 @@ class ProfileContainer extends Component {
     if (!userId) {
       userId = DEFAULT_USER_ID;
     }
-    usersAPI.getProfile(userId).then((response) => { props.setUserProfile(response.data); });
+    props.getUserProfile(userId);
   }
 
   render() {
@@ -37,14 +36,16 @@ const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 ProfileContainer.defaultProps = {
   match: PropTypes.instanceOf(Object),
-  setUserProfile: PropTypes.func,
   profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
 };
 
 ProfileContainer.propTypes = {
   match: PropTypes.instanceOf(Object),
-  setUserProfile: PropTypes.func,
   profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
 };
 
-export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
