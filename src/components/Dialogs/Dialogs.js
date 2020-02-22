@@ -56,7 +56,7 @@ const Dialogs = (props) => {
     </div>
   );
 
-  if (isAuth === false) return <Redirect to="/login" />;
+  if (!isAuth) return <Redirect to="/login" />;
 
 
   return (
