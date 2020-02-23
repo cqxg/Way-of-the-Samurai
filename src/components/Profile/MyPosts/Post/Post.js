@@ -23,12 +23,12 @@ const Post = (props) => {
 };
 
 Post.defaultProps = {
-  likesCount: PropTypes.string,
+  likesCount: PropTypes.number,
   message: PropTypes.string,
 };
 
 Post.propTypes = {
-  likesCount: PropTypes.string,
+  likesCount: PropTypes.number,
   message: PropTypes.string,
 };
 

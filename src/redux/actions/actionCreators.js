@@ -1,3 +1,5 @@
+import { WELL } from '../../utils/constants';
+
 import {
   ADD_POST,
   UPDATE_NEW_POST_TEXT,
@@ -14,7 +16,7 @@ import {
   SET_USER_DATA,
 } from './actionTypes';
 
-import usersAPI from '../../api/api';
+import { usersAPI, authAPI } from '../../api/api';
 
 const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
@@ -40,9 +42,20 @@ const toggleFollowingProgress = (isFetching, userID) => ({
   type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID,
 });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+
+
 const setAuthUserData = (userId, email, login) => ({
   type: SET_USER_DATA, data: { userId, email, login },
 });
+
+const getAuthUserData = () => (dispatch) => {
+  authAPI.me().then((response) => {
+    if (response.data.resultCode === WELL) {
+      const { id, email, login } = response.data.data;
+      dispatch(setAuthUserData(id, email, login));
+    }
+  });
+};
 
 const getUsers = (currentPage, pageSize) => (dispatch) => {
   dispatch(toggleIsFetching(true));
@@ -51,6 +64,12 @@ const getUsers = (currentPage, pageSize) => (dispatch) => {
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     dispatch(setTotalUsersCount(data.totalCount));
+  });
+};
+
+const getUserProfile = (userId) => (dispatch) => {
+  usersAPI.getProfile(userId).then((response) => {
+    dispatch(setUserProfile(response.data));
   });
 };
 
@@ -81,11 +100,13 @@ export {
   unfollow,
   setUsers,
   getUsers,
+  getUserProfile,
   setCurrentPage,
   followSuccess,
   unfollowSuccess,
   setUserProfile,
   setAuthUserData,
+  getAuthUserData,
   toggleIsFetching,
   setTotalUsersCount,
   sendMessageCreator,

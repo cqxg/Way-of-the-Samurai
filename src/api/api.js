@@ -19,12 +19,22 @@ const usersAPI = {
   },
 
   follow(userId) {
-    return instance.post(`${MAIN_URL}follow/${userId}`);
+    return instance.post(`follow/${userId}`);
   },
 
   unfollow(userId) {
-    return instance.delete(`${MAIN_URL}follow/${userId}`);
+    return instance.delete(`follow/${userId}`);
+  },
+
+  getProfile(userId) {
+    return instance.get(`profile/${userId}`);
   },
 };
 
-export default usersAPI;
+const authAPI = {
+  me() {
+    return instance.get('auth/me');
+  },
+};
+
+export { usersAPI, authAPI };

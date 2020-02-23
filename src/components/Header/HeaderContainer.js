@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { MAIN_URL } from '../../utils/url-utils';
-import { setAuthUserData } from '../../redux/actions/actionCreators';
+import { getAuthUserData } from '../../redux/actions/actionCreators';
 
 import Header from './Header';
 
 class HeaderContainer extends Component {
   componentDidMount() {
-    axios.get(`${MAIN_URL}auth/me`, {
-      withCredentials: true,
-    })
-      .then((response) => {
-        const { props } = this;
-        if (response.data.resultCode === 0) {
-          const { id, email, login } = response.data.data;
-          props.setAuthUserData(id, email, login);
-        }
-      });
+    const { props } = this;
+    props.getAuthUserData();
   }
 
   render() {
@@ -36,11 +26,13 @@ const mapStateToProps = (state) => ({
 
 HeaderContainer.defaultProps = {
   setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 HeaderContainer.propTypes = {
   setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 
-export default connect(mapStateToProps, { setAuthUserData })(HeaderContainer);
+export default connect(mapStateToProps, { getAuthUserData })(HeaderContainer);

@@ -23,17 +23,21 @@ const Users = (props) => {
 
     const pages = [...Array(pagesCount).keys()];
 
-    const pagesMap = pages.map((page) => (
-      <span
-        role="button"
-        tabIndex={0}
-        className={currentPage === page && styles.selectedPage}
-        onClick={() => onPageChanged(page)}
-        onKeyPress={() => onPageChanged(page)}
-      >
-        {page}
-      </span>
-    ));
+    const pagesMap = pages.map((page) => {
+      const isCurrent = currentPage === page;
+      return (
+        <span
+          key={page}
+          role="button"
+          tabIndex={0}
+          className={isCurrent ? styles.selectedPage : null}
+          onClick={() => onPageChanged(page)}
+          onKeyPress={() => onPageChanged(page)}
+        >
+          {page}
+        </span>
+      );
+    });
 
     return (
       <div>
@@ -44,7 +48,7 @@ const Users = (props) => {
 
 
   const getButton = (text, handler, user) => (
-    <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => handler(user)}>
+    <button type="submit" disabled={followingInProgress.some((id) => id === user.id)} onClick={() => handler(user.id)}>
       {text}
     </button>
   );
@@ -107,7 +111,7 @@ Users.defaultProps = {
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
   totalUsersCount: PropTypes.number,
-  followingInProgress: PropTypes.bool,
+  followingInProgress: PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };
 
@@ -118,7 +122,7 @@ Users.propTypes = {
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
   totalUsersCount: PropTypes.number,
-  followingInProgress: PropTypes.bool,
+  followingInProgress: PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };
 
