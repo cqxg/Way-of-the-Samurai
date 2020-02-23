@@ -23,8 +23,6 @@ class ProfileContainer extends Component {
   render() {
     const { profile, isAuth } = this.props;
 
-    if (!isAuth) return <Redirect to="/login" />;
-
     return (
       <Profile {...this.props} profile={profile} />
     );
@@ -32,7 +30,8 @@ class ProfileContainer extends Component {
 }
 
 const AuthRedirectComponent = (props) => {
-    
+    if (!isAuth) return <Redirect to="/login" />;
+    return <ProfileContainer {...props} />
 }
 
 const mapStateToProps = (state) => ({
