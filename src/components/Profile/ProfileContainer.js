@@ -31,6 +31,10 @@ class ProfileContainer extends Component {
   }
 }
 
+const AuthRedirectComponent = (props) => {
+    
+}
+
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   isAuth: state.auth.isAuth,
