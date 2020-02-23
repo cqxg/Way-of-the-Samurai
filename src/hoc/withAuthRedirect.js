@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+const mapStateToPropsForRedirect = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
 const withAuthRedirect = () => {
   class RedirectComponent extends Component {
     render() {
@@ -21,4 +25,6 @@ withAuthRedirect.propTypes = {
   isAuth: PropTypes.bool,
 };
 
-export default withAuthRedirect;
+const ConnectedAuthRedirectComponent = connect(mapStateToPropsForRedirect)(RedirectComponent);
+
+export default ConnectedAuthRedirectComponent;

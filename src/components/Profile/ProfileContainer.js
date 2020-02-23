@@ -48,12 +48,6 @@ ProfileContainer.propTypes = {
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
-const mapStateToPropsForRedirect = (state) => ({
-  isAuth: state.auth.isAuth,
-});
-
-AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);
-
 const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
 const mapStateToProps = (state) => ({
