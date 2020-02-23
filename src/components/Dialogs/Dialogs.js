@@ -8,7 +8,7 @@ import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
   const {
-    sendMessage, updateNewMessageBody, dialogsPage, isAuth,
+    sendMessage, updateNewMessageBody, dialogsPage,
   } = props;
   const state = dialogsPage;
   const { dialogs, messages } = state;

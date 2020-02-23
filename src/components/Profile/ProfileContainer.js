@@ -5,55 +5,59 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { getUserProfile } from '../../redux/actions/actionCreators';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
-    componentDidMount() {
-        const { props } = this;
-        let { userId } = props.match.params;
+  componentDidMount() {
+    const { props } = this;
+    let { userId } = props.match.params;
 
-        if (!userId) {
-            userId = DEFAULT_USER_ID;
-        }
-        props.getUserProfile(userId);
+    if (!userId) {
+      userId = DEFAULT_USER_ID;
     }
+    props.getUserProfile(userId);
+  }
 
-    render() {
-        const { profile } = this.props;
+  render() {
+    const { profile } = this.props;
 
-        return (
-            <Profile {...this.props} profile={profile} />
-        );
-    }
+    return (
+      <Profile {...this.props} profile={profile} />
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
-});
-
-
 ProfileContainer.defaultProps = {
-    match: PropTypes.instanceOf(Object),
-    profile: PropTypes.instanceOf(Object),
-    setUserProfile: PropTypes.func,
-    getUserProfile: PropTypes.func,
-    isAuth: PropTypes.bool,
+  match: PropTypes.instanceOf(Object),
+  profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
+  isAuth: PropTypes.bool,
 };
 
 ProfileContainer.propTypes = {
-    match: PropTypes.instanceOf(Object),
-    profile: PropTypes.instanceOf(Object),
-    setUserProfile: PropTypes.func,
-    getUserProfile: PropTypes.func,
-    isAuth: PropTypes.bool,
+  match: PropTypes.instanceOf(Object),
+  profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
+  isAuth: PropTypes.bool,
 };
 
-const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+const mapStateToPropsForRedirect = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);
 
 const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
+
+const mapStateToProps = (state) => ({
+  profile: state.profilePage.profile,
+});
 
 export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
