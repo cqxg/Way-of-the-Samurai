@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/actions/actionCreators';
+import { withAuhRedirect } from '../../hoc/withAuthRedirect';
 
 import Dialogs from './Dialogs';
 
@@ -14,11 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   sendMessage: () => dispatch(sendMessageCreator()),
 });
 
-const AuthRedirectComponent = (props) => {
-    if (!this.props.isAuth) return <Redirect to="/login" />;
-    return <Dialogs {...props} />
-};
-
+const AuthRedirectComponent =  withAuhRedirect(Dialogs);
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
