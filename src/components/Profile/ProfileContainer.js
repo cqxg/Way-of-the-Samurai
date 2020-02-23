@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
+import { withAuhRedirect } from '../../hoc/WithAuthRedirect';
 import { getUserProfile } from '../../redux/actions/actionCreators';
 
 import Profile from './Profile';
@@ -29,10 +30,7 @@ class ProfileContainer extends Component {
   }
 }
 
-const AuthRedirectComponent = (props) => {
-    if (!this.props.isAuth) return <Redirect to="/login" />;
-    return <ProfileContainer {...props} />
-}
+const AuthRedirectComponent =  withAuhRedirect(ProfileContainer);
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
