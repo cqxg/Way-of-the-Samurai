@@ -70,14 +70,12 @@ const Dialogs = (props) => {
 };
 
 Dialogs.defaultProps = {
-  isAuth: PropTypes.bool,
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
   updateNewMessageBody: PropTypes.func,
 };
 
 Dialogs.propTypes = {
-  isAuth: PropTypes.bool,
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
   updateNewMessageBody: PropTypes.func,

@@ -46,7 +46,7 @@ ProfileContainer.propTypes = {
   isAuth: PropTypes.bool,
 };
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
