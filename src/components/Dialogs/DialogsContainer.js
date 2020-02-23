@@ -14,7 +14,12 @@ const mapDispatchToProps = (dispatch) => ({
   sendMessage: () => dispatch(sendMessageCreator()),
 });
 
+const AuthRedirectComponent = (props) => {
+    if (!this.props.isAuth) return <Redirect to="/login" />;
+    return <Dialogs {...props} />
+};
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default DialogsContainer;

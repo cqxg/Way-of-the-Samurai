@@ -21,7 +21,7 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { profile, isAuth } = this.props;
+    const { profile } = this.props;
 
     return (
       <Profile {...this.props} profile={profile} />
@@ -30,7 +30,7 @@ class ProfileContainer extends Component {
 }
 
 const AuthRedirectComponent = (props) => {
-    if (!isAuth) return <Redirect to="/login" />;
+    if (!this.props.isAuth) return <Redirect to="/login" />;
     return <ProfileContainer {...props} />
 }
 
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer);
+const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
 ProfileContainer.defaultProps = {
   match: PropTypes.instanceOf(Object),

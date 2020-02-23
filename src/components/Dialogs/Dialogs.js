@@ -56,9 +56,6 @@ const Dialogs = (props) => {
     </div>
   );
 
-  if (!isAuth) return <Redirect to="/login" />;
-
-
   return (
     <div className={style.dialogs}>
       <div className={style.dialogsItems}>
