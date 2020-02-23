@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-dom';
 
-export const withAuhRedirect = (Component) => {
+const withAuthRedirect = (Component) => {
     class RedirectComponent extends Component {
-        render () {
+        render() {
             if (!this.props.isAuth) return <Redirect to="/login" />;
             return <Component {...this.props} />
         };
@@ -10,3 +11,5 @@ export const withAuhRedirect = (Component) => {
 
     return RedirectComponent;
 };
+
+export default withAuthRedirect;
