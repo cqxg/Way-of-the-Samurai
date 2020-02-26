@@ -11,7 +11,7 @@ const withAuthRedirect = (Component) => {
     render() {
       const { props } = this;
       if (!props.isAuth) return <Redirect to="/login" />;
-      return <Component {...this.props} />;
+      return <Component {...props} />;
     }
   }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Loader from '../../utils/loader';
-
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 import {
   getUsers,
   setCurrentPage,
@@ -81,11 +81,12 @@ UsersContainer.propTypes = {
   unfollow: PropTypes.func,
 };
 
-export default connect(
+
+export default withAuthRedirect(connect(
   mapStateToProps, {
     getUsers,
     setCurrentPage,
     follow,
     unfollow,
   },
-)(UsersContainer);
+)(UsersContainer));
