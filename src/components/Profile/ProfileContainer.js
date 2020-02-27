@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
 import { getUserProfile } from '../../redux/actions/actionCreators';
@@ -46,12 +46,9 @@ ProfileContainer.propTypes = {
   isAuth: PropTypes.bool,
 };
 
-const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
-const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
+
+export default compose(connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect )(ProfileContainer);
