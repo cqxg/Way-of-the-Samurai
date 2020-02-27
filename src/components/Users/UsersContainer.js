@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 
 import Loader from '../../utils/loader';
-
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 import {
   getUsers,
   setCurrentPage,
@@ -57,6 +58,13 @@ const mapStateToProps = (state) => ({
   followingInProgress: state.usersPage.followingInProgress,
 });
 
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    getUsers, setCurrentPage, follow, unfollow,
+  }),
+)(UsersContainer);
+
 UsersContainer.defaultProps = {
   users: PropTypes.array,
   pageSize: PropTypes.number,
@@ -80,12 +88,3 @@ UsersContainer.propTypes = {
   follow: PropTypes.func,
   unfollow: PropTypes.func,
 };
-
-export default connect(
-  mapStateToProps, {
-    getUsers,
-    setCurrentPage,
-    follow,
-    unfollow,
-  },
-)(UsersContainer);
