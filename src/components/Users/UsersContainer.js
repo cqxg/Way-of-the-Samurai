@@ -58,6 +58,13 @@ const mapStateToProps = (state) => ({
   followingInProgress: state.usersPage.followingInProgress,
 });
 
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    getUsers, setCurrentPage, follow, unfollow,
+  }),
+)(UsersContainer);
+
 UsersContainer.defaultProps = {
   users: PropTypes.array,
   pageSize: PropTypes.number,
@@ -81,12 +88,3 @@ UsersContainer.propTypes = {
   follow: PropTypes.func,
   unfollow: PropTypes.func,
 };
-
-export default compose(connect(
-  mapStateToProps, {
-    getUsers,
-    setCurrentPage,
-    follow,
-    unfollow,
-  },
-), withAuthRedirect)(UsersContainer);

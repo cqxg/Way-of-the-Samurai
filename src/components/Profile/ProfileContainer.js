@@ -30,6 +30,16 @@ class ProfileContainer extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  profile: state.profilePage.profile,
+});
+
+export default compose(
+  connect(mapStateToProps, { getUserProfile }),
+  withRouter,
+  withAuthRedirect,
+)(ProfileContainer);
+
 ProfileContainer.defaultProps = {
   match: PropTypes.instanceOf(Object),
   profile: PropTypes.instanceOf(Object),
@@ -45,14 +55,3 @@ ProfileContainer.propTypes = {
   getUserProfile: PropTypes.func,
   isAuth: PropTypes.bool,
 };
-
-const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
-});
-
-
-export default compose(
-  connect(mapStateToProps, { getUserProfile }),
-  withRouter,
-  withAuthRedirect,
-)(ProfileContainer);

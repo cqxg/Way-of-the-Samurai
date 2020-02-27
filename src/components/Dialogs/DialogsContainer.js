@@ -15,4 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   sendMessage: () => dispatch(sendMessageCreator()),
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(Dialogs);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect,
+)(Dialogs);
