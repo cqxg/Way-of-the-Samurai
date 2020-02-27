@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 
 import Loader from '../../utils/loader';
@@ -81,12 +82,11 @@ UsersContainer.propTypes = {
   unfollow: PropTypes.func,
 };
 
-
-export default withAuthRedirect(connect(
-  mapStateToProps, {
-    getUsers,
-    setCurrentPage,
-    follow,
-    unfollow,
-  },
-)(UsersContainer));
+export default compose(connect(
+    mapStateToProps, {
+      getUsers,
+      setCurrentPage,
+      follow,
+      unfollow,
+    },
+  ), withAuthRedirect)(UsersContainer);
