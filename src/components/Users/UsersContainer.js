@@ -83,10 +83,10 @@ UsersContainer.propTypes = {
 };
 
 export default compose(connect(
-    mapStateToProps, {
-      getUsers,
-      setCurrentPage,
-      follow,
-      unfollow,
-    },
-  ), withAuthRedirect)(UsersContainer);
+  mapStateToProps, {
+    getUsers,
+    setCurrentPage,
+    follow,
+    unfollow,
+  },
+), withAuthRedirect)(UsersContainer);
