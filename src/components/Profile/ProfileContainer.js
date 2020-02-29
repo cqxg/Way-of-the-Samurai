@@ -6,7 +6,6 @@ import { compose } from 'redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
 import { getUserProfile } from '../../redux/actions/actionCreators';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 import Profile from './Profile';
 
@@ -37,7 +36,6 @@ const mapStateToProps = (state) => ({
 export default compose(
   connect(mapStateToProps, { getUserProfile }),
   withRouter,
-  withAuthRedirect,
 )(ProfileContainer);
 
 ProfileContainer.defaultProps = {
