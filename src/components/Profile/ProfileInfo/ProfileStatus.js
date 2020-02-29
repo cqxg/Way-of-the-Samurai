@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 
 const ProfileStatus = (props) => {
 
-  return (
-    <div>
-        <span></span>
-    </div>
-  );
-};
-
-ProfileInfo.defaultProps = {
-  profile: PropTypes.instanceOf(Object),
-};
-
-ProfileInfo.propTypes = {
-  profile: PropTypes.instanceOf(Object),
+    return (
+        <div>
+            <div>
+                <span>{props.status}</span>
+            </div>
+            <div>
+                <input value={props.status} />
+            </div>
+        </div>
+    );
 };
 
 export default ProfileStatus;
