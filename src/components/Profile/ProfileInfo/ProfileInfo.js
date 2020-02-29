@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from '../../../utils/loader';
-import { BACKGROUND_IMG } from '../../../utils/url-utils';
 
 import style from './ProfileInfo.module.css';
 
@@ -14,9 +13,6 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
-      <div>
-        <img alt="" src={BACKGROUND_IMG} />
-      </div>
       <div className={style.descriptionBlock}>
         <img alt="" src={profile.photos.large} />
                 ava+desc
