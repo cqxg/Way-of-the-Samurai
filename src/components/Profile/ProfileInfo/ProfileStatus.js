@@ -1,19 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ProfileStatus extends Component {
-    state ={
-        editMode:false
+    state = {
+        editMode: false
     };
 
     render() {
         return (
             <div>
-                <div>
-                    <span>{this.props.status}</span>
-                </div>
-                <div>
-                    <input value={this.props.status} />
-                </div>
+                {!this.state.editMode &&
+                    <div>
+                        <span>{this.props.status}</span>
+                    </div>
+                }
+                 {this.state.editMode &&
+                     <div>
+                     <input value={this.props.status} />
+                 </div>
+                }
             </div>
         );
     }
