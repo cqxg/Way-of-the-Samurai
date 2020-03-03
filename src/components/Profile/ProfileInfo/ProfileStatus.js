@@ -5,15 +5,19 @@ class ProfileStatus extends Component {
         editMode: false
     };
 
+    activateEditMode = () => {
+
+    };
+
     render() {
         return (
             <div>
                 {!this.state.editMode &&
                     <div>
-                        <span>{this.props.status}</span>
+                        <span onDoubleClick={() => (alert('qq'))}>{this.props.status}</span>
                     </div>
                 }
-                 {this.state.editMode &&
+                {this.state.editMode &&
                      <div>
                      <input value={this.props.status} />
                  </div>
