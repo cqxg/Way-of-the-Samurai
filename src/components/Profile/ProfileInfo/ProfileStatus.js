@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 class ProfileStatus extends Component {
+    state ={
+        editMode:false
+    };
 
     render() {
         return (
