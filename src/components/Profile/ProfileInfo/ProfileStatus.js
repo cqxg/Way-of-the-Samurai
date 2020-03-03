@@ -6,7 +6,15 @@ class ProfileStatus extends Component {
     };
 
     activateEditMode = () => {
+        this.setState({
+            editMode: true
+        })
+    };
 
+    deactivateEditMode = () => {
+        this.setState({
+            editMode: false
+        })
     };
 
     render() {
@@ -14,13 +22,13 @@ class ProfileStatus extends Component {
             <div>
                 {!this.state.editMode &&
                     <div>
-                        <span onDoubleClick={() => (alert('qq'))}>{this.props.status}</span>
+                        <span onDoubleClick={() => this.activateEditMode()}>{this.props.status}</span>
                     </div>
                 }
                 {this.state.editMode &&
-                     <div>
-                     <input value={this.props.status} />
-                 </div>
+                    <div>
+                        <input onBlur={() => this.deactivateEditMode()} value={this.props.status} />
+                    </div>
                 }
             </div>
         );
