@@ -19,36 +19,24 @@ import {
 
 import { usersAPI, authAPI } from '../../api/api';
 
-const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-const updateNewMessageBodyCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body,
-});
+
 
 const addPostActionCreator = () => ({ type: ADD_POST });
-
-const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-
+const setUsers = (users) => ({ type: SET_USERS, users });
+const sendMessageCreator = () => ({ type: SEND_MESSAGE });
+const setStatus = (status) => ({ type: SET_STATUS, status });
 const followSuccess = (userID) => ({ type: FOLLOW, userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
-const setUsers = (users) => ({ type: SET_USERS, users });
-const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
-const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
-const toggleFollowingProgress = (isFetching, userID) => ({
-  type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID,
-});
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-const setStatus = (status) => ({ type: SET_STATUS, status });
+const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+const updateNewMessageBodyCreator = (body) => ({type: UPDATE_NEW_MESSAGE_BODY, body});
+const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
+const toggleFollowingProgress = (isFetching, userID) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID});
 
-
-const setAuthUserData = (userId, email, login) => ({
-  type: SET_USER_DATA, data: { userId, email, login },
-});
+const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: { userId, email, login }});
 
 const getAuthUserData = () => (dispatch) => {
   authAPI.me().then((response) => {
@@ -74,6 +62,12 @@ const getUserProfile = (userId) => (dispatch) => {
     dispatch(setUserProfile(response.data));
   });
 };
+
+const getStatus = (userId) => (dispatch) => {
+    usersAPI.getStatus(userId).then((response) => {
+      dispatch(setStatus(response.data));
+    });
+  };
 
 const follow = (userId) => (dispatch) => {
   dispatch(toggleFollowingProgress(true, userId));
@@ -102,11 +96,12 @@ export {
   unfollow,
   setUsers,
   getUsers,
+  getStatus,
+  followSuccess,
+  setUserProfile,
   getUserProfile,
   setCurrentPage,
-  followSuccess,
   unfollowSuccess,
-  setUserProfile,
   setAuthUserData,
   getAuthUserData,
   toggleIsFetching,
