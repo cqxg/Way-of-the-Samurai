@@ -18,6 +18,7 @@ const initialState = {
 
   newPostText: '',
   profile: null,
+  status: ''
 };
 
 const profileReducer = (state = initialState, action) => {
