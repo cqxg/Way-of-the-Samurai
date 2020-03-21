@@ -67,7 +67,15 @@ const getStatus = (userId) => (dispatch) => {
     usersAPI.getStatus(userId).then((response) => {
       dispatch(setStatus(response.data));
     });
-  };
+};
+
+const updateStatus = (status) => (dispatch) => {
+    usersAPI.updateStatus(status).then((response) => {
+        if(response.data.resultCode === 0) {
+            dispatch(setStatus(response.data));
+        }
+    });
+};
 
 const follow = (userId) => (dispatch) => {
   dispatch(toggleFollowingProgress(true, userId));
@@ -97,6 +105,7 @@ export {
   setUsers,
   getUsers,
   getStatus,
+  updateStatus,
   followSuccess,
   setUserProfile,
   getUserProfile,
