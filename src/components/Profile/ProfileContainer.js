@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
-import { getUserProfile } from '../../redux/actions/actionCreators';
+import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/actionCreators';
 
 import Profile from './Profile';
 
@@ -22,10 +22,10 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { profile } = this.props;
+    const { profile, status, updateStatus } = this.props;
 
     return (
-      <Profile {...this.props} profile={profile} />
+      <Profile {...this.props} profile={profile} status={status} updateStatus={updateStatus} />
     );
   }
 }
@@ -36,7 +36,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile }),
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
   withRouter,
 )(ProfileContainer);
 
