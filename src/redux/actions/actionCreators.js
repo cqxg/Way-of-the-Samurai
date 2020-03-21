@@ -14,6 +14,7 @@ import {
   TOGGLE_FOLLOWING_PROGRESS,
   SET_USER_PROFILE,
   SET_USER_DATA,
+  SET_STATUS,
 } from './actionTypes';
 
 import { usersAPI, authAPI } from '../../api/api';
@@ -42,6 +43,7 @@ const toggleFollowingProgress = (isFetching, userID) => ({
   type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID,
 });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+const setStatus = (status) => ({ type: SET_STATUS, status });
 
 
 const setAuthUserData = (userId, email, login) => ({
