@@ -32,6 +32,10 @@ const usersAPI = {
 
     getStatus(userId) {
         return instance.get(`status/${userId}`);
+    },
+    
+    updateStatus(status) {
+        return instance.put(`status`, { status: status });
     }
 
 };
