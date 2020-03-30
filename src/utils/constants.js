@@ -1,7 +1,7 @@
 const DEFAULT_LIKES_VALUE = 0;
 const NEXT_ID = 8;
 const DEFAULT_USER_ID = 2;
-const API_KEY = 'a330ffbb-7ace-4dc9-a8ec-7880ecab78ff';
+const API_KEY = '97590639-9a46-4b9d-a8e4-899e90470cbc';
 const ALT_PROFILE_AVATAR = 'Avatar';
 const ALT_USER_AVATAR = 'User Avatar';
 const WELL = 0;

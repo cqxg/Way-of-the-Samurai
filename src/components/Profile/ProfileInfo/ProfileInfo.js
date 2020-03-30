@@ -8,7 +8,7 @@ import Loader from '../../../utils/loader';
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-    const { profile, status } = props;
+    const { profile, status, updateStatus } = props;
 
     if (!profile) {
         return <Loader />;
@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
         <div>
             <div className={style.descriptionBlock}>
                 <img alt="" src={profile.photos.large} />
-                <ProfileStatus status={status} />
+                <ProfileStatus status={status} updateStatus={updateStatus} />
             </div>
         </div>
     );
