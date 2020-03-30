@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class ProfileStatus extends Component {
     state = {
         editMode: false,
+        status: this.props.status,
     };
 
     activateEditMode = () => {
         this.setState({
             editMode: true,
-            status: this.props.status,
         })
 
         this.props.updateStatus();
@@ -19,7 +19,7 @@ class ProfileStatus extends Component {
             editMode: false
         })
 
-        this.props.updateStatus()
+        this.props.updateStatus(this.state.status)
     };
 
     render() {
@@ -32,7 +32,7 @@ class ProfileStatus extends Component {
                 }
                 {this.state.editMode &&
                     <div>
-                        <input ref={this.statusInputRef} autoFocus={true} onBlur={() => this.deactivateEditMode()} value={this.props.status} />
+                        <input autoFocus={true} onBlur={() => this.deactivateEditMode()} value={this.state.status} />
                     </div>
                 }
             </div>
