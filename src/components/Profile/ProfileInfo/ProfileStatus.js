@@ -5,11 +5,10 @@ class ProfileStatus extends Component {
         editMode: false,
     };
 
-    statusInputRef = React.createRef();
-
     activateEditMode = () => {
         this.setState({
-            editMode: true
+            editMode: true,
+            status: this.props.status,
         })
 
         this.props.updateStatus();
@@ -20,7 +19,7 @@ class ProfileStatus extends Component {
             editMode: false
         })
 
-        this.props.updateStatus(this.statusInputRef.current.value)
+        this.props.updateStatus()
     };
 
     render() {
