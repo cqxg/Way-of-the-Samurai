@@ -9,40 +9,47 @@ class ProfileStatus extends Component {
     activateEditMode = () => {
         this.setState({
             editMode: true,
-        })
+        });
     };
 
     deactivateEditMode = () => {
-        debugger
         this.setState({
-            editMode: false
-        })
+            editMode: false,
+        });
 
-        this.props.updateStatus(this.state.status)
+        this.props.updateStatus(this.state.status);
     };
 
     onStatusChange = (e) => {
         this.setState({
-            status: e.currentTarget.value
-        })
+            status: e.currentTarget.value,
+        });
+    };
+
+    getNotEditMode = () => {
+        debugger
+        return (
+            <div>
+                <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+            </div>
+        )
+    };
+
+    getEditMode = () => {
+        return (
+            <div>
+                <input autoFocus onChange={this.onStatusChange} onBlur={this.deactivateEditMode} value={this.state.status} />
+            </div>
+        )
     };
 
     render() {
         return (
             <div>
-                {!this.state.editMode &&
-                    <div>
-                        <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
-                    </div>
-                }
-                {this.state.editMode &&
-                    <div>
-                        <input autoFocus={true} onChange={this.onStatusChange} onBlur={this.deactivateEditMode} value={this.state.status} />
-                    </div>
-                }
+                {this.state.editMode ? this.getEditMode() : this.getNotEditMode()}
             </div>
         );
     }
-};
+}
 
 export default ProfileStatus;
