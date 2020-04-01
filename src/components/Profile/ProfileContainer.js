@@ -18,10 +18,7 @@ class ProfileContainer extends Component {
             userId = DEFAULT_USER_ID;
         }
         props.getUserProfile(userId);
-        setTimeout(() => {
-            props.getStatus(userId);
-        }, 1000)
-
+        props.getStatus(userId);
     }
 
     render() {
