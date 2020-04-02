@@ -5,13 +5,13 @@ const LoginForm = () => {
     return (
         <form>
             <div>
-                <Field placeholder='login' component={'input'} />
+                <Field placeholder='login' name='login' component='input' />
             </div>
             <div>
-                <Field placeholder='password' component={'input'} />
+                <Field placeholder='password' name='password' component='input' />
             </div>
             <div>
-                <Field type='checkbox' component={'input'} /> remember me
+                <Field type='checkbox' name='rememberMe' component='input' /> remember me
                 </div>
             <div>
                 <button>Login</button>
