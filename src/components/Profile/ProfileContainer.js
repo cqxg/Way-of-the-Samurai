@@ -10,48 +10,48 @@ import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/act
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
-    componentDidMount() {
-        const { props } = this;
-        let { userId } = props.match.params;
+  componentDidMount() {
+    const { props } = this;
+    let { userId } = props.match.params;
 
-        if (!userId) {
-            userId = DEFAULT_USER_ID;
-        }
-        props.getUserProfile(userId);
-        props.getStatus(userId);
+    if (!userId) {
+      userId = DEFAULT_USER_ID;
     }
+    props.getUserProfile(userId);
+    props.getStatus(userId);
+  }
 
-    render() {
-        const { profile, status, updateStatus } = this.props;
+  render() {
+    const { profile, status, updateStatus } = this.props;
 
-        return (
-            <Profile {...this.props} profile={profile} status={status} updateStatus={updateStatus} />
-        );
-    }
+    return (
+      <Profile {...this.props} profile={profile} status={status} updateStatus={updateStatus} />
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    status: state.profilePage.status,
+  profile: state.profilePage.profile,
+  status: state.profilePage.status,
 });
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
-    withRouter,
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  withRouter,
 )(ProfileContainer);
 
 ProfileContainer.defaultProps = {
-    match: PropTypes.instanceOf(Object),
-    profile: PropTypes.instanceOf(Object),
-    setUserProfile: PropTypes.func,
-    getUserProfile: PropTypes.func,
-    isAuth: PropTypes.bool,
+  match: PropTypes.instanceOf(Object),
+  profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
+  isAuth: PropTypes.bool,
 };
 
 ProfileContainer.propTypes = {
-    match: PropTypes.instanceOf(Object),
-    profile: PropTypes.instanceOf(Object),
-    setUserProfile: PropTypes.func,
-    getUserProfile: PropTypes.func,
-    isAuth: PropTypes.bool,
+  match: PropTypes.instanceOf(Object),
+  profile: PropTypes.instanceOf(Object),
+  setUserProfile: PropTypes.func,
+  getUserProfile: PropTypes.func,
+  isAuth: PropTypes.bool,
 };

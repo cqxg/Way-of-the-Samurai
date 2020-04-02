@@ -9,12 +9,12 @@ import usersReducer from './reducers/usersReducer';
 import authReducer from './reducers/authReducer';
 
 const reducers = combineReducers({
-    profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
-    usersPage: usersReducer,
-    sidebar: sidebarReducer,
-    auth: authReducer,
-    form: formReducer
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  usersPage: usersReducer,
+  sidebar: sidebarReducer,
+  auth: authReducer,
+  form: formReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
