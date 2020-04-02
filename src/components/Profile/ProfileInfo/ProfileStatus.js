@@ -27,7 +27,6 @@ class ProfileStatus extends Component {
     };
 
     getNotEditMode = () => {
-        debugger
         return (
             <div>
                 <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
@@ -43,11 +42,12 @@ class ProfileStatus extends Component {
         )
     };
 
-    componentDidUpdate (prevProps, prevState) {
-        this.setState({
-            status: this.props.status,
-        });
-
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            });
+        }
     };
 
     render() {
