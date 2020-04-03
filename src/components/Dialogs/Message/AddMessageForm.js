@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddMessageForm = (props) => {
     return (
-        <form>
+        <form onSubmit={props.handleSubmit}>
         <textarea
           value={state.newMessageBody}
           onChange={onNewMessageChange}
