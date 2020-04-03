@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Message from './Message/Message';
 import DialogItem from './DialogsItem/DialogsItem';
+import AddMessageForm from './Message/AddMessageForm';
 
 import style from './Dialogs.module.css';
 
@@ -39,16 +40,6 @@ const Dialogs = (props) => {
     updateNewMessageBody(body);
   };
 
-  const textareaRender = () => (
-    <div>
-      <textarea
-        value={state.newMessageBody}
-        onChange={onNewMessageChange}
-        placeholder="Add u message"
-      />
-    </div>
-  );
-
   const buttonRender = () => (
     <div>
       <button type="submit" onClick={onSendMessageClick}>Send</button>
@@ -62,7 +53,7 @@ const Dialogs = (props) => {
       </div>
       <div className={style.messages}>
         {messagesElements}
-        {textareaRender()}
+        <AddMessageForm />
         {buttonRender()}
       </div>
     </div>
