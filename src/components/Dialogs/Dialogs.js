@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Message from './Message/Message';
 import DialogItem from './DialogsItem/DialogsItem';
-import AddMessageForm from './Message/AddMessageForm';
+import AddMessageFormRedux from './Message/AddMessageForm';
 
 import style from './Dialogs.module.css';
 
@@ -36,7 +36,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messagesElements}
-                <AddMessageForm />
+                <AddMessageFormRedux />
             </div>
         </div>
     );

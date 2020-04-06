@@ -1,17 +1,19 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 const AddMessageForm = (props) => {
     return (
-        <Field component={'textarea'} name={'newMessageBody'}   placeholder="Add u message"/>
         <form onSubmit={props.handleSubmit}>
-            <textarea
-                value={state.newMessageBody}
-                onChange={onNewMessageChange}
-                placeholder="Add u message"
-            />
+            <div>
+                <Field component={'textarea'} name={'newMessageBody'} placeholder="Add u message" />
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
         </form>
     )
 };
 
-export default AddMessageForm;
+const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm'})(AddMessageForm);
+
+export default AddMessageFormRedux;
