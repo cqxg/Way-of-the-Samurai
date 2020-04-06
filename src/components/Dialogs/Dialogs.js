@@ -29,6 +29,10 @@ const Dialogs = (props) => {
         />
     ));
 
+    const addNewMessage = () => {
+        alert('qq');
+    };
+
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
@@ -36,7 +40,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messagesElements}
-                <AddMessageFormRedux />
+                <AddMessageFormRedux onSubmit={()=> {addNewMessage()}} />
             </div>
         </div>
     );
