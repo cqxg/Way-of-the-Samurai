@@ -31,16 +31,6 @@ const Dialogs = (props) => {
     />
   ));
 
-  const onSendMessageClick = () => {
-    sendMessage();
-  };
-
-  const buttonRender = () => (
-    <div>
-      <button type="submit" onClick={onSendMessageClick}>Send</button>
-    </div>
-  );
-
   return (
     <div className={style.dialogs}>
       <div className={style.dialogsItems}>
