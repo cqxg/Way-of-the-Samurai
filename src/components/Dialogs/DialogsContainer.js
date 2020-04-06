@@ -6,14 +6,14 @@ import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/act
 import Dialogs from './Dialogs';
 
 const mapStateToProps = (state) => ({
-    dialogsPage: state.dialogsPage,
+  dialogsPage: state.dialogsPage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    updateNewMessageBody: (body) => dispatch(updateNewMessageBodyCreator(body)),
-    sendMessage: (newMessageBody) => dispatch(sendMessageCreator(newMessageBody)),
+  updateNewMessageBody: (body) => dispatch(updateNewMessageBodyCreator(body)),
+  sendMessage: (newMessageBody) => dispatch(sendMessageCreator(newMessageBody)),
 });
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
 )(Dialogs);
