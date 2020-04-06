@@ -35,11 +35,6 @@ const Dialogs = (props) => {
     sendMessage();
   };
 
-  const onNewMessageChange = (e) => {
-    const body = e.target.value;
-    updateNewMessageBody(body);
-  };
-
   const buttonRender = () => (
     <div>
       <button type="submit" onClick={onSendMessageClick}>Send</button>
