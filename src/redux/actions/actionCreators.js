@@ -22,7 +22,7 @@ import { usersAPI, authAPI } from '../../api/api';
 
 const addPostActionCreator = () => ({ type: ADD_POST });
 const setUsers = (users) => ({ type: SET_USERS, users });
-const sendMessageCreator = () => ({ type: SEND_MESSAGE });
+const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const followSuccess = (userID) => ({ type: FOLLOW, userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
