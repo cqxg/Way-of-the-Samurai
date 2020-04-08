@@ -27,7 +27,7 @@ const MyPosts = (props) => {
 
   const newPostElement = React.createRef();
 
-  const onAddPost = () => {
+  const onAddPost = (values) => {
     addPost();
   };
 
@@ -39,7 +39,7 @@ const MyPosts = (props) => {
   return (
     <div className={style.postsBlock}>
       <h3>My Posts</h3>
-      <AddNewPostForm />
+      <AddNewPostForm onSubmit={onAddPost} />
       <div className={style.posts}>
         {postsElements}
       </div>
