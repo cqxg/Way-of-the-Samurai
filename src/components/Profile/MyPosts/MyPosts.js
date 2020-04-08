@@ -31,11 +31,6 @@ const MyPosts = (props) => {
     addPost();
   };
 
-  const onPostChange = () => {
-    const text = newPostElement.current.value;
-    updateNewPostText(text);
-  };
-
   return (
     <div className={style.postsBlock}>
       <h3>My Posts</h3>
