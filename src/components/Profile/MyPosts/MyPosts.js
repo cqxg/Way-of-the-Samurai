@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Post from './Post/Post';
+import AddNewPostForm from './AddNewPostForm';
 
 import style from './MyPosts.module.css';
 
@@ -38,7 +39,7 @@ const MyPosts = (props) => {
   return (
     <div className={style.postsBlock}>
       <h3>My Posts</h3>
-      {textRender()}
+      <AddNewPostForm />
       <div className={style.posts}>
         {postsElements}
       </div>
