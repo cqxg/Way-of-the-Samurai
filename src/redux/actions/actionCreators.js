@@ -2,7 +2,6 @@ import { WELL } from '../../utils/constants';
 
 import {
   ADD_POST,
-  UPDATE_NEW_POST_TEXT,
   UPDATE_NEW_MESSAGE_BODY,
   SEND_MESSAGE,
   FOLLOW,
@@ -116,5 +115,4 @@ export {
   addPostActionCreator,
   toggleFollowingProgress,
   updateNewMessageBodyCreator,
-  updateNewPostTextActionCreator,
 };

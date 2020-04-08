@@ -10,8 +10,6 @@ const MyPosts = (props) => {
   const {
     posts,
     addPost,
-    updateNewPostText,
-    newPostText,
   } = props;
 
   const postsElements = posts.map((post) => {
@@ -24,8 +22,6 @@ const MyPosts = (props) => {
       />
     );
   });
-
-  const newPostElement = React.createRef();
 
   const onAddPost = (values) => {
     addPost(values.newPostText);
