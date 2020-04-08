@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { MAIN_URL } from '../utils/url-utils';
 import { API_KEY } from '../utils/constants';
+import { usersPage } from '../utils/routes';
 
 const instance = axios.create(
   {
@@ -15,7 +16,7 @@ const instance = axios.create(
 
 const usersAPI = {
   getUsers(currentPage, pageSize) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`).then((response) => response.data);
+    return instance.get(`${usersPage}${currentPage}&count=${pageSize}`).then((response) => response.data);
   },
 
   follow(userId) {
