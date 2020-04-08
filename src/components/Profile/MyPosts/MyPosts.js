@@ -35,17 +35,6 @@ const MyPosts = (props) => {
     updateNewPostText(text);
   };
 
-  const textRender = () => (
-    <div>
-      <div>
-        <textarea onChange={onPostChange} ref={newPostElement} value={newPostText} />
-      </div>
-      <div>
-        <button type="submit" onClick={onAddPost}>Add Post</button>
-      </div>
-    </div>
-  );
-
   return (
     <div className={style.postsBlock}>
       <h3>My Posts</h3>
