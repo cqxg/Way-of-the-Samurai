@@ -1,7 +1,7 @@
 import { DEFAULT_LIKES_VALUE, NEXT_ID } from '../../utils/constants';
 
 import {
-  ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE, SET_STATUS,
+  ADD_POST, SET_USER_PROFILE, SET_STATUS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -18,7 +18,6 @@ const initialState = {
     },
   ],
 
-  newPostText: '',
   profile: null,
   status: '',
 };
