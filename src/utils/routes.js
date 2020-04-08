@@ -6,10 +6,10 @@ const profileStatus = 'profile/status/';
 const authMe = 'auth/me';
 
 export {
-    usersPage,
-    count,
-    follow,
-    profile,
-    profileStatus,
-    authMe
-}
+  usersPage,
+  count,
+  follow,
+  profile,
+  profileStatus,
+  authMe,
+};
