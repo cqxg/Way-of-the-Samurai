@@ -1,6 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import { I18N } from '../../../utils/constants';
+
 const AddNewPostForm = (props) => {
   const { handleSubmit } = props;
   return (
@@ -9,7 +11,7 @@ const AddNewPostForm = (props) => {
         <Field component="textarea" name="newPostText" />
       </div>
       <div>
-        <button>Add post</button>
+        <button>{I18N.EN.ADD_POST}</button>
       </div>
     </form>
   );

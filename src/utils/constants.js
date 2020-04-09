@@ -17,6 +17,7 @@ const I18N = {
         MUSIC: 'Music',
         SETTINGS: 'Settings',
         MY_POSTS: 'My Posts',
+        ADD_POST: 'Add post',
     },
 
     RU: {
@@ -30,6 +31,7 @@ const I18N = {
         MUSIC: 'Музыка',
         SETTINGS: 'Настройки',
         MY_POSTS: 'My Posts',
+        ADD_POST: 'Add post',
     }
 }
 
