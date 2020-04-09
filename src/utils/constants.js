@@ -10,14 +10,24 @@ const I18N = {
         LOGIN: 'Login',
         SEND: 'Send',
         REMEMBER_ME: 'remember me',
+        PROFILE: 'Profile',
+        MESSAGES: 'Messages',
+        USERS: 'Users',
+        NEWS: 'News',
         MUSIC: 'Music',
+        SETTINGS: 'Settings',
     },
 
     RU: {
         LOGIN: 'Войти в аккаунт',
         SEND: 'Отправить',
-        REMEMBER_ME: 'remember me',
-        MUSIC: 'Music',
+        REMEMBER_ME: 'запомнить меня',
+        PROFILE: 'Профиль',
+        MESSAGES: 'Сообщения',
+        USERS: 'Пользователи',
+        NEWS: 'Новости',
+        MUSIC: 'Музыка',
+        SETTINGS: 'Настройки',
     }
 }
 
