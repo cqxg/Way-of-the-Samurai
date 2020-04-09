@@ -7,11 +7,11 @@ const ALT_USER_AVATAR = 'User Avatar';
 const WELL = 0;
 const I18N = {
     EN: {
-        
+        LOGIN: 'Login',
     },
 
     RU: {
-
+        LOGIN: 'Войти в аккаунт'
     }
 }
 
