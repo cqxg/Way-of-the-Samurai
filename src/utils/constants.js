@@ -30,8 +30,8 @@ const I18N = {
         NEWS: 'Новости',
         MUSIC: 'Музыка',
         SETTINGS: 'Настройки',
-        MY_POSTS: 'My Posts',
-        ADD_POST: 'Add post',
+        MY_POSTS: 'Мои посты',
+        ADD_POST: 'Добавить пост',
     }
 }
 
