@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Post from './Post/Post';
 import AddNewPostForm from './AddNewPostForm';
 
+import { I18N } from '../../../utils/constants';
+
 import style from './MyPosts.module.css';
 
 const MyPosts = (props) => {
@@ -29,7 +31,7 @@ const MyPosts = (props) => {
 
   return (
     <div className={style.postsBlock}>
-      <h3>My Posts</h3>
+      <h3>{I18N.EN.MY_POSTS}</h3>
       <AddNewPostForm onSubmit={onAddPost} />
       <div className={style.posts}>
         {postsElements}

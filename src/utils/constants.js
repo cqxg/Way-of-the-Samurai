@@ -16,6 +16,7 @@ const I18N = {
         NEWS: 'News',
         MUSIC: 'Music',
         SETTINGS: 'Settings',
+        MY_POSTS: 'My Posts',
     },
 
     RU: {
@@ -28,6 +29,7 @@ const I18N = {
         NEWS: 'Новости',
         MUSIC: 'Музыка',
         SETTINGS: 'Настройки',
+        MY_POSTS: 'My Posts',
     }
 }
 
