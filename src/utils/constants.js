@@ -6,35 +6,35 @@ const ALT_PROFILE_AVATAR = 'Avatar';
 const ALT_USER_AVATAR = 'User Avatar';
 const WELL = 0;
 const I18N = {
-    EN: {
-        LOGIN: 'Login',
-        SEND: 'Send',
-        REMEMBER_ME: 'remember me',
-        PROFILE: 'Profile',
-        MESSAGES: 'Messages',
-        USERS: 'Users',
-        NEWS: 'News',
-        MUSIC: 'Music',
-        SETTINGS: 'Settings',
-        MY_POSTS: 'My Posts',
-        ADD_POST: 'Add post',
-    },
+  EN: {
+    LOGIN: 'Login',
+    SEND: 'Send',
+    REMEMBER_ME: 'remember me',
+    PROFILE: 'Profile',
+    MESSAGES: 'Messages',
+    USERS: 'Users',
+    NEWS: 'News',
+    MUSIC: 'Music',
+    SETTINGS: 'Settings',
+    MY_POSTS: 'My Posts',
+    ADD_POST: 'Add post',
+  },
 
-    RU: {
-        LOGIN: 'Войти в аккаунт',
-        SEND: 'Отправить',
-        REMEMBER_ME: 'запомнить меня',
-        PROFILE: 'Профиль',
-        MESSAGES: 'Сообщения',
-        USERS: 'Пользователи',
-        NEWS: 'Новости',
-        MUSIC: 'Музыка',
-        SETTINGS: 'Настройки',
-        MY_POSTS: 'Мои посты',
-        ADD_POST: 'Добавить пост',
-    }
-}
+  RU: {
+    LOGIN: 'Войти в аккаунт',
+    SEND: 'Отправить',
+    REMEMBER_ME: 'запомнить меня',
+    PROFILE: 'Профиль',
+    MESSAGES: 'Сообщения',
+    USERS: 'Пользователи',
+    NEWS: 'Новости',
+    MUSIC: 'Музыка',
+    SETTINGS: 'Настройки',
+    MY_POSTS: 'Мои посты',
+    ADD_POST: 'Добавить пост',
+  },
+};
 
 export {
-  DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N
+  DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N,
 };

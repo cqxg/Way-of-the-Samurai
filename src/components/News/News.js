@@ -4,7 +4,7 @@ import { I18N } from '../../utils/constants';
 
 const News = () => (
   <div>
-        {I18N.EN.NEWS}
+    {I18N.EN.NEWS}
   </div>
 );
 

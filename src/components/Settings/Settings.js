@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {I18N } from '../../utils/constants';
+import { I18N } from '../../utils/constants';
 
 const Settings = () => (
   <div>
-        {I18N.EN.SETTINGS}
+    {I18N.EN.SETTINGS}
   </div>
 );
 
