@@ -9,7 +9,7 @@ import style from './Navbar.module.css';
 const Navbar = () => (
   <nav className={style.nav}>
     <div className={style.item}>
-      <NavLink to="/profile" activeClassName={style.activeLink}>{I18N.EN.PROFILE}</NavLink>
+      <NavLink to={ROUTES.PROFILE} activeClassName={style.activeLink}>{I18N.EN.PROFILE}</NavLink>
     </div>
     <div className={`${style.item} ${style.active}`}>
       <NavLink to="/dialogs" activeClassName={style.activeLink}>{I18N.EN.MESSAGES}</NavLink>
