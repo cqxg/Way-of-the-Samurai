@@ -21,7 +21,7 @@ import { usersAPI, authAPI } from '../../api/api';
 
 const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText});
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
-const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
+const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const followSuccess = (userID) => ({ type: FOLLOW, userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
