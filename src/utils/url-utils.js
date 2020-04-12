@@ -11,6 +11,7 @@ const ROUTES = {
   DIALOGS: '/dialogs',
   USERS: '/users',
   NEWS: '/news',
+  MUSIC: '/music',
 };
 
 export {
