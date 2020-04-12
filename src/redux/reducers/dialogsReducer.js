@@ -53,7 +53,7 @@ const dialogsReducer = (state = initialState, action) => {
     case UPDATE_NEW_MESSAGE_BODY:
       return {
         ...state,
-        newMessageBody: action.body,
+        newMessageBody: action.payload,
       };
 
     case SEND_MESSAGE:
