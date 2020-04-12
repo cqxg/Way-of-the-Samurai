@@ -47,7 +47,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_STATUS: {
       return {
         ...state,
-        status: action.status,
+        status: action.payload,
       };
     }
 
