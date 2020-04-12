@@ -18,7 +18,7 @@ const Navbar = () => (
       <NavLink to={ROUTES.USERS} activeClassName={style.activeLink}>{I18N.EN.USERS}</NavLink>
     </div>
     <div className={style.item}>
-      <NavLink to="/news" activeClassName={style.activeLink}>{I18N.EN.NEWS}</NavLink>
+      <NavLink to={ROUTES.NEWS} activeClassName={style.activeLink}>{I18N.EN.NEWS}</NavLink>
     </div>
     <div className={style.item}>
       <NavLink to="/music" activeClassName={style.activeLink}>{I18N.EN.MUSIC}</NavLink>

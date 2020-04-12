@@ -10,6 +10,7 @@ const ROUTES = {
   AUTH_ME: 'auth/me',
   DIALOGS: '/dialogs',
   USERS: '/users',
+  NEWS: '/news',
 };
 
 export {
