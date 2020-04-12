@@ -19,18 +19,18 @@ import {
 import { usersAPI, authAPI } from '../../api/api';
 
 
-const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText});
+const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText });
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
 const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
 const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, payload: userID });
-const setUserProfile = (profile) => ({ type: SET_USER_PROFILE,payload: profile });
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, payload: profile });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalUsersCount });
-const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID });
+const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
 
 const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
 

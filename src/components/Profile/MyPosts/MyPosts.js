@@ -50,8 +50,6 @@ MyPosts.defaultProps = {
 MyPosts.propTypes = {
   posts: PropTypes.instanceOf(Array),
   addPost: PropTypes.func,
-  updateNewPostText: PropTypes.func,
-  newPostText: PropTypes.string,
 };
 
 export default MyPosts;
