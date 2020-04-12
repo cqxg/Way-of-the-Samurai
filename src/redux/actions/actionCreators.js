@@ -26,7 +26,7 @@ const setStatus = (status) => ({ type: SET_STATUS, payload: status });
 const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, payload: userID });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE,payload: profile });
-const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
