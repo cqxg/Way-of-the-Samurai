@@ -1,52 +1,38 @@
 import { WELL } from '../../utils/constants';
 
 import {
-  ADD_POST,
-  UPDATE_NEW_POST_TEXT,
-  UPDATE_NEW_MESSAGE_BODY,
-  SEND_MESSAGE,
   FOLLOW,
+  ADD_POST,
   UNFOLLOW,
   SET_USERS,
-  SET_CURRENT_PAGE,
-  SET_TOTAL_USERS_COUNT,
-  TOGGLE_IS_FETCHING,
-  TOGGLE_FOLLOWING_PROGRESS,
-  SET_USER_PROFILE,
+  SET_STATUS,
+  SEND_MESSAGE,
   SET_USER_DATA,
+  SET_CURRENT_PAGE,
+  SET_USER_PROFILE,
+  TOGGLE_IS_FETCHING,
+  SET_TOTAL_USERS_COUNT,
+  UPDATE_NEW_MESSAGE_BODY,
+  TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
 
 import { usersAPI, authAPI } from '../../api/api';
 
-const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
-const updateNewMessageBodyCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body,
-});
+const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText });
+const setUsers = (users) => ({ type: SET_USERS, payload: users });
+const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
+const setStatus = (status) => ({ type: SET_STATUS, payload: status });
+const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
+const unfollowSuccess = (userID) => ({ type: UNFOLLOW, payload: userID });
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, payload: profile });
+const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });
+const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
+const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
+const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalUsersCount });
+const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
 
-const addPostActionCreator = () => ({ type: ADD_POST });
-
-const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-
-const followSuccess = (userID) => ({ type: FOLLOW, userID });
-const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
-const setUsers = (users) => ({ type: SET_USERS, users });
-const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
-const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
-const toggleFollowingProgress = (isFetching, userID) => ({
-  type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userID,
-});
-const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-
-
-const setAuthUserData = (userId, email, login) => ({
-  type: SET_USER_DATA, data: { userId, email, login },
-});
+const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
 
 const getAuthUserData = () => (dispatch) => {
   authAPI.me().then((response) => {
@@ -70,6 +56,20 @@ const getUsers = (currentPage, pageSize) => (dispatch) => {
 const getUserProfile = (userId) => (dispatch) => {
   usersAPI.getProfile(userId).then((response) => {
     dispatch(setUserProfile(response.data));
+  });
+};
+
+const getStatus = (userId) => (dispatch) => {
+  usersAPI.getStatus(userId).then((response) => {
+    dispatch(setStatus(response.data));
+  });
+};
+
+const updateStatus = (status) => (dispatch) => {
+  usersAPI.updateStatus(status).then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(setStatus(response.data));
+    }
   });
 };
 
@@ -100,11 +100,13 @@ export {
   unfollow,
   setUsers,
   getUsers,
+  getStatus,
+  updateStatus,
+  followSuccess,
+  setUserProfile,
   getUserProfile,
   setCurrentPage,
-  followSuccess,
   unfollowSuccess,
-  setUserProfile,
   setAuthUserData,
   getAuthUserData,
   toggleIsFetching,
@@ -113,5 +115,4 @@ export {
   addPostActionCreator,
   toggleFollowingProgress,
   updateNewMessageBodyCreator,
-  updateNewPostTextActionCreator,
 };

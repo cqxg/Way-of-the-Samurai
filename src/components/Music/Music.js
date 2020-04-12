@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { I18N } from '../../utils/constants';
+
 const Music = () => (
   <div>
-        Music
+    {I18N.EN.MUSIC}
   </div>
 );
 

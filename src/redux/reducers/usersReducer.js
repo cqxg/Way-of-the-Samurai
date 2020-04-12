@@ -23,7 +23,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
+          if (user.id === action.payload) {
             return { ...user, followed: true };
           }
           return user;
@@ -34,7 +34,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
+          if (user.id === action.payload) {
             return { ...user, followed: false };
           }
           return user;
@@ -44,33 +44,34 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: action.users,
+        users: action.payload,
       };
 
     case SET_CURRENT_PAGE:
       return {
         ...state,
-        currentPage: action.currentPage,
+        currentPage: action.payload,
       };
 
     case SET_TOTAL_USERS_COUNT:
       return {
         ...state,
-        totalUsersCount: action.totalUsersCount,
+        totalUsersCount: action.payload,
       };
 
     case TOGGLE_IS_FETCHING:
       return {
         ...state,
-        isFetching: action.isFetching,
+        isFetching: action.payload,
       };
 
     case TOGGLE_FOLLOWING_PROGRESS:
+      const { userID, isFetching } = action.payload;
       return {
         ...state,
-        followingInProgress: action.isFetching
-          ? [...state.followingInProgress, action.userID]
-          : state.followingInProgress.filter((id) => id !== action.userID),
+        followingInProgress: isFetching
+          ? [...state.followingInProgress, userID]
+          : state.followingInProgress.filter((id) => id !== userID),
       };
 
     default:

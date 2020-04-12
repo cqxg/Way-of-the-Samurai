@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { I18N } from '../../utils/constants';
+
 const News = () => (
   <div>
-        News
+    {I18N.EN.NEWS}
   </div>
 );
 

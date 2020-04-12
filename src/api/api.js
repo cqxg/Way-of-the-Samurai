@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { MAIN_URL } from '../utils/url-utils';
+import { MAIN_URL, ROUTES } from '../utils/url-utils';
 import { API_KEY } from '../utils/constants';
 
 const instance = axios.create(
@@ -15,25 +15,34 @@ const instance = axios.create(
 
 const usersAPI = {
   getUsers(currentPage, pageSize) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`).then((response) => response.data);
+    return instance.get(`${ROUTES.USERS_PAGE}${currentPage}${ROUTES.COUNT}${pageSize}`).then((response) => response.data);
   },
 
   follow(userId) {
-    return instance.post(`follow/${userId}`);
+    return instance.post(`${ROUTES.FOLLOW}${userId}`);
   },
 
   unfollow(userId) {
-    return instance.delete(`follow/${userId}`);
+    return instance.delete(`${ROUTES.FOLLOW}${userId}`);
   },
 
   getProfile(userId) {
-    return instance.get(`profile/${userId}`);
+    return instance.get(`${ROUTES.PROFILE}${userId}`);
   },
+
+  getStatus(userId) {
+    return instance.get(`${ROUTES.PROFILE_STATUS}${userId}`);
+  },
+
+  updateStatus(status) {
+    return instance.put(ROUTES.PROFILE_STATUS, { status });
+  },
+
 };
 
 const authAPI = {
   me() {
-    return instance.get('auth/me');
+    return instance.get(ROUTES.AUTH_ME);
   },
 };
 

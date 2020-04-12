@@ -1,6 +1,8 @@
 import { DEFAULT_LIKES_VALUE, NEXT_ID } from '../../utils/constants';
 
-import { ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE } from '../actions/actionTypes';
+import {
+  ADD_POST, SET_USER_PROFILE, SET_STATUS,
+} from '../actions/actionTypes';
 
 const initialState = {
   posts: [
@@ -16,8 +18,8 @@ const initialState = {
     },
   ],
 
-  newPostText: '',
   profile: null,
+  status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -25,28 +27,27 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       const newPost = {
         id: NEXT_ID,
-        message: state.newPostText,
+        message: action.payload,
         likesCount: DEFAULT_LIKES_VALUE,
       };
 
       return {
         ...state,
-        newPostText: '',
         posts: [...state.posts, newPost],
-      };
-    }
-
-    case UPDATE_NEW_POST_TEXT: {
-      return {
-        ...state,
-        newPostText: action.newText,
       };
     }
 
     case SET_USER_PROFILE: {
       return {
         ...state,
-        profile: action.profile,
+        profile: action.payload,
+      };
+    }
+
+    case SET_STATUS: {
+      return {
+        ...state,
+        status: action.payload,
       };
     }
 

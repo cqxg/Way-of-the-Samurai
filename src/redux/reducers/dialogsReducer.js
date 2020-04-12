@@ -44,24 +44,21 @@ const initialState = {
       message: 'priveti4 ot Marmeladi4a',
     },
   ],
-
-  newMessageBody: '',
 };
 
 const dialogsReducer = (state = initialState, action) => {
-  const body = state.newMessageBody;
+  const body = action.payload;
 
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_BODY:
       return {
         ...state,
-        newMessageBody: action.body,
+        newMessageBody: action.payload,
       };
 
     case SEND_MESSAGE:
       return {
         ...state,
-        newMessageBody: '',
         messages: [...state.messages, { id: NEXT_ID, message: body }],
       };
 

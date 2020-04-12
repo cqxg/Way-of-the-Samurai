@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
-import { getUserProfile } from '../../redux/actions/actionCreators';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
+import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/actionCreators';
 
 import Profile from './Profile';
 
@@ -19,25 +18,26 @@ class ProfileContainer extends Component {
       userId = DEFAULT_USER_ID;
     }
     props.getUserProfile(userId);
+    props.getStatus(userId);
   }
 
   render() {
-    const { profile } = this.props;
+    const { profile, status, updateStatus } = this.props;
 
     return (
-      <Profile {...this.props} profile={profile} />
+      <Profile {...this.props} profile={profile} status={status} updateStatus={updateStatus} />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status,
 });
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile }),
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
   withRouter,
-  withAuthRedirect,
 )(ProfileContainer);
 
 ProfileContainer.defaultProps = {

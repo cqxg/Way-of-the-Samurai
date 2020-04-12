@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import Message from './Message/Message';
 import DialogItem from './DialogsItem/DialogsItem';
+import AddMessageFormRedux from './Message/AddMessageForm';
 
 import style from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const {
-    sendMessage, updateNewMessageBody, dialogsPage,
-  } = props;
+  const { dialogsPage } = props;
   const state = dialogsPage;
   const { dialogs, messages } = state;
 
@@ -23,6 +22,7 @@ const Dialogs = (props) => {
       />
     );
   });
+
   const messagesElements = messages.map((message) => (
     <Message
       key={message + Math.random(1000)}
@@ -30,30 +30,9 @@ const Dialogs = (props) => {
     />
   ));
 
-  const onSendMessageClick = () => {
-    sendMessage();
+  const addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
   };
-
-  const onNewMessageChange = (e) => {
-    const body = e.target.value;
-    updateNewMessageBody(body);
-  };
-
-  const textareaRender = () => (
-    <div>
-      <textarea
-        value={state.newMessageBody}
-        onChange={onNewMessageChange}
-        placeholder="Add u message"
-      />
-    </div>
-  );
-
-  const buttonRender = () => (
-    <div>
-      <button type="submit" onClick={onSendMessageClick}>Send</button>
-    </div>
-  );
 
   return (
     <div className={style.dialogs}>
@@ -62,8 +41,7 @@ const Dialogs = (props) => {
       </div>
       <div className={style.messages}>
         {messagesElements}
-        {textareaRender()}
-        {buttonRender()}
+        <AddMessageFormRedux onSubmit={addNewMessage} />
       </div>
     </div>
   );
@@ -72,13 +50,11 @@ const Dialogs = (props) => {
 Dialogs.defaultProps = {
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
-  updateNewMessageBody: PropTypes.func,
 };
 
 Dialogs.propTypes = {
   sendMessage: PropTypes.func,
   dialogsPage: PropTypes.instanceOf(Object),
-  updateNewMessageBody: PropTypes.func,
 };
 
 export default Dialogs;
