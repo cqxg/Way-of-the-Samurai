@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { I18N } from '../../utils/constants';
-import {ROUTES} from '../../utils/url-utils';
+import { ROUTES } from '../../utils/url-utils';
 
 import style from './Navbar.module.css';
 
@@ -24,7 +24,7 @@ const Navbar = () => (
       <NavLink to={ROUTES.MUSIC} activeClassName={style.activeLink}>{I18N.EN.MUSIC}</NavLink>
     </div>
     <div className={style.item}>
-      <NavLink to="/settings" activeClassName={style.activeLink}>{I18N.EN.SETTINGS}</NavLink>
+      <NavLink to={ROUTES.SETTINGS} activeClassName={style.activeLink}>{I18N.EN.SETTINGS}</NavLink>
     </div>
   </nav>
 );

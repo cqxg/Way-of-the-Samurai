@@ -2,16 +2,17 @@ const BACKGROUND_IMG = 'https://a.d-cd.net/870b45as-960.jpg';
 const AVATAR_DEFAULT = 'https://yt3.ggpht.com/a/AGF-l79zTH00bozogFe1oAjQyY7-lnxI-uZMKgonrw=s900-mo-c-c0xffffffff-rj-k-no';
 const MAIN_URL = 'https://social-network.samuraijs.com/api/1.0/';
 const ROUTES = {
-  USERS_PAGE: 'users?page=',
+  NEWS: '/news',
+  USERS: '/users',
+  MUSIC: '/music',
   COUNT: '&count=',
   FOLLOW: 'follow/',
-  PROFILE: 'profile/',
-  PROFILE_STATUS: 'profile/status/',
   AUTH_ME: 'auth/me',
+  PROFILE: 'profile/',
   DIALOGS: '/dialogs',
-  USERS: '/users',
-  NEWS: '/news',
-  MUSIC: '/music',
+  SETTINGS: '/settings',
+  USERS_PAGE: 'users?page=',
+  PROFILE_STATUS: 'profile/status/',
 };
 
 export {
