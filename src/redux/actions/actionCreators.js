@@ -23,7 +23,7 @@ const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPos
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
 const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
-const followSuccess = (userID) => ({ type: FOLLOW, userID });
+const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, userID });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
