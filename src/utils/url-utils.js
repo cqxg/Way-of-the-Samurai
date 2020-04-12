@@ -9,6 +9,7 @@ const ROUTES = {
   PROFILE_STATUS: 'profile/status/',
   AUTH_ME: 'auth/me',
   DIALOGS: '/dialogs',
+  USERS: '/users',
 };
 
 export {
