@@ -4,14 +4,15 @@ import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../../utils/validators';
 import { I18N } from '../../../utils/constants';
 
+const maxLenght10 = maxLengthCreator(10);
+
 const AddNewPostForm = (props) => {
     const { handleSubmit } = props;
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <Field component="textarea" name="newPostText" validate={
-                    [required, maxLengthCreator(10)]
-                } />
+                <Field component="textarea" name="newPostText" validate={[required, maxLenght10]} />
             </div>
             <div>
                 <button>{I18N.EN.ADD_POST}</button>
