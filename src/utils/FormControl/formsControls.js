@@ -23,7 +23,7 @@ const Input = ({ input, meta, ...props }) => {
     return (
         <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
             <div>
-                <textarea {...input} {...props} />
+                <input {...input} {...props} />
             </div>
             <div>
                 {hasError && <span>{meta.error}</span>}
