@@ -45,8 +45,12 @@ const authAPI = {
         return instance.get(ROUTES.AUTH_ME);
     },
 
-    login() {
+    login(email, password, rememberMe = false) {
         return instance.post(ROUTES.AUTH_LOGIN, { email, password, rememberMe });
+    },
+
+    logout() {
+        return instance.delete(ROUTES.AUTH_LOGIN);
     },
 };
 
