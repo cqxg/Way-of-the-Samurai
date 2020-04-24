@@ -32,7 +32,7 @@ const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, 
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalUsersCount });
 const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
 
-const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
+const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, payload: { userId, email, login } });
 
 const getAuthUserData = () => (dispatch) => {
     authAPI.me().then((response) => {
@@ -45,6 +45,14 @@ const getAuthUserData = () => (dispatch) => {
 
 const login = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe).then((response) => {
+        if (response.data.resultCode === WELL) {
+            dispatch(getAuthUserData())
+        };
+    });
+};
+
+const logout = () => (dispatch) => {
+    authAPI.logout().then((response) => {
         if (response.data.resultCode === WELL) {
             dispatch(getAuthUserData())
         };
@@ -105,6 +113,7 @@ const unfollow = (userId) => (dispatch) => {
 
 export {
     login,
+    logout,
     follow,
     unfollow,
     setUsers,
