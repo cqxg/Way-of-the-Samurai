@@ -8,6 +8,7 @@ const ROUTES = {
   COUNT: '&count=',
   FOLLOW: 'follow/',
   AUTH_ME: 'auth/me',
+  AUTH_LOGIN: 'auth/login',
   PROFILE: 'profile/',
   DIALOGS: '/dialogs',
   SETTINGS: '/settings',
