@@ -6,25 +6,25 @@ import { Input } from '../../utils/FormControl/formsControls';
 import { I18N } from '../../utils/constants';
 
 const LoginForm = (props) => {
-  const { handleSubmit } = props;
+    const { handleSubmit } = props;
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <Field placeholder="login" name="login" component={Input} validate={[required]} />
-      </div>
-      <div>
-        <Field placeholder="password" name="password" component={Input} validate={[required]} />
-      </div>
-      <div>
-        <Field name="rememberMe" component="input" type="checkbox" />
-        <span>{I18N.EN.REMEMBER_ME}</span>
-      </div>
-      <div>
-        <button>{I18N.EN.LOGIN}</button>
-      </div>
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <Field placeholder="email" name="email" component={Input} validate={[required]} />
+            </div>
+            <div>
+                <Field placeholder="password" name="password" component={Input} validate={[required]} />
+            </div>
+            <div>
+                <Field name="rememberMe" type="checkbox" component="input" />
+                <span>{I18N.EN.REMEMBER_ME}</span>
+            </div>
+            <div>
+                <button>{I18N.EN.LOGIN}</button>
+            </div>
+        </form>
+    );
 };
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
