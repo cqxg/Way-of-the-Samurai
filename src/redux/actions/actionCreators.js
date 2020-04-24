@@ -18,27 +18,25 @@ import {
 
 import { usersAPI, authAPI } from '../../api/api';
 
-
-const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText });
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
-const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
 const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, payload: userID });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, payload: profile });
+const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText });
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
+const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
 const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalUsersCount });
 const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
-
-const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, payload: { userId, email, login } });
+const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, payload: { userId, email, login, isAuth } });
 
 const getAuthUserData = () => (dispatch) => {
     authAPI.me().then((response) => {
         if (response.data.resultCode === WELL) {
             const { id, email, login } = response.data.data;
-            dispatch(setAuthUserData(id, email, login));
+            dispatch(setAuthUserData(id, email, login, true));
         }
     });
 };
@@ -54,7 +52,7 @@ const login = (email, password, rememberMe) => (dispatch) => {
 const logout = () => (dispatch) => {
     authAPI.logout().then((response) => {
         if (response.data.resultCode === WELL) {
-            dispatch(getAuthUserData())
+            dispatch(setAuthUserData(null, null, null, false));
         };
     });
 };
