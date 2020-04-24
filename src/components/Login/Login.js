@@ -8,7 +8,8 @@ import { I18N } from '../../utils/constants';
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        const { email, password, rememberMe } = formData;
+        props.login(email, password, rememberMe)
     };
 
     return (
