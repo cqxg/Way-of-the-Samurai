@@ -1,19 +1,19 @@
 import { WELL } from '../../utils/constants';
 
 import {
-  FOLLOW,
-  ADD_POST,
-  UNFOLLOW,
-  SET_USERS,
-  SET_STATUS,
-  SEND_MESSAGE,
-  SET_USER_DATA,
-  SET_CURRENT_PAGE,
-  SET_USER_PROFILE,
-  TOGGLE_IS_FETCHING,
-  SET_TOTAL_USERS_COUNT,
-  UPDATE_NEW_MESSAGE_BODY,
-  TOGGLE_FOLLOWING_PROGRESS,
+    FOLLOW,
+    ADD_POST,
+    UNFOLLOW,
+    SET_USERS,
+    SET_STATUS,
+    SEND_MESSAGE,
+    SET_USER_DATA,
+    SET_CURRENT_PAGE,
+    SET_USER_PROFILE,
+    TOGGLE_IS_FETCHING,
+    SET_TOTAL_USERS_COUNT,
+    UPDATE_NEW_MESSAGE_BODY,
+    TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
 
 import { usersAPI, authAPI } from '../../api/api';
@@ -35,84 +35,93 @@ const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWIN
 const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
 
 const getAuthUserData = () => (dispatch) => {
-  authAPI.me().then((response) => {
-    if (response.data.resultCode === WELL) {
-      const { id, email, login } = response.data.data;
-      dispatch(setAuthUserData(id, email, login));
-    }
-  });
+    authAPI.me().then((response) => {
+        if (response.data.resultCode === WELL) {
+            const { id, email, login } = response.data.data;
+            dispatch(setAuthUserData(id, email, login));
+        }
+    });
+};
+
+const login = (email, password, rememberMe) => (dispatch) => {
+    authAPI.login(email, password, rememberMe).then((response) => {
+        if (response.data.resultCode === WELL) {
+            dispatch(getAuthUserData())
+        };
+    });
 };
 
 const getUsers = (currentPage, pageSize) => (dispatch) => {
-  dispatch(toggleIsFetching(true));
-  dispatch(setCurrentPage(currentPage));
-  usersAPI.getUsers(currentPage, pageSize).then((data) => {
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsers(data.items));
-    dispatch(setTotalUsersCount(data.totalCount));
-  });
+    dispatch(toggleIsFetching(true));
+    dispatch(setCurrentPage(currentPage));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+    });
 };
 
 const getUserProfile = (userId) => (dispatch) => {
-  usersAPI.getProfile(userId).then((response) => {
-    dispatch(setUserProfile(response.data));
-  });
+    usersAPI.getProfile(userId).then((response) => {
+        dispatch(setUserProfile(response.data));
+    });
 };
 
 const getStatus = (userId) => (dispatch) => {
-  usersAPI.getStatus(userId).then((response) => {
-    dispatch(setStatus(response.data));
-  });
+    usersAPI.getStatus(userId).then((response) => {
+        dispatch(setStatus(response.data));
+    });
 };
 
 const updateStatus = (status) => (dispatch) => {
-  usersAPI.updateStatus(status).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(setStatus(response.data));
-    }
-  });
+    usersAPI.updateStatus(status).then((response) => {
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(response.data));
+        }
+    });
 };
 
 const follow = (userId) => (dispatch) => {
-  dispatch(toggleFollowingProgress(true, userId));
+    dispatch(toggleFollowingProgress(true, userId));
 
-  usersAPI.follow(userId).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(followSuccess(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
-  });
+    usersAPI.follow(userId).then((response) => {
+        if (response.data.resultCode === 0) {
+            dispatch(followSuccess(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+    });
 };
 
 const unfollow = (userId) => (dispatch) => {
-  dispatch(toggleFollowingProgress(true, userId));
+    dispatch(toggleFollowingProgress(true, userId));
 
-  usersAPI.unfollow(userId).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(unfollowSuccess(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
-  });
+    usersAPI.unfollow(userId).then((response) => {
+        if (response.data.resultCode === 0) {
+            dispatch(unfollowSuccess(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+    });
 };
 
 export {
-  follow,
-  unfollow,
-  setUsers,
-  getUsers,
-  getStatus,
-  updateStatus,
-  followSuccess,
-  setUserProfile,
-  getUserProfile,
-  setCurrentPage,
-  unfollowSuccess,
-  setAuthUserData,
-  getAuthUserData,
-  toggleIsFetching,
-  setTotalUsersCount,
-  sendMessageCreator,
-  addPostActionCreator,
-  toggleFollowingProgress,
-  updateNewMessageBodyCreator,
+    login,
+    follow,
+    unfollow,
+    setUsers,
+    getUsers,
+    getStatus,
+    updateStatus,
+    followSuccess,
+    setUserProfile,
+    getUserProfile,
+    setCurrentPage,
+    unfollowSuccess,
+    setAuthUserData,
+    getAuthUserData,
+    toggleIsFetching,
+    setTotalUsersCount,
+    sendMessageCreator,
+    addPostActionCreator,
+    toggleFollowingProgress,
+    updateNewMessageBodyCreator,
 };
