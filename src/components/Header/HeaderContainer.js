@@ -7,31 +7,31 @@ import { getAuthUserData, logout } from '../../redux/actions/actionCreators';
 import Header from './Header';
 
 class HeaderContainer extends Component {
-    componentDidMount() {
-        const { props } = this;
-        props.getAuthUserData();
-    }
+  componentDidMount() {
+    const { props } = this;
+    props.getAuthUserData();
+  }
 
-    render() {
-        const { props } = this;
-        return <Header {...props} />;
-    }
-};
+  render() {
+    const { props } = this;
+    return <Header {...props} />;
+  }
+}
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
-    login: state.auth.login,
+  isAuth: state.auth.isAuth,
+  login: state.auth.login,
 });
 
 
 HeaderContainer.defaultProps = {
-    setAuthUserData: PropTypes.func,
-    getAuthUserData: PropTypes.func,
+  setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 HeaderContainer.propTypes = {
-    setAuthUserData: PropTypes.func,
-    getAuthUserData: PropTypes.func,
+  setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 
