@@ -13,6 +13,8 @@ const Header = (props) => {
 
     return (
         <header className={style.header}>
+            <button>RU</button>
+            <button>EN</button>
             <div className={style.loginBlock}>
                 {isAuth
                     ? (
