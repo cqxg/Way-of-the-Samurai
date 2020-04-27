@@ -1,5 +1,6 @@
 {
     "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "SEND": "Send",
     "REMEMBER_ME": "remember me",
     "PROFILE": "Profile",
