@@ -8,19 +8,19 @@ import { Textarea } from '../../../utils/FormControl/formsControls';
 const maxLenght10 = maxLengthCreator(10);
 
 const AddNewPostForm = (props) => {
-    const { t } = useTranslation();
-    const { handleSubmit } = props;
+  const { t } = useTranslation();
+  const { handleSubmit } = props;
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <Field component={Textarea} name="newPostText" validate={[required, maxLenght10]} />
-            </div>
-            <div>
-                <button>{t('ADD_POST')}</button>
-            </div>
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <Field component={Textarea} name="newPostText" validate={[required, maxLenght10]} />
+      </div>
+      <div>
+        <button>{t('ADD_POST')}</button>
+      </div>
+    </form>
+  );
 };
 
 const AddNewPostFormRedux = reduxForm({ form: 'profileAddNewPostForm' })(AddNewPostForm);

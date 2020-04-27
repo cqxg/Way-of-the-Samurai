@@ -6,46 +6,46 @@ import PropTypes from 'prop-types';
 import style from './Header.module.css';
 
 const Header = (props) => {
-    const { t, i18n } = useTranslation();
-    const { isAuth, login } = props;
+  const { t, i18n } = useTranslation();
+  const { isAuth, login } = props;
 
-    const activateRu = (e) => {
-        i18n.changeLanguage('ru');
-    };
+  const activateRu = (e) => {
+    i18n.changeLanguage('ru');
+  };
 
-    const activateEn = (e) => {
-        i18n.changeLanguage('en');
-    };
+  const activateEn = (e) => {
+    i18n.changeLanguage('en');
+  };
 
-    return (
-        <header className={style.header}>
-            <button onClick={(e) => activateRu(e)}>RU</button>
-            <button onClick={(e) => activateEn(e)}>EN</button>
-            <div className={style.loginBlock}>
-                {isAuth
-                    ? (
-                        <div>
-                            {login}
-                            {' '}
+  return (
+    <header className={style.header}>
+      <button onClick={(e) => activateRu(e)}>RU</button>
+      <button onClick={(e) => activateEn(e)}>EN</button>
+      <div className={style.loginBlock}>
+        {isAuth
+          ? (
+            <div>
+              {login}
+              {' '}
 -
-                            {' '}
-                            <button onClick={props.logout}>{t('LOGOUT')}</button>
-                        </div>
-                    )
-                    : <NavLink to="/login">{t('LOGIN')}</NavLink>}
+              {' '}
+              <button onClick={props.logout}>{t('LOGOUT')}</button>
             </div>
-        </header>
-    );
+          )
+          : <NavLink to="/login">{t('LOGIN')}</NavLink>}
+      </div>
+    </header>
+  );
 };
 
 Header.defaultProps = {
-    isAuth: PropTypes.bool,
-    login: PropTypes.string,
+  isAuth: PropTypes.bool,
+  login: PropTypes.string,
 };
 
 Header.propTypes = {
-    isAuth: PropTypes.bool,
-    login: PropTypes.string,
+  isAuth: PropTypes.bool,
+  login: PropTypes.string,
 };
 
 export default Header;

@@ -2,13 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const News = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <div>
-            {t('NEWS')}
-        </div>
-    )
+  return (
+    <div>
+      {t('NEWS')}
+    </div>
+  );
 };
 
 export default News;
