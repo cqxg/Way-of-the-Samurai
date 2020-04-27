@@ -1,6 +1,8 @@
 {
     "LOGIN": "Login",
     "LOGOUT": "Logout",
+    "EMAIL": "email",
+    "PASSWORD": "password",
     "SEND": "Send",
     "REMEMBER_ME": "remember me",
     "PROFILE": "Profile",

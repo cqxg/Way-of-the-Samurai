@@ -12,10 +12,10 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <Field placeholder="email" name="email" component={Input} validate={[required]} />
+                <Field placeholder={t('EMAIL')} name="email" component={Input} validate={[required]} />
             </div>
             <div>
-                <Field placeholder="password" name="password" component={Input} validate={[required]} />
+                <Field placeholder={t('PASSWORD')} name="password" component={Input} validate={[required]} />
             </div>
             <div>
                 <Field name="rememberMe" type="checkbox" component="input" />
