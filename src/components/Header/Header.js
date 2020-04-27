@@ -19,8 +19,8 @@ const Header = (props) => {
 
   return (
     <header className={style.header}>
-      <button onClick={(e) => activateRu(e)}>RU</button>
-      <button onClick={(e) => activateEn(e)}>EN</button>
+      <button onClick={(e) => activateRu(e)}>{t('RU')}</button>
+      <button onClick={(e) => activateEn(e)}>{t('EN')}</button>
       <div className={style.loginBlock}>
         {isAuth
           ? (
