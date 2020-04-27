@@ -5,7 +5,7 @@ const Music = () => {
     const { t } = useTranslation();
     return (
         <div>
-            {t('profile')}
+            {t('MUSIC')}
         </div>
     )
 };
