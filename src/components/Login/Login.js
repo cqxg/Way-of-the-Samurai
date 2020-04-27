@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import LoginReduxForm from './LoginForm';
-import { login } from '../../redux/actions/actionCreators';
+import { login } from '../../redux/actions/thunks';
 
 const Login = (props) => {
   const { t } = useTranslation();

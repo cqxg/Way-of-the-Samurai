@@ -1,5 +1,3 @@
-import { WELL } from '../../utils/constants';
-
 import {
   FOLLOW,
   ADD_POST,
@@ -15,8 +13,6 @@ import {
   UPDATE_NEW_MESSAGE_BODY,
   TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
-
-import { usersAPI, authAPI } from '../../api/api';
 
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
@@ -37,99 +33,14 @@ const setAuthUserData = (userId, email, login, isAuth) => ({
   },
 });
 
-const getAuthUserData = () => (dispatch) => {
-  authAPI.me().then((response) => {
-    if (response.data.resultCode === WELL) {
-      const { id, email, login } = response.data.data;
-      dispatch(setAuthUserData(id, email, login, true));
-    }
-  });
-};
-
-const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe).then((response) => {
-    if (response.data.resultCode === WELL) {
-      dispatch(getAuthUserData());
-    }
-  });
-};
-
-const logout = () => (dispatch) => {
-  authAPI.logout().then((response) => {
-    if (response.data.resultCode === WELL) {
-      dispatch(setAuthUserData(null, null, null, false));
-    }
-  });
-};
-
-const getUsers = (currentPage, pageSize) => (dispatch) => {
-  dispatch(toggleIsFetching(true));
-  dispatch(setCurrentPage(currentPage));
-  usersAPI.getUsers(currentPage, pageSize).then((data) => {
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsers(data.items));
-    dispatch(setTotalUsersCount(data.totalCount));
-  });
-};
-
-const getUserProfile = (userId) => (dispatch) => {
-  usersAPI.getProfile(userId).then((response) => {
-    dispatch(setUserProfile(response.data));
-  });
-};
-
-const getStatus = (userId) => (dispatch) => {
-  usersAPI.getStatus(userId).then((response) => {
-    dispatch(setStatus(response.data));
-  });
-};
-
-const updateStatus = (status) => (dispatch) => {
-  usersAPI.updateStatus(status).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(setStatus(response.data));
-    }
-  });
-};
-
-const follow = (userId) => (dispatch) => {
-  dispatch(toggleFollowingProgress(true, userId));
-
-  usersAPI.follow(userId).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(followSuccess(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
-  });
-};
-
-const unfollow = (userId) => (dispatch) => {
-  dispatch(toggleFollowingProgress(true, userId));
-
-  usersAPI.unfollow(userId).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(unfollowSuccess(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
-  });
-};
-
 export {
-  login,
-  logout,
-  follow,
-  unfollow,
   setUsers,
-  getUsers,
-  getStatus,
-  updateStatus,
+  setStatus,
   followSuccess,
   setUserProfile,
-  getUserProfile,
   setCurrentPage,
   unfollowSuccess,
   setAuthUserData,
-  getAuthUserData,
   toggleIsFetching,
   setTotalUsersCount,
   sendMessageCreator,

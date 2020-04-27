@@ -5,12 +5,8 @@ import PropTypes from 'prop-types';
 
 import Loader from '../../utils/loader';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-import {
-  getUsers,
-  setCurrentPage,
-  follow,
-  unfollow,
-} from '../../redux/actions/actionCreators';
+import { setCurrentPage } from '../../redux/actions/actionCreators';
+import { getUsers, follow, unfollow } from '../../redux/actions/thunks';
 
 import Users from './Users';
 
@@ -32,7 +28,7 @@ class UsersContainer extends Component {
       } = this.props;
 
       return (
-        <>
+        <div>
           {isFetching ? <Loader /> : null}
           <Users
             totalUsersCount={totalUsersCount}
@@ -44,7 +40,7 @@ class UsersContainer extends Component {
             unfollow={props.unfollow}
             followingInProgress={props.followingInProgress}
           />
-        </>
+        </div>
       );
     }
 }

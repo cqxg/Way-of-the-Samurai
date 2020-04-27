@@ -25,7 +25,10 @@ const Header = (props) => {
         {isAuth
           ? (
             <div>
-              <span>{login}-</span>
+              <span>
+                {login}
+-
+              </span>
               <button onClick={props.logout}>{t('LOGOUT')}</button>
             </div>
           )

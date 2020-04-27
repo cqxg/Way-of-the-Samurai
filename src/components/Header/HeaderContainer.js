@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getAuthUserData, logout } from '../../redux/actions/actionCreators';
+import { getAuthUserData, logout } from '../../redux/actions/thunks';
 
 import Header from './Header';
 
