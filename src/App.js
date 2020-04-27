@@ -22,7 +22,7 @@ const App = () => (
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-        <Route path={ROUTES.PROFILE_USER_ID} render={() => <ProfileContainer />} />
+          <Route path={ROUTES.PROFILE_USER_ID} render={() => <ProfileContainer />} />
           <Route path={ROUTES.DIALOGS} render={() => <DialogsContainer />} />
           <Route path={ROUTES.NEWS} render={() => <News />} />
           <Route path={ROUTES.MUSIC} render={() => <Music />} />
