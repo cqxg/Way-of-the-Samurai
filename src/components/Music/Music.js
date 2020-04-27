@@ -1,11 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { I18N } from '../../utils/constants';
-
-const Music = () => (
-  <div>
-    {I18N.EN.MUSIC}
-  </div>
-);
+const Music = () => {
+    const { t } = useTranslation();
+    return (
+        <div>
+            {t('profile')}
+        </div>
+    )
+};
 
 export default Music;
