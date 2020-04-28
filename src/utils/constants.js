@@ -29,6 +29,16 @@ const I18N_KEYS = {
     EN: "EN"
 };
 
+const TRANSLATIONS = {
+    RU = {
+        
+    },
+
+    EN ={
+
+    }
+};
+
 export {
     DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N
 };
