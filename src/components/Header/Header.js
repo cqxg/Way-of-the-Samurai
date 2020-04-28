@@ -3,24 +3,26 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
+import { I18N } from '../../utils/constants';
+
 import style from './Header.module.css';
 
 const Header = (props) => {
   const { t, i18n } = useTranslation();
   const { isAuth, login } = props;
 
-  const activateRu = (e) => {
-    i18n.changeLanguage('ru');
+  const activateRu = () => {
+    i18n.changeLanguage(I18N.ru);
   };
 
-  const activateEn = (e) => {
-    i18n.changeLanguage('en');
+  const activateEn = () => {
+    i18n.changeLanguage(I18N.en);
   };
 
   return (
     <header className={style.header}>
-      <button onClick={(e) => activateRu(e)}>{t('RU')}</button>
-      <button onClick={(e) => activateEn(e)}>{t('EN')}</button>
+      <button onClick={() => activateRu()}>{t('RU')}</button>
+      <button onClick={() => activateEn()}>{t('EN')}</button>
       <div className={style.loginBlock}>
         {isAuth
           ? (
