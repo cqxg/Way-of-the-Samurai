@@ -10,6 +10,25 @@ const I18N = {
     en: 'en'
 };
 
+const I18N_KEYS = {
+    LOGIN: "Login",
+    LOGOUT: "Logout",
+    EMAIL: "email",
+    PASSWORD: "password",
+    SEND: "Send",
+    REMEMBER_ME: "remember me",
+    PROFILE: "Profile",
+    MESSAGES: "Messages",
+    USERS: "Users",
+    NEWS: "News",
+    MUSIC: "Music",
+    SETTINGS: "Settings",
+    MY_POSTS: "My Posts",
+    ADD_POST: "Add post",
+    RU: "RU",
+    EN: "EN"
+};
+
 export {
-  DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N
+    DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N
 };
