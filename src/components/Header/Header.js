@@ -22,17 +22,17 @@ const Header = (props) => {
 
   return (
     <header className={style.header}>
-      <button onClick={() => activateRu()}>{t('RU')}</button>
-      <button onClick={() => activateEn()}>{t('EN')}</button>
+      <button onClick={() => activateRu()}>{t(I18N_KEYS.RU)}</button>
+      <button onClick={() => activateEn()}>{t(I18N_KEYS.EN)}</button>
       <div className={style.loginBlock}>
         {isAuth
           ? (
             <div>
               <span>{login}-</span>
-              <button onClick={props.logout}>{t('LOGOUT')}</button>
+              <button onClick={props.logout}>{t(I18N_KEYS.LOGOUT)}</button>
             </div>
           )
-          : <NavLink to={ROUTES.LOGIN}>{t('LOGIN')}</NavLink>}
+          : <NavLink to={ROUTES.LOGIN}>{t(I18N_KEYS.LOGIN)}</NavLink>}
       </div>
     </header>
   );

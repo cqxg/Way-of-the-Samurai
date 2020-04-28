@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { login } from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
+import { I18N_KEYS } from '../../utils/constants';
 
 import LoginReduxForm from './LoginForm';
 
@@ -22,7 +23,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <h1>{t('LOGIN')}</h1>
+      <h1>{t(I18N_KEYS.LOGIN)}</h1>
       <LoginReduxForm onSubmit={onSubmit} />
     </div>
   );

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import { I18N_KEYS } from '../../../utils/constants';
+
 import Post from './Post/Post';
 import AddNewPostForm from './AddNewPostForm';
 
@@ -32,7 +34,7 @@ const MyPosts = (props) => {
 
   return (
     <div className={style.postsBlock}>
-      <h3>{t('MY_POSTS')}</h3>
+      <h3>{t(I18N_KEYS.MY_POSTS)}</h3>
       <AddNewPostForm onSubmit={onAddPost} />
       <div className={style.posts}>
         {postsElements}
