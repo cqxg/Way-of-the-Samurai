@@ -8,7 +8,7 @@ const WELL = 0;
 const I18N = {
     ru: 'ru',
     en: 'en'
-}
+};
 
 export {
   DEFAULT_LIKES_VALUE, NEXT_ID, DEFAULT_USER_ID, API_KEY, ALT_PROFILE_AVATAR, ALT_USER_AVATAR, WELL, I18N
