@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import LoginReduxForm from './LoginForm';
 import { login } from '../../redux/actions/thunks';
+import { ROUTES } from '../../utils/url-utils';
+
+import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
   const { t } = useTranslation();
@@ -15,7 +17,7 @@ const Login = (props) => {
   };
 
   if (props.isAuth) {
-    return <Redirect to="/profile" />;
+    return <Redirect to={ROUTES.PROFILE} />;
   }
 
   return (
