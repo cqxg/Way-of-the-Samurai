@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { DEFAULT_USER_ID } from '../../utils/constants';
-import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/actionCreators';
+import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/thunks';
 
 import Profile from './Profile';
 

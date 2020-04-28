@@ -1,0 +1,18 @@
+{
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "EMAIL": "email",
+    "PASSWORD": "password",
+    "SEND": "Send",
+    "REMEMBER_ME": "remember me",
+    "PROFILE": "Profile",
+    "MESSAGES": "Messages",
+    "USERS": "Users",
+    "NEWS": "News",
+    "MUSIC": "Music",
+    "SETTINGS": "Settings",
+    "MY_POSTS": "My Posts",
+    "ADD_POST": "Add post",
+    "RU": "RU",
+    "EN": "EN"
+}

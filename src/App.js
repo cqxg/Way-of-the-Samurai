@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -11,24 +11,28 @@ import UsersContainer from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
 
+import { ROUTES } from './utils/url-utils';
+
 import './App.css';
 
 const App = () => (
-  <BrowserRouter>
-    <div className="app-wrapper">
-      <HeaderContainer />
-      <Navbar />
-      <div className="app-wrapper-content">
-        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-        <Route path="/dialogs" render={() => <DialogsContainer />} />
-        <Route path="/news" render={() => <News />} />
-        <Route path="/music" render={() => <Music />} />
-        <Route path="/users" render={() => <UsersContainer />} />
-        <Route path="/settings" render={() => <Settings />} />
-        <Route path="/login" render={() => <Login />} />
+  <Suspense fallback="loading">
+    <BrowserRouter>
+      <div className="app-wrapper">
+        <HeaderContainer />
+        <Navbar />
+        <div className="app-wrapper-content">
+          <Route path={ROUTES.PROFILE_USER_ID} render={() => <ProfileContainer />} />
+          <Route path={ROUTES.DIALOGS} render={() => <DialogsContainer />} />
+          <Route path={ROUTES.NEWS} render={() => <News />} />
+          <Route path={ROUTES.MUSIC} render={() => <Music />} />
+          <Route path={ROUTES.USERS} render={() => <UsersContainer />} />
+          <Route path={ROUTES.SETTINGS} render={() => <Settings />} />
+          <Route path={ROUTES.LOGIN} render={() => <Login />} />
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Suspense>
 );
 
 export default App;

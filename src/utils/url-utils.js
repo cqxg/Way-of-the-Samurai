@@ -5,14 +5,17 @@ const ROUTES = {
   NEWS: '/news',
   USERS: '/users',
   MUSIC: '/music',
+  LOGIN: '/login',
   COUNT: '&count=',
   FOLLOW: 'follow/',
   AUTH_ME: 'auth/me',
   PROFILE: 'profile/',
   DIALOGS: '/dialogs',
   SETTINGS: '/settings',
+  AUTH_LOGIN: 'auth/login',
   USERS_PAGE: 'users?page=',
   PROFILE_STATUS: 'profile/status/',
+  PROFILE_USER_ID: '/profile/:userId?',
 };
 
 export {

@@ -1,11 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { I18N } from '../../utils/constants';
+import { I18N_KEYS } from '../../utils/constants';
 
-const News = () => (
-  <div>
-    {I18N.EN.NEWS}
-  </div>
-);
+const News = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      {t(I18N_KEYS.NEWS)}
+    </div>
+  );
+};
 
 export default News;
