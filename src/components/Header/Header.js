@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import { I18N } from '../../utils/constants';
-
 import style from './Header.module.css';
 
 const Header = (props) => {
@@ -12,11 +10,11 @@ const Header = (props) => {
   const { isAuth, login } = props;
 
   const activateRu = () => {
-    i18n.changeLanguage(I18N.ru);
+    i18n.changeLanguage('ru');
   };
 
   const activateEn = () => {
-    i18n.changeLanguage(I18N.en);
+    i18n.changeLanguage('en');
   };
 
   return (
@@ -27,7 +25,10 @@ const Header = (props) => {
         {isAuth
           ? (
             <div>
-              <span>{login}-</span>
+              <span>
+                {login}
+-
+              </span>
               <button onClick={props.logout}>{t('LOGOUT')}</button>
             </div>
           )
