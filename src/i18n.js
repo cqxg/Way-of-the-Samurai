@@ -2,9 +2,14 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-xhr-backend';
 
+import { TRANSLATIONS } from '';
+
 const resources = {
     en: {
-        translation: translationEN
+        translation: TRANSLATIONS.EN
+    },
+    ru: {
+        translation: TRANSLATIONS.RU
     }
 };
 
