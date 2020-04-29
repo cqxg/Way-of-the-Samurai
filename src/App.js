@@ -1,7 +1,9 @@
 import React, { Suspense, Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import { ROUTES } from './utils/url-utils';
+import { getAuthUserData, logout } from './redux/actions/thunks';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
@@ -16,6 +18,11 @@ import Login from './components/Login/Login';
 import './App.css';
 
 class App extends Component {
+    componentDidMount() {
+        const { props } = this;
+        props.getAuthUserData();
+    };
+
     render() {
         return (
             <Suspense fallback="loading">
@@ -39,4 +46,4 @@ class App extends Component {
     }
 };
 
-export default App;
+export default connect(null, { getAuthUserData, logout })(App);
