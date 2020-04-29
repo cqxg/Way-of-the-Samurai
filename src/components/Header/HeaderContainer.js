@@ -7,27 +7,26 @@ import { logout } from '../../redux/actions/thunks';
 import Header from './Header';
 
 class HeaderContainer extends Component {
-
-    render() {
-        const { props } = this;
-        return <Header {...props} />;
-    }
+  render() {
+    const { props } = this;
+    return <Header {...props} />;
+  }
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
-    login: state.auth.login,
+  isAuth: state.auth.isAuth,
+  login: state.auth.login,
 });
 
 
 HeaderContainer.defaultProps = {
-    setAuthUserData: PropTypes.func,
-    getAuthUserData: PropTypes.func,
+  setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 HeaderContainer.propTypes = {
-    setAuthUserData: PropTypes.func,
-    getAuthUserData: PropTypes.func,
+  setAuthUserData: PropTypes.func,
+  getAuthUserData: PropTypes.func,
 };
 
 

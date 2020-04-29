@@ -19,41 +19,40 @@ import Login from './components/Login/Login';
 import './App.css';
 
 class App extends Component {
-    componentDidMount() {
-        const { props } = this;
-        props.initializeApp();
-    };
+  componentDidMount() {
+    const { props } = this;
+    props.initializeApp();
+  }
 
-    render() {
-
-        if (!this.props.initialized) {
-            return <Loader />
-        };
-
-        return (
-            <Suspense fallback="loading">
-                <BrowserRouter>
-                    <div className="app-wrapper">
-                        <HeaderContainer />
-                        <Navbar />
-                        <div className="app-wrapper-content">
-                            <Route path={ROUTES.PROFILE_USER_ID} render={() => <ProfileContainer />} />
-                            <Route path={ROUTES.DIALOGS} render={() => <DialogsContainer />} />
-                            <Route path={ROUTES.NEWS} render={() => <News />} />
-                            <Route path={ROUTES.MUSIC} render={() => <Music />} />
-                            <Route path={ROUTES.USERS} render={() => <UsersContainer />} />
-                            <Route path={ROUTES.SETTINGS} render={() => <Settings />} />
-                            <Route path={ROUTES.LOGIN} render={() => <Login />} />
-                        </div>
-                    </div>
-                </BrowserRouter>
-            </Suspense>
-        )
+  render() {
+    if (!this.props.initialized) {
+      return <Loader />;
     }
-};
+
+    return (
+      <Suspense fallback="loading">
+        <BrowserRouter>
+          <div className="app-wrapper">
+            <HeaderContainer />
+            <Navbar />
+            <div className="app-wrapper-content">
+              <Route path={ROUTES.PROFILE_USER_ID} render={() => <ProfileContainer />} />
+              <Route path={ROUTES.DIALOGS} render={() => <DialogsContainer />} />
+              <Route path={ROUTES.NEWS} render={() => <News />} />
+              <Route path={ROUTES.MUSIC} render={() => <Music />} />
+              <Route path={ROUTES.USERS} render={() => <UsersContainer />} />
+              <Route path={ROUTES.SETTINGS} render={() => <Settings />} />
+              <Route path={ROUTES.LOGIN} render={() => <Login />} />
+            </div>
+          </div>
+        </BrowserRouter>
+      </Suspense>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+  initialized: state.app.initialized,
 });
 
 export default connect(mapStateToProps, { initializeApp })(App);

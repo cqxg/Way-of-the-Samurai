@@ -1,20 +1,20 @@
 import { SET_INITIALIZED } from '../actions/actionTypes';
 
 const initialState = {
-    initialized: false,
+  initialized: false,
 };
 
 const appReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_INITIALIZED:
-            return {
-                ...state,
-                initialized: true,
-            };
+  switch (action.type) {
+    case SET_INITIALIZED:
+      return {
+        ...state,
+        initialized: true,
+      };
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default appReducer;

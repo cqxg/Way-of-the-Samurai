@@ -15,7 +15,7 @@ import {
   TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
 
-const setInitialized = () => ({ type: SET_INITIALIZED});
+const setInitialized = () => ({ type: SET_INITIALIZED });
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
 const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });

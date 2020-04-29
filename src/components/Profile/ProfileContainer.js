@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/thunks';
+import { ROUTES } from '../../utils/url-utils';
 
 import Profile from './Profile';
 
@@ -15,7 +16,11 @@ class ProfileContainer extends Component {
 
     if (!userId) {
       userId = props.authorizedUserId;
+      if(!userId) {
+          props.history.push(ROUTES.LOGIN)
+      }
     }
+    
     props.getUserProfile(userId);
     props.getStatus(userId);
   }
