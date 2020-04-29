@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { ROUTES } from './utils/url-utils';
-import { getAuthUserData, logout } from './redux/actions/thunks';
+import { initializeApp } from './redux/actions/thunks';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
@@ -20,7 +20,7 @@ import './App.css';
 class App extends Component {
     componentDidMount() {
         const { props } = this;
-        props.getAuthUserData();
+        props.initializeApp();
     };
 
     render() {
@@ -46,4 +46,4 @@ class App extends Component {
     }
 };
 
-export default connect(null, { getAuthUserData, logout })(App);
+export default connect(null, { initializeApp })(App);
