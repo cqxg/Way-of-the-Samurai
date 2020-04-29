@@ -2,6 +2,7 @@ import React, { Suspense, Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Loader from './utils/loader';
 import { ROUTES } from './utils/url-utils';
 import { initializeApp } from './redux/actions/thunks';
 
@@ -24,6 +25,11 @@ class App extends Component {
     };
 
     render() {
+
+        if (!this.props.initialized) {
+            return <Loader />
+        };
+
         return (
             <Suspense fallback="loading">
                 <BrowserRouter>
@@ -46,4 +52,8 @@ class App extends Component {
     }
 };
 
-export default connect(null, { initializeApp })(App);
+const mapStateToProps = (state) => ({
+    initialized: state.app.initialized
+});
+
+export default connect(mapStateToProps, { initializeApp })(App);
