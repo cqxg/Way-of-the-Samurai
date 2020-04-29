@@ -1,6 +1,6 @@
 import React, { Suspense, Component } from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { ROUTES } from './utils/url-utils';
 import { getAuthUserData, logout } from './redux/actions/thunks';

@@ -6,6 +6,7 @@ import {
   SET_STATUS,
   SEND_MESSAGE,
   SET_USER_DATA,
+  SET_INITIALIZED,
   SET_CURRENT_PAGE,
   SET_USER_PROFILE,
   TOGGLE_IS_FETCHING,
@@ -14,6 +15,7 @@ import {
   TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
 
+const setInitialized = () => ({ type: SET_INITIALIZED});
 const setUsers = (users) => ({ type: SET_USERS, payload: users });
 const setStatus = (status) => ({ type: SET_STATUS, payload: status });
 const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
@@ -37,6 +39,7 @@ export {
   setUsers,
   setStatus,
   followSuccess,
+  setInitialized,
   setUserProfile,
   setCurrentPage,
   unfollowSuccess,
