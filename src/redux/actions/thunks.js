@@ -1,3 +1,5 @@
+import { stopSubmit } from 'redux-form';
+
 import { WELL } from '../../utils/constants';
 
 import { usersAPI, authAPI } from '../../api/api';
@@ -8,6 +10,7 @@ import {
   followSuccess,
   setUserProfile,
   setCurrentPage,
+  setInitialized,
   unfollowSuccess,
   setAuthUserData,
   toggleIsFetching,
@@ -15,19 +18,27 @@ import {
   toggleFollowingProgress,
 } from './actionCreators';
 
-const getAuthUserData = () => (dispatch) => {
-  authAPI.me().then((response) => {
-    if (response.data.resultCode === WELL) {
-      const { id, email, login } = response.data.data;
-      dispatch(setAuthUserData(id, email, login, true));
-    }
+const initializeApp = () => (dispatch) => {
+  const promise = dispatch(getAuthUserData());
+  Promise.all([promise]).then(() => {
+    dispatch(setInitialized());
   });
 };
+
+const getAuthUserData = () => (dispatch) => authAPI.me().then((response) => {
+  if (response.data.resultCode === WELL) {
+    const { id, email, login } = response.data.data;
+    dispatch(setAuthUserData(id, email, login, true));
+  }
+});
 
 const login = (email, password, rememberMe) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then((response) => {
     if (response.data.resultCode === WELL) {
       dispatch(getAuthUserData());
+    } else {
+      const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
+      dispatch(stopSubmit('login', { _error: mess }));
     }
   });
 };
@@ -100,6 +111,7 @@ export {
   getUsers,
   getStatus,
   updateStatus,
+  initializeApp,
   getUserProfile,
   getAuthUserData,
 };

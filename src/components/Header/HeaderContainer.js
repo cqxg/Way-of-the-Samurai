@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getAuthUserData, logout } from '../../redux/actions/thunks';
+import { logout } from '../../redux/actions/thunks';
 
 import Header from './Header';
 
 class HeaderContainer extends Component {
-  componentDidMount() {
-    const { props } = this;
-    props.getAuthUserData();
-  }
-
   render() {
     const { props } = this;
     return <Header {...props} />;
@@ -35,4 +30,4 @@ HeaderContainer.propTypes = {
 };
 
 
-export default connect(mapStateToProps, { getAuthUserData, logout })(HeaderContainer);
+export default connect(mapStateToProps, { logout })(HeaderContainer);

@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { DEFAULT_USER_ID } from '../../utils/constants';
 import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/thunks';
+import { ROUTES } from '../../utils/url-utils';
 
 import Profile from './Profile';
 
@@ -15,8 +15,12 @@ class ProfileContainer extends Component {
     let { userId } = props.match.params;
 
     if (!userId) {
-      userId = DEFAULT_USER_ID;
+      userId = props.authorizedUserId;
+      if(!userId) {
+          props.history.push(ROUTES.LOGIN)
+      }
     }
+    
     props.getUserProfile(userId);
     props.getStatus(userId);
   }
@@ -33,6 +37,8 @@ class ProfileContainer extends Component {
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  authorizedUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
 });
 
 export default compose(
