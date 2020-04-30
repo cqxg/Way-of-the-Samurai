@@ -13,3 +13,7 @@ const getTotalUsersCount = (state) => {
 const getCurrentPage = (state) => {
     return state.usersPage.currentPage;
 };
+
+const getIsFetching = (state) => {
+    return state.usersPage.isFetching;
+};
