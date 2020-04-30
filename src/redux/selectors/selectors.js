@@ -1,4 +1,4 @@
-const getUsers = (state) => {
+const takeUser = (state) => {
     return state.usersPage.users;
 };
 
@@ -20,4 +20,13 @@ const getIsFetching = (state) => {
 
 const getFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress;
+};
+
+export {
+    takeUser,
+    getPageSize,
+    getIsFetching,
+    getCurrentPage,
+    getTotalUsersCount,
+    getFollowingInProgress,
 };
