@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 
-import Loader from '../../utils/loader';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
-import { setCurrentPage } from '../../redux/actions/actionCreators';
+import {
+  takeUser,
+  getPageSize,
+  getIsFetching,
+  getCurrentPage,
+  getTotalUsersCount,
+  getFollowingInProgress,
+} from '../../redux/selectors/selectors';
 import { getUsers, follow, unfollow } from '../../redux/actions/thunks';
-import { 
-    takeUser,
-    getPageSize,
-    getIsFetching,
-    getCurrentPage,
-    getTotalUsersCount,
-    getFollowingInProgress,
- } from '../../redux/selectors/selectors';
+import { setCurrentPage } from '../../redux/actions/actionCreators';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import Loader from '../../utils/loader';
 
 import Users from './Users';
 

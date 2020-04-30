@@ -1,32 +1,20 @@
-const takeUser = (state) => {
-    return state.usersPage.users;
-};
+const takeUser = (state) => state.usersPage.users;
 
-const getPageSize = (state) => {
-    return state.usersPage.pageSize;
-};
+const getPageSize = (state) => state.usersPage.pageSize;
 
-const getTotalUsersCount = (state) => {
-    return state.usersPage.totalUsersCount;
-};
+const getTotalUsersCount = (state) => state.usersPage.totalUsersCount;
 
-const getCurrentPage = (state) => {
-    return state.usersPage.currentPage;
-};
+const getCurrentPage = (state) => state.usersPage.currentPage;
 
-const getIsFetching = (state) => {
-    return state.usersPage.isFetching;
-};
+const getIsFetching = (state) => state.usersPage.isFetching;
 
-const getFollowingInProgress = (state) => {
-    return state.usersPage.followingInProgress;
-};
+const getFollowingInProgress = (state) => state.usersPage.followingInProgress;
 
 export {
-    takeUser,
-    getPageSize,
-    getIsFetching,
-    getCurrentPage,
-    getTotalUsersCount,
-    getFollowingInProgress,
+  takeUser,
+  getPageSize,
+  getIsFetching,
+  getCurrentPage,
+  getTotalUsersCount,
+  getFollowingInProgress,
 };
