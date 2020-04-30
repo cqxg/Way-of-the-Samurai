@@ -5,3 +5,7 @@ const getUsers = (state) => {
 const getPageSize = (state) => {
     return state.usersPage.pageSize;
 };
+
+const getTotalUsersCount = (state) => {
+    return state.usersPage.totalUsersCount;
+};
