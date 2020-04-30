@@ -16,11 +16,11 @@ class ProfileContainer extends Component {
 
     if (!userId) {
       userId = props.authorizedUserId;
-      if(!userId) {
-          props.history.push(ROUTES.LOGIN)
+      if (!userId) {
+        props.history.push(ROUTES.LOGIN);
       }
     }
-    
+
     props.getUserProfile(userId);
     props.getStatus(userId);
   }

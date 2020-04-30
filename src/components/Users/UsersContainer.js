@@ -3,10 +3,18 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 
-import Loader from '../../utils/loader';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
-import { setCurrentPage } from '../../redux/actions/actionCreators';
+import {
+  takeUser,
+  getPageSize,
+  getIsFetching,
+  getCurrentPage,
+  getTotalUsersCount,
+  getFollowingInProgress,
+} from '../../redux/selectors/selectors';
 import { getUsers, follow, unfollow } from '../../redux/actions/thunks';
+import { setCurrentPage } from '../../redux/actions/actionCreators';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import Loader from '../../utils/loader';
 
 import Users from './Users';
 
@@ -46,12 +54,12 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.usersPage.users,
-  pageSize: state.usersPage.pageSize,
-  totalUsersCount: state.usersPage.totalUsersCount,
-  currentPage: state.usersPage.currentPage,
-  isFetching: state.usersPage.isFetching,
-  followingInProgress: state.usersPage.followingInProgress,
+  users: takeUser(state),
+  pageSize: getPageSize(state),
+  totalUsersCount: getTotalUsersCount(state),
+  currentPage: getCurrentPage(state),
+  isFetching: getIsFetching(state),
+  followingInProgress: getFollowingInProgress(state),
 });
 
 export default compose(
