@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ProfileStatusWithHooks = (props) => {
+    const stateWithSetState = useState(true);
+    const editMode = stateWithSetState[0];
+    const setEitMode = stateWithSetState[1];
+
     return (
         <div>
-            {
+            { !editMode &&
                 <div>
-                    <span onDoubleClick={activateEditMode}>{props.status || '-----------'}</span>
+                    <span>{props.status}</span>
                 </div>
             }
-            {
+            {editMode &&
                 <div>
-                    <input onChange={onSatusChange} autoFocus={true} onBlur={} value='' />
+                    <input autoFocus={true} />
                 </div>
             }
         </div>
