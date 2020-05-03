@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
 const ProfileStatusWithHooks = (props) => {
-    const stateWithSetState = useState(true);
-    const editMode = stateWithSetState[0];
-    const setEitMode = stateWithSetState[1];
+    const [editMode, setEitMode] = useState(false);
+
+    const activateEditMode = () => {
+        setEitMode(true);
+    };
 
     return (
         <div>
             { !editMode &&
                 <div>
-                    <span>{props.status}</span>
+                    <span onDoubleClick ={activateEditMode}>{props.status}</span>
                 </div>
             }
             {editMode &&
