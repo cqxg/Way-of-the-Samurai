@@ -1,37 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProfileStatusWithHooks = (props) => {
-    const [editMode, setEitMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
+  const [editMode, setEitMode] = useState(false);
+  const [status, setStatus] = useState(props.status);
 
-    const activateEditMode = () => {
-        setEitMode(true);
-    };
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
 
-    const deactivateEditMode = () => {
-        setEitMode(false);
-        props.updateStatus(status);
-    };
+  const activateEditMode = () => {
+    setEitMode(true);
+  };
 
-    const onStatusChange = (e) => {
-        setStatus(e.currentTarget.value)
-    };
+  const deactivateEditMode = () => {
+    setEitMode(false);
+    props.updateStatus(status);
+  };
 
-    return (
-        <div>
-            {!editMode
-                ? (
-                    <div>
-                        <span onDoubleClick={activateEditMode}>{props.status}</span>
-                    </div>
-                )
-                : (
-                    <div>
-                        <input autoFocus={true} value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
-                    </div>
-                )}
-        </div>
-    );
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
+  };
+
+  return (
+    <div>
+      {!editMode
+        ? (
+          <div>
+            <span onDoubleClick={activateEditMode}>{props.status}</span>
+          </div>
+        )
+        : (
+          <div>
+            <input autoFocus value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
+          </div>
+        )}
+    </div>
+  );
 };
 
 export default ProfileStatusWithHooks;
