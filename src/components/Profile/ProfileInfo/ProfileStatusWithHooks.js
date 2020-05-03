@@ -10,6 +10,11 @@ const ProfileStatusWithHooks = (props) => {
 
     const deactivateEditMode = () => {
         setEitMode(false);
+        props.updateStatus(status);
+    };
+
+    const onStatusChange = (e) => {
+        setStatus(e.currentTarget.value)
     };
 
     return (
@@ -22,7 +27,7 @@ const ProfileStatusWithHooks = (props) => {
                 )
                 : (
                     <div>
-                        <input autoFocus onBlur={deactivateEditMode} />
+                        <input autoFocus={true} value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
                     </div>
                 )}
         </div>
