@@ -7,18 +7,21 @@ const ProfileStatusWithHooks = (props) => {
         setEitMode(true);
     };
 
+    const deactivateEditMode = () => {
+        setEitMode(false);
+    };
+
     return (
         <div>
-            { !editMode &&
+            {!editMode
+                ?
                 <div>
-                    <span onDoubleClick ={activateEditMode}>{props.status}</span>
+                    <span onDoubleClick={activateEditMode}>{props.status}</span>
                 </div>
-            }
-            {editMode &&
+                :
                 <div>
-                    <input autoFocus={true} />
-                </div>
-            }
+                    <input autoFocus={true} onBlur={deactivateEditMode} />
+                </div>}
         </div>
     )
 }
