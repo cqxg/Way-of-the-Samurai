@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 import Loader from '../../../utils/loader';
 
@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
     <div>
       <div className={style.descriptionBlock}>
         <img alt="" src={profile.photos.large} />
-        <ProfileStatus status={status} updateStatus={updateStatus} />
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>
   );
