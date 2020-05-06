@@ -9,7 +9,7 @@ import AddNewPostForm from './AddNewPostForm';
 
 import style from './MyPosts.module.css';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
   const { t } = useTranslation();
 
   const {
@@ -41,7 +41,7 @@ const MyPosts = (props) => {
       </div>
     </div>
   );
-};
+});
 
 MyPosts.defaultProps = {
   posts: PropTypes.array,
