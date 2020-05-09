@@ -19,7 +19,7 @@ const state = {
 it('length of posts should be incremented', () => {
   const action = addPostActionCreator('it-kamasutra.com');
   const newState = profileReducer(state, action);
-  
+
   expect(newState.posts.length).toBe(3);
 });
 
@@ -29,3 +29,10 @@ it('message of new posts should be correct', () => {
 
   expect(newState.posts[2].message).toBe('it-kamasutra.com');
 });
+
+it('after deleting lenth of messages should be decrement', () => {
+    const action = deletePost(1);
+    const newState = profileReducer(state, action);
+  
+    expect(newState.posts.length).toBe(1);
+  });
