@@ -1,5 +1,5 @@
 import profileReducer from './profileReducer';
-import { addPostActionCreator } from '../actions/actionCreators';
+import { addPostActionCreator, deletePostActionCreator } from '../actions/actionCreators';
 
 const state = {
   posts: [
@@ -31,7 +31,7 @@ it('message of new posts should be correct', () => {
 });
 
 it('after deleting lenth of messages should be decrement', () => {
-    const action = deletePost(1);
+    const action = deletePostActionCreator(1);
     const newState = profileReducer(state, action);
   
     expect(newState.posts.length).toBe(1);
