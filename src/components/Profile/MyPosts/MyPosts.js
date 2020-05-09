@@ -9,7 +9,7 @@ import AddNewPostForm from './AddNewPostForm';
 
 import style from './MyPosts.module.css';
 
-const MyPosts = React.memo(props => {
+const MyPosts = React.memo((props) => {
   const { t } = useTranslation();
 
   const {
