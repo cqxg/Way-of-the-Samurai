@@ -22,6 +22,8 @@ const followSuccess = (userID) => ({ type: FOLLOW, payload: userID });
 const unfollowSuccess = (userID) => ({ type: UNFOLLOW, payload: userID });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, payload: profile });
 const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: newPostText });
+const deletePostActionCreator = (postId) => ({ type: DELETE_POST, payload: postId });
+
 const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
