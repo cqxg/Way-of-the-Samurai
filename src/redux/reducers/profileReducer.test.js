@@ -31,8 +31,8 @@ it('message of new posts should be correct', () => {
 });
 
 it('after deleting lenth of messages should be decrement', () => {
-    const action = deletePostActionCreator(1);
-    const newState = profileReducer(state, action);
-  
-    expect(newState.posts.length).toBe(1);
-  });
+  const action = deletePostActionCreator(1);
+  const newState = profileReducer(state, action);
+
+  expect(newState.posts.length).toBe(1);
+});
