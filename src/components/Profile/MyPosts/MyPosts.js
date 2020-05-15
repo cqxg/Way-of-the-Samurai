@@ -17,7 +17,8 @@ const MyPosts = React.memo((props) => {
     addPost,
   } = props;
 
-  const postsElements = [...posts].reverse().map((post) => {
+  const reverseElements = [...posts].reverse();
+  const postsElements = reverseElements.map((post) => {
     const { message, likesCount } = post;
     return (
       <Post
