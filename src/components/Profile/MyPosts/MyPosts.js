@@ -17,7 +17,8 @@ const MyPosts = (props) => {
     addPost,
   } = props;
 
-  const postsElements = posts.map((post) => {
+  const reverseElements = [...posts].reverse();
+  const postsElements = reverseElements.map((post) => {
     const { message, likesCount } = post;
     return (
       <Post
@@ -55,4 +56,4 @@ MyPosts.propTypes = {
   addPost: PropTypes.func,
 };
 
-export default MyPosts;
+export default React.memo(MyPosts);
