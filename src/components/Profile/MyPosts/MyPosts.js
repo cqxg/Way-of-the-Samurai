@@ -9,7 +9,7 @@ import AddNewPostForm from './AddNewPostForm';
 
 import style from './MyPosts.module.css';
 
-const MyPosts = React.memo((props) => {
+const MyPosts = (props) => {
   const { t } = useTranslation();
 
   const {
@@ -42,7 +42,7 @@ const MyPosts = React.memo((props) => {
       </div>
     </div>
   );
-});
+};
 
 MyPosts.defaultProps = {
   posts: PropTypes.array,
@@ -56,4 +56,4 @@ MyPosts.propTypes = {
   addPost: PropTypes.func,
 };
 
-export default MyPosts;
+export default React.memo(MyPosts);
