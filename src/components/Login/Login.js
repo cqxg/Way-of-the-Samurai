@@ -11,7 +11,7 @@ import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
   const { t } = useTranslation();
-  const {login, isAuth} = props;
+  const { login, isAuth } = props;
 
   const onSubmit = (formData) => {
     const { email, password, rememberMe } = formData;
