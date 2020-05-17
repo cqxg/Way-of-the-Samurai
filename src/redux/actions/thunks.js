@@ -33,15 +33,14 @@ const getAuthUserData = () => async (dispatch) => {
     }
 };
 
-const login = (email, password, rememberMe) => (dispatch) => {
-    authAPI.login(email, password, rememberMe).then((response) => {
-        if (response.data.resultCode === WELL) {
-            dispatch(getAuthUserData());
-        } else {
-            const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
-            dispatch(stopSubmit('login', { _error: mess }));
-        }
-    });
+const login = (email, password, rememberMe) => async (dispatch) => {
+    const response = await authAPI.login(email, password, rememberMe);
+    if (response.data.resultCode === WELL) {
+        dispatch(getAuthUserData());
+    } else {
+        const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
+        dispatch(stopSubmit('login', { _error: mess }));
+    };
 };
 
 const logout = () => (dispatch) => {
