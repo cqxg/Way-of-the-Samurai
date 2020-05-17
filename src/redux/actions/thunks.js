@@ -43,12 +43,11 @@ const login = (email, password, rememberMe) => async (dispatch) => {
     };
 };
 
-const logout = () => (dispatch) => {
-    authAPI.logout().then((response) => {
-        if (response.data.resultCode === WELL) {
-            dispatch(setAuthUserData(null, null, null, false));
-        }
-    });
+const logout = () => async (dispatch) => {
+    const response = await authAPI.logout();
+    if (response.data.resultCode === WELL) {
+        dispatch(setAuthUserData(null, null, null, false));
+    };
 };
 
 const getUsers = (currentPage, pageSize) => (dispatch) => {
