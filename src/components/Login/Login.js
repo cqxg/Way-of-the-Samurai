@@ -11,13 +11,14 @@ import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
   const { t } = useTranslation();
+  const {login, isAuth} = props;
 
   const onSubmit = (formData) => {
     const { email, password, rememberMe } = formData;
-    props.login(email, password, rememberMe);
+    login(email, password, rememberMe);
   };
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Redirect to={ROUTES.PROFILE} />;
   }
 
