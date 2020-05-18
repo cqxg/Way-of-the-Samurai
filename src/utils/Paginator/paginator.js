@@ -6,8 +6,8 @@ const paginator = (props) => {
   const {
     totalUsersCount, currentPage, onPageChanged, pageSize,
   } = props;
+  
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
-
   const pages = [...Array(pagesCount).keys()];
 
   const pagesMap = () => pages.map((page) => {
