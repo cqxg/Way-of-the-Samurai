@@ -6,11 +6,11 @@ const paginator = (props) => {
   const {
     totalUsersCount, currentPage, onPageChanged, pageSize,
   } = props;
-  
+
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
   const pages = [...Array(pagesCount).keys()];
 
-  const pagesMap = () => pages.map((page) => {
+  const pagesMaper = (page) => {
     const isCurrent = currentPage === page;
     return (
       <span
@@ -24,11 +24,13 @@ const paginator = (props) => {
         {page}
       </span>
     );
-  });
+  };
+
+  const pagesMap = pages.map(pagesMaper);
 
   return (
     <div>
-      {pagesMap()}
+      {pagesMap}
     </div>
   );
 };
