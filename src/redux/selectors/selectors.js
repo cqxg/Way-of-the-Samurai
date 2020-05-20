@@ -7,7 +7,7 @@ const takeUser = createSelector(takeUserSelector,
 
 const getPageSize = (state) => state.usersPage.pageSize;
 
-const getTotalUsersCount = (state) => state.usersPage.totalUsersCount;
+const getTotalUsersCount = (state) => state.usersPage.totalItemsCount;
 
 const getCurrentPage = (state) => state.usersPage.currentPage;
 

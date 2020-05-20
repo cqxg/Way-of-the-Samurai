@@ -28,7 +28,7 @@ const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: curr
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
 const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
-const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalUsersCount });
+const setTotalUsersCount = (totalItemsCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalItemsCount });
 const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
 const setAuthUserData = (userId, email, login, isAuth) => ({
   type: SET_USER_DATA,

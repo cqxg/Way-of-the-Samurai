@@ -32,14 +32,14 @@ class UsersContainer extends Component {
     render() {
       const { props, onPageChanged } = this;
       const {
-        isFetching, totalUsersCount, pageSize, currentPage, users,
+        isFetching, totalItemsCount, pageSize, currentPage, users,
       } = this.props;
 
       return (
         <div>
           {isFetching ? <Loader /> : null}
           <Users
-            totalUsersCount={totalUsersCount}
+            totalItemsCount={totalItemsCount}
             pageSize={pageSize}
             currentPage={currentPage}
             onPageChanged={onPageChanged}
@@ -56,7 +56,7 @@ class UsersContainer extends Component {
 const mapStateToProps = (state) => ({
   users: takeUser(state),
   pageSize: getPageSize(state),
-  totalUsersCount: getTotalUsersCount(state),
+  totalItemsCount: getTotalUsersCount(state),
   currentPage: getCurrentPage(state),
   isFetching: getIsFetching(state),
   followingInProgress: getFollowingInProgress(state),
@@ -73,7 +73,7 @@ UsersContainer.defaultProps = {
   users: PropTypes.array,
   pageSize: PropTypes.number,
   currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
+  totalItemsCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.array,
   getUsers: PropTypes.func,
@@ -85,7 +85,7 @@ UsersContainer.propTypes = {
   users: PropTypes.instanceOf(Array),
   pageSize: PropTypes.number,
   currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
+  totalItemsCount: PropTypes.number,
   isFetching: PropTypes.bool,
   followingInProgress: PropTypes.instanceOf(Array),
   getUsers: PropTypes.func,

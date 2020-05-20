@@ -4,10 +4,10 @@ import styles from './paginator.module.css';
 
 const paginator = (props) => {
   const {
-    totalUsersCount, currentPage, onPageChanged, pageSize,
+    totalItemsCount, currentPage, onPageChanged, pageSize,
   } = props;
 
-  const pagesCount = Math.ceil(totalUsersCount / pageSize);
+  const pagesCount = Math.ceil(totalItemsCount / pageSize);
   const pages = [...Array(pagesCount).keys()];
 
   const pagesMaper = (page) => {
