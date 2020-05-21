@@ -4,7 +4,7 @@ import styles from './paginator.module.css';
 
 const paginator = (props) => {
   const {
-    totalItemsCount, currentPage, onPageChanged, pageSize,
+    totalItemsCount, currentPage, onPageChanged, pageSize, portionSize = 10,
   } = props;
 
   const pagesCount = Math.ceil(totalItemsCount / pageSize);
