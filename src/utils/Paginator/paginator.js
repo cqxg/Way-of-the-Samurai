@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './paginator.module.css';
 
@@ -7,6 +7,7 @@ const paginator = (props) => {
     totalItemsCount, currentPage, onPageChanged, pageSize, portionSize = 10,
   } = props;
 
+  const [portionNumber, setPortionNumber] = useState(1);
   const pagesCount = Math.ceil(totalItemsCount / pageSize);
   const portionCount = Math.ceil(pagesCount / portionSize);
   const pages = [...Array(pagesCount).keys()];
