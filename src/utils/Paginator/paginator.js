@@ -8,6 +8,7 @@ const paginator = (props) => {
   } = props;
 
   const pagesCount = Math.ceil(totalItemsCount / pageSize);
+  const portionCount = Math.ceil(pagesCount / portionSize);
   const pages = [...Array(pagesCount).keys()];
 
   const pagesMaper = (page) => {
