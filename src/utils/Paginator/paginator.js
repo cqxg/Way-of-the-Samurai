@@ -11,6 +11,7 @@ const paginator = (props) => {
   const pagesCount = Math.ceil(totalItemsCount / pageSize);
   const portionCount = Math.ceil(pagesCount / portionSize);
   const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
+  const rightPortionPageNumber = portionNumber * portionSize;
   const pages = [...Array(pagesCount).keys()];
 
   const pagesMaper = (page) => {
