@@ -33,7 +33,7 @@ const paginator = (props) => {
   // const pagesMap = pages.map(pagesMaper);
 
   return (
-    <div className={}>
+    <div className={styles.paginator}>
       {
         portionNumber > 1 &&
         <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button>}
