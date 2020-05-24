@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
+import { useTranslation } from 'react-i18next';
+
+import { I18N_KEYS } from '../constants';
 
 import styles from './paginator.module.css';
 
@@ -8,6 +11,7 @@ const Paginator = (props) => {
     totalItemsCount, currentPage, onPageChanged, pageSize, portionSize = 10,
   } = props;
 
+  const { t } = useTranslation();
   const [portionNumber, setPortionNumber] = useState(1);
   const pagesCount = Math.ceil(totalItemsCount / pageSize);
   const portionCount = Math.ceil(pagesCount / portionSize);
@@ -18,19 +22,19 @@ const Paginator = (props) => {
 
   const leftBtn = () => (
     portionNumber > 1
-      && <button onClick={() => { setPortionNumber(portionNumber - 1); }}>PREV</button>
+      && <button onClick={() => { setPortionNumber(portionNumber - 1); }}>{t(I18N_KEYS.PREV)}</button>
   );
 
   const rightBtn = () => (
     portionCount > portionNumber
-      && <button onClick={() => { setPortionNumber(portionNumber + 1); }}>Next</button>
+      && <button onClick={() => { setPortionNumber(portionNumber + 1); }}>{t(I18N_KEYS.NEXT)}</button>
   );
 
   const paginatorBody = filteredPages.map((p) => (
     <span
       className={classnames({ [styles.selectedPage]: currentPage === p }, styles.pageNumber)}
       key={p}
-      onClick={(e) => { onPageChanged(p); }}
+      onClick={() => { onPageChanged(p); }}
     >
       {p}
     </span>
