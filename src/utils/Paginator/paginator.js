@@ -14,27 +14,40 @@ const paginator = (props) => {
   const rightPortionPageNumber = portionNumber * portionSize;
   const pages = [...Array(pagesCount).keys()];
 
-  const pagesMaper = (page) => {
-    const isCurrent = currentPage === page;
-    return (
-      <span
-        key={page}
-        role="button"
-        tabIndex={0}
-        className={isCurrent ? styles.selectedPage : null}
-        onClick={() => onPageChanged(page)}
-        onKeyPress={() => onPageChanged(page)}
-      >
-        {page}
-      </span>
-    );
-  };
+  // const pagesMaper = (page) => {
+  //   const isCurrent = currentPage === page;
+  //   return (
+  //     <span
+  //       key={page}
+  //       role="button"
+  //       tabIndex={0}
+  //       className={isCurrent ? styles.selectedPage : null}
+  //       onClick={() => onPageChanged(page)}
+  //       onKeyPress={() => onPageChanged(page)}
+  //     >
+  //       {page}
+  //     </span>
+  //   );
+  // };
 
-  const pagesMap = pages.map(pagesMaper);
+  // const pagesMap = pages.map(pagesMaper);
 
   return (
-    <div>
-      {pagesMap}
+    <div className={}>
+      {
+        portionNumber > 1 &&
+        <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button>}
+      {
+        pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber).map((p) => {
+          return <span className={cn({
+            [styles.selectedPage]: currentPage === p
+          }, styles.pageNumber)}
+            key={p}
+            onClick={(e) => {
+              onPageChanged(p);
+            }}>{p}</span>
+        })
+      }
     </div>
   );
 };
