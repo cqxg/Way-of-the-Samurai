@@ -48,6 +48,10 @@ const paginator = (props) => {
             }}>{p}</span>
         })
       }
+      {
+        portionCount > portionNumber &&
+        <button onClick={() => { setPortionNumber(portionNumber + 1) }}>Next</button>
+      }
     </div>
   );
 };
