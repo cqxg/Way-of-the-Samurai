@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     return (
-      <Suspense fallback="loading">
+      <Suspense fallback='Loading...'>
         <BrowserRouter>
           <div className="app-wrapper">
             <HeaderContainer />
