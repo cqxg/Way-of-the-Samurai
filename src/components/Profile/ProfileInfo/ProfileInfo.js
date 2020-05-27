@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 import Loader from '../../../utils/loader';
-import DEFAULT_PHOTO from '../../../assets/images/unnamed.jpg';
+import { AVATAR_DEFAULT } from '../../../utils/url-utils';
 
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-  const { profile, status, updateStatus } = props;
+  const { profile, status, updateStatus, isOwner } = props;
 
   if (!profile) {
     return <Loader />;
@@ -18,7 +18,8 @@ const ProfileInfo = (props) => {
   return (
     <div>
       <div className={style.descriptionBlock}>
-        <img alt="" src={profile.photos.large || DEFAULT_PHOTO} />
+        <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
+        {isOwner && <input type='file' />}
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>
