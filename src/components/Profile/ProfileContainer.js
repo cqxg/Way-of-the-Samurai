@@ -10,7 +10,7 @@ import { ROUTES } from '../../utils/url-utils';
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
-  componentDidMount() {
+  profileUpdate = () => {
     const { props } = this;
     let { userId } = props.match.params;
 
@@ -20,9 +20,18 @@ class ProfileContainer extends Component {
         props.history.push(ROUTES.LOGIN);
       }
     }
-
     props.getUserProfile(userId);
     props.getStatus(userId);
+  }
+
+  componentDidMount() {
+    this.profileUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.profileUpdate();
+    }
   }
 
   render() {

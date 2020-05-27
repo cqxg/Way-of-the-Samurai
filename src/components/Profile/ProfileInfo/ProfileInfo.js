@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 import Loader from '../../../utils/loader';
-import DEFAULT_PHOTO from '../../../assets/images/unnamed.jpg'
+import DEFAULT_PHOTO from '../../../assets/images/unnamed.jpg';
 
 import style from './ProfileInfo.module.css';
 
