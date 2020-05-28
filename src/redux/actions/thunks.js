@@ -94,6 +94,13 @@ const unfollow = (userId) => async (dispatch) => {
   dispatch(toggleFollowingProgress(false, userId));
 };
 
+const savePhoto = (file) => async (dispatch) => {
+  const response = await profileAPI.savePhoto(file);
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.data.photos));
+  }
+}
+
 export {
   login,
   logout,
@@ -101,6 +108,7 @@ export {
   unfollow,
   getUsers,
   getStatus,
+  savePhoto,
   updateStatus,
   initializeApp,
   getUserProfile,

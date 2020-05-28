@@ -35,10 +35,15 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { profile, status, updateStatus } = this.props;
+    const { profile, status, updateStatus, savePhoto, match } = this.props;
 
     return (
-      <Profile {...this.props} isOwner={!this.props.match.params.userId} profile={profile} status={status} updateStatus={updateStatus} />
+      <Profile {...this.props}
+        savePhoto={savePhoto}
+        profile={profile}
+        status={status}
+        updateStatus={updateStatus}
+        isOwner={!match.params.userId} />
     );
   }
 }
@@ -51,7 +56,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
   withRouter,
 )(ProfileContainer);
 
