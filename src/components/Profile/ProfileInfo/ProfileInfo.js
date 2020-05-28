@@ -9,7 +9,9 @@ import { AVATAR_DEFAULT } from '../../../utils/url-utils';
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-  const { profile, status, updateStatus, isOwner, savePhoto } = props;
+  const {
+    profile, status, updateStatus, isOwner, savePhoto,
+  } = props;
 
   if (!profile) {
     return <Loader />;
@@ -25,7 +27,7 @@ const ProfileInfo = (props) => {
     <div>
       <div className={style.descriptionBlock}>
         <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
-        {isOwner && <input type='file' onChange={onMainPhotoSelected} />}
+        {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>

@@ -14,6 +14,7 @@ import {
   unfollowSuccess,
   setAuthUserData,
   toggleIsFetching,
+  savePhotoSuccess,
   setTotalUsersCount,
   toggleFollowingProgress,
 } from './actionCreators';
@@ -95,11 +96,11 @@ const unfollow = (userId) => async (dispatch) => {
 };
 
 const savePhoto = (file) => async (dispatch) => {
-  const response = await profileAPI.savePhoto(file);
+  const response = await usersAPI.savePhoto(file);
   if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));
   }
-}
+};
 
 export {
   login,

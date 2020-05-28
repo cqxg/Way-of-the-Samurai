@@ -5,7 +5,9 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-  const { profile, status, updateStatus, isOwner } = props;
+  const {
+    profile, status, updateStatus, isOwner,
+  } = props;
   return (
     <div>
       <ProfileInfo profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatus} />

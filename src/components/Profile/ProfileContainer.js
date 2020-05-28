@@ -4,7 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/thunks';
+import {
+  getUserProfile, getStatus, updateStatus, savePhoto,
+} from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
 
 import Profile from './Profile';
@@ -35,15 +37,19 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { profile, status, updateStatus, savePhoto, match } = this.props;
+    const {
+      profile, status, updateStatus, savePhoto, match,
+    } = this.props;
 
     return (
-      <Profile {...this.props}
+      <Profile
+        {...this.props}
         savePhoto={savePhoto}
         profile={profile}
         status={status}
         updateStatus={updateStatus}
-        isOwner={!match.params.userId} />
+        isOwner={!match.params.userId}
+      />
     );
   }
 }
@@ -56,7 +62,9 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
+  connect(mapStateToProps, {
+    getUserProfile, getStatus, updateStatus, savePhoto,
+  }),
   withRouter,
 )(ProfileContainer);
 
