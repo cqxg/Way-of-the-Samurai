@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className={style.nav}>
-      <div className={style.item}>
+      <div className={`${style.item}`}>
         <NavLink to={ROUTES.PROFILE} activeClassName={style.activeLink}>{t(I18N_KEYS.PROFILE)}</NavLink>
       </div>
       <div className={`${style.item} ${style.active}`}>

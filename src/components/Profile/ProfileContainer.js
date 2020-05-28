@@ -38,7 +38,7 @@ class ProfileContainer extends Component {
     const { profile, status, updateStatus } = this.props;
 
     return (
-      <Profile {...this.props} isOwner={!!this.props.match.params.userId} profile={profile} status={status} updateStatus={updateStatus} />
+      <Profile {...this.props} isOwner={!this.props.match.params.userId} profile={profile} status={status} updateStatus={updateStatus} />
     );
   }
 }
