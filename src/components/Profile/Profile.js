@@ -6,11 +6,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
   const {
-    profile, status, updateStatus, isOwner,
+    profile, status, updateStatus, isOwner, savePhoto,
   } = props;
   return (
     <div>
-      <ProfileInfo profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatus} />
+      <ProfileInfo profile={profile} isOwner={isOwner} status={status} savePhoto={savePhoto} updateStatus={updateStatus} />
       <MyPostsContainer />
     </div>
   );
