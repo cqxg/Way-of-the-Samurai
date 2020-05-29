@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import ProfileStatus from './ProfileStatus';
 
 import Loader from '../../../utils/loader';
 import { AVATAR_DEFAULT } from '../../../utils/url-utils';
@@ -28,7 +28,7 @@ const ProfileInfo = (props) => {
       <div className={style.descriptionBlock}>
         <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
         {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
-        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
+        <ProfileStatus status={status} updateStatus={updateStatus} />
       </div>
     </div>
   );

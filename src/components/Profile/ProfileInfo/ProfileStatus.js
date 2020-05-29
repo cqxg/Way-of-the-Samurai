@@ -1,58 +1,42 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class ProfileStatus extends Component {
-    state = {
-      editMode: false,
-      status: this.props.status,
-    };
+const ProfileStatusWithHooks = (props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [status, setStatus] = useState(props.status);
 
-    activateEditMode = () => {
-      this.setState({
-        editMode: true,
-      });
-    };
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
 
-    deactivateEditMode = () => {
-      this.setState({
-        editMode: false,
-      });
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
 
-      this.props.updateStatus(this.state.status);
-    };
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateStatus(status);
+  };
 
-    onStatusChange = (e) => {
-      this.setState({
-        status: e.currentTarget.value,
-      });
-    };
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
+  };
 
-    getNotEditMode = () => (
-      <div>
-        <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
-      </div>
-    );
+  return (
+    <div>
+      {editMode
+        ? (
+          <div>
+            <input autoFocus value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
+          </div>
 
-    getEditMode = () => (
-      <div>
-        <input autoFocus onChange={this.onStatusChange} onBlur={this.deactivateEditMode} value={this.state.status} />
-      </div>
-    );
+        )
+        : (
+          <div>
+            <span onDoubleClick={activateEditMode}>{props.status}</span>
+          </div>
+        )}
+    </div>
+  );
+};
 
-    componentDidUpdate(prevProps, prevState) {
-      if (prevProps.status !== this.props.status) {
-        this.setState({
-          status: this.props.status,
-        });
-      }
-    }
-
-    render() {
-      return (
-        <div>
-          {this.state.editMode ? this.getEditMode() : this.getNotEditMode()}
-        </div>
-      );
-    }
-}
-
-export default ProfileStatus;
+export default ProfileStatusWithHooks;
