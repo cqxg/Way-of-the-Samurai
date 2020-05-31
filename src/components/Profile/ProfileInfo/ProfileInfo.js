@@ -32,7 +32,9 @@ const ProfileInfo = (props) => {
       <div className={style.descriptionBlock}>
         <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
         {isOwner ? <input type="file" onChange={onMainPhotoSelected} /> : null}
-        {editMode ? <ProfileDataForm profile={profile} /> : <ProfileData profile={profile} goToEditMode={() => { setEditMode(true); }} isOwner={isOwner} />}
+        {editMode ?
+          <ProfileDataForm goToEditMode={() => { setEditMode(true) }} profile={profile} /> :
+          <ProfileData profile={profile} goToEditMode={() => { setEditMode(true) }} isOwner={isOwner} />}
         <ProfileStatus status={status} updateStatus={updateStatus} />
       </div>
     </div>
