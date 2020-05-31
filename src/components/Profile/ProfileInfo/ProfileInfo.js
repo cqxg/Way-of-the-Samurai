@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ProfileStatus from './ProfileStatus';
-import ProfileData from './ProfileData';
+import ProfileData from './ProfileData/ProfileData';
+import ProfileDataForm from './ProfileData/ProfileDataForm';
 
 import Loader from '../../../utils/loader';
 import { AVATAR_DEFAULT } from '../../../utils/url-utils';
@@ -18,6 +19,8 @@ const ProfileInfo = (props) => {
     return <Loader />;
   }
 
+  const [editMode, setEditMode] = useState(false);
+
   const onMainPhotoSelected = (e) => {
     if (e.target.files.length) {
       savePhoto(e.target.files[0]);
@@ -29,7 +32,7 @@ const ProfileInfo = (props) => {
       <div className={style.descriptionBlock}>
         <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
         {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
-        <ProfileData profile={profile} />
+        {editMode ? <ProfileDataForm profile={profile} /> : <ProfileData profile={profile} goToEditMode={() => { setEditMode(true) }} isOwner={isOwner} />}
         <ProfileStatus status={status} updateStatus={updateStatus} />
       </div>
     </div>

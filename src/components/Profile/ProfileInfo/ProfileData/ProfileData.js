@@ -3,9 +3,10 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 
 const ProfileData = (props) => {
-    const { profile } = props;
+    const { profile, isOwner, goToEditMode } = props;
     return (
         <div>
+            {isOwner ? <div><button onClick={goToEditMode}>Edit</button></div> : null}
             <div>
                 <b>Full name</b>: {profile.fullName}
             </div>
