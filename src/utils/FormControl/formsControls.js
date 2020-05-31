@@ -33,17 +33,17 @@ const Input = ({ input, meta, ...props }) => {
   );
 };
 
-const createField = (placeholder, name, validators, component, props = {}, text = '') => {
-  return (
-    <div>
-      <Field {...props}
-        placeholder={placeholder}
-        validators={validators}
-        component={component}
-        name={name}
-      /> {text}
-    </div>
-  );
-};
+const createField = (placeholder, name, validators, component, props = {}, text = '') => (
+  <div>
+    <Field
+      {...props}
+      placeholder={placeholder}
+      validators={validators}
+      component={component}
+      name={name}
+    />
+    {text}
+  </div>
+);
 
 export { Textarea, Input, createField };

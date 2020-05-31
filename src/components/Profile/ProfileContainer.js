@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import {
-  getUserProfile, getStatus, updateStatus, savePhoto, saveProfile
+  getUserProfile, getStatus, updateStatus, savePhoto, saveProfile,
 } from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
 
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, {
-    getUserProfile, getStatus, updateStatus, savePhoto, saveProfile
+    getUserProfile, getStatus, updateStatus, savePhoto, saveProfile,
   }),
   withRouter,
 )(ProfileContainer);
