@@ -1,14 +1,17 @@
 import React from 'react';
+import { reduxForm } from "redux-form";
 
-import Contactfrom from './Contact';
+import Contact from './Contact';
+
+import { createField, Input } from '../../../../utils/FormControl/formsControls';
 
 const ProfileDataForm = (props) => {
     const { profile, goToEditMode } = props;
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <div><button onClick={goToEditMode}>save</button></div>
             <div>
-                <b>Full name</b>: {}
+                <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
             </div>
             <div>
                 <b>Looking for a job</b>: {}
@@ -30,4 +33,4 @@ const ProfileDataForm = (props) => {
     );
 };
 
-export default ProfileDataForm;
+export default reduxForm({ form: 'edit-profile' })(ProfileDataForm);
