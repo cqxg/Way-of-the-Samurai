@@ -6,10 +6,10 @@ import Contact from './Contact';
 import { createField, Input, Textarea } from '../../../../utils/FormControl/formsControls';
 
 const ProfileDataForm = (props) => {
-    const { profile, goToEditMode } = props;
+    const { profile, handleSubmit } = props;
     return (
-        <form>
-            <div><button onClick={goToEditMode}>save</button></div>
+        <form onSubmit={handleSubmit}>
+            <div><button>save</button></div>
             <div>
                 <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
             </div>
