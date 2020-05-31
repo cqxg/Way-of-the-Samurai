@@ -1,7 +1,5 @@
 import React from 'react';
 
-import style from './ProfileInfo.module.css';
-
 const ProfileData = (props) => {
     const { profile, isOwner, goToEditMode } = props;
     return (
@@ -29,10 +27,6 @@ const ProfileData = (props) => {
             </div>
         </div>
     )
-}
-
-const Contact = ({ contactTitle, contactValue }) => {
-    return <div className={style.contact}><b>{contactTitle}</b>: {contactValue}</div>
 }
 
 export default ProfileData;
