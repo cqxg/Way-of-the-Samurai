@@ -1,12 +1,12 @@
 import React from 'react';
 
 const ProfileDataForm = (props) => {
-    const { profile } = props;
-    return (
-        <div>
+  const { profile } = props;
+  return (
+    <div>
             Form workpiece
-        </div>
-    )
-}
+    </div>
+  );
+};
 
 export default ProfileDataForm;
