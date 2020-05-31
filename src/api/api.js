@@ -48,6 +48,10 @@ const usersAPI = {
       },
     });
   },
+
+  saveProfile(profile) {
+    return instance.put('profile', profile);
+  },
 };
 
 const authAPI = {

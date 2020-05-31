@@ -102,6 +102,13 @@ const savePhoto = (file) => async (dispatch) => {
   }
 };
 
+const saveProfile = (profile) => async (dispatch) => {
+  const response = await usersAPI.saveProfile(profile);
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.data.photos));
+  }
+};
+
 export {
   login,
   logout,
@@ -110,6 +117,7 @@ export {
   getUsers,
   getStatus,
   savePhoto,
+  saveProfile,
   updateStatus,
   initializeApp,
   getUserProfile,
