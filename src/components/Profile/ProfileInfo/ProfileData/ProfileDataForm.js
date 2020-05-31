@@ -3,7 +3,7 @@ import { reduxForm } from "redux-form";
 
 import Contact from './Contact';
 
-import { createField, Input } from '../../../../utils/FormControl/formsControls';
+import { createField, Input, Textarea } from '../../../../utils/FormControl/formsControls';
 
 const ProfileDataForm = (props) => {
     const { profile, goToEditMode } = props;
@@ -14,16 +14,14 @@ const ProfileDataForm = (props) => {
                 <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
             </div>
             <div>
-                <b>Looking for a job</b>: {}
+                <b>Looking for a job</b>: {createField("", "lookingForAJob", [], Input, { type: "checkbox" })}
             </div>
 
             <div>
-                <b>My professional skills</b>: {}
+                <b>My professional skills</b>: {createField("My professional skills", "lookingForAJobDescription", [], Textarea)}
             </div>
-
-
             <div>
-                <b>About me</b>: {}
+                <b>About me</b>: {createField("About me", "aboutMe", [], Textarea)}
             </div>
             <div>
                 <b>Contacts</b>
