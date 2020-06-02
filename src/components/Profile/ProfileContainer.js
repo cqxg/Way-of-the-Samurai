@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import {
-  getUserProfile, 
-  getStatus, 
-  updateStatus, 
-  savePhoto, 
+  getUserProfile,
+  getStatus,
+  updateStatus,
+  savePhoto,
   saveProfile,
 } from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
@@ -42,7 +42,11 @@ class ProfileContainer extends Component {
 
   render() {
     const {
-      profile, status, updateStatus, savePhoto, match,
+      profile,
+      status,
+      updateStatus,
+      savePhoto,
+      match,
     } = this.props;
 
     return (
