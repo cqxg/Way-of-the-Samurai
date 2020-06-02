@@ -9,6 +9,9 @@ const ProfileData = (props) => {
     goToEditMode,
   } = props;
 
+  const contacts = Object.keys(profile.contacts);
+  const contactsDisplay = contacts.map((key) => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />);
+
   const fullnameRender = () => (
     <div>
       <b>Full name: </b>
@@ -43,7 +46,7 @@ const ProfileData = (props) => {
   const contactsRender = () => (
     <div>
       <b>Contacts: </b>
-      {Object.keys(profile.contacts).map((key) => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />)}
+      {contactsDisplay}
     </div>
   );
 
