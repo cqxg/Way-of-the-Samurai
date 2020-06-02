@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Loader from '../../../utils/loader';
+import { AVATAR_DEFAULT } from '../../../utils/url-utils';
+
 import ProfileStatus from './ProfileStatus';
 import ProfileData from './ProfileData/ProfileData';
 import ProfileDataForm from './ProfileData/ProfileDataForm';
-
-import Loader from '../../../utils/loader';
-import { AVATAR_DEFAULT } from '../../../utils/url-utils';
 
 import style from './ProfileInfo.module.css';
 
