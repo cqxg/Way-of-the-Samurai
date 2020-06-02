@@ -21,20 +21,21 @@ const ProfileStatus = (props) => {
     setStatus(e.currentTarget.value);
   };
 
+  const statusInput = () => (
+    <div>
+      <input autoFocus value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
+    </div>
+  );
+
+  const statusSpan = () => (
+    <div>
+      <span onDoubleClick={activateEditMode}>{props.status}</span>
+    </div>
+  );
+
   return (
     <div>
-      {editMode
-        ? (
-          <div>
-            <input autoFocus value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
-          </div>
-
-        )
-        : (
-          <div>
-            <span onDoubleClick={activateEditMode}>{props.status}</span>
-          </div>
-        )}
+      {editMode ? statusInput() : statusSpan()}
     </div>
   );
 };

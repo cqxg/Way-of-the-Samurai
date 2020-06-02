@@ -14,7 +14,12 @@ const ProfileInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
 
   const {
-    profile, status, updateStatus, isOwner, savePhoto, saveProfile,
+    profile,
+    status,
+    updateStatus,
+    isOwner,
+    savePhoto,
+    saveProfile,
   } = props;
 
   if (!profile) {
@@ -38,9 +43,25 @@ const ProfileInfo = (props) => {
         <img className={style.mainPhotos} alt="" src={profile.photos.large || AVATAR_DEFAULT} />
         {isOwner ? <input type="file" onChange={onMainPhotoSelected} /> : null}
         {editMode
-          ? <ProfileDataForm initialValues={profile} goToEditMode={() => { setEditMode(true); }} onSubmit={onSubmit} profile={profile} />
-          : <ProfileData profile={profile} goToEditMode={() => { setEditMode(true); }} isOwner={isOwner} />}
-        <ProfileStatus status={status} updateStatus={updateStatus} />
+          ? (
+            <ProfileDataForm
+              initialValues={profile}
+              goToEditMode={() => { setEditMode(true); }}
+              onSubmit={onSubmit}
+              profile={profile}
+            />
+          )
+          : (
+            <ProfileData
+              profile={profile}
+              goToEditMode={() => { setEditMode(true); }}
+              isOwner={isOwner}
+            />
+          )}
+        <ProfileStatus
+          status={status}
+          updateStatus={updateStatus}
+        />
       </div>
     </div>
   );
