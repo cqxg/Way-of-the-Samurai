@@ -24,33 +24,37 @@ class UsersContainer extends Component {
     props.getUsers(props.currentPage, props.pageSize);
   }
 
-    onPageChanged = (pageNumber) => {
-      const { props } = this;
-      props.getUsers(pageNumber, props.pageSize);
-    };
+  onPageChanged = (pageNumber) => {
+    const { props } = this;
+    props.getUsers(pageNumber, props.pageSize);
+  };
 
-    render() {
-      const { props, onPageChanged } = this;
-      const {
-        isFetching, totalItemsCount, pageSize, currentPage, users,
-      } = this.props;
+  render() {
+    const { props, onPageChanged } = this;
+    const {
+      users,
+      pageSize,
+      isFetching,
+      currentPage,
+      totalItemsCount,
+    } = this.props;
 
-      return (
-        <div>
-          {isFetching ? <Loader /> : null}
-          <Users
-            totalItemsCount={totalItemsCount}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChanged={onPageChanged}
-            users={users}
-            follow={props.follow}
-            unfollow={props.unfollow}
-            followingInProgress={props.followingInProgress}
-          />
-        </div>
-      );
-    }
+    return (
+      <div>
+        {isFetching ? <Loader /> : null}
+        <Users
+          totalItemsCount={totalItemsCount}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChanged={onPageChanged}
+          users={users}
+          follow={props.follow}
+          unfollow={props.unfollow}
+          followingInProgress={props.followingInProgress}
+        />
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({

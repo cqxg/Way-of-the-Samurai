@@ -23,13 +23,20 @@ const ProfileStatus = (props) => {
 
   const statusInput = () => (
     <div>
-      <input autoFocus value={status} onChange={onStatusChange} onBlur={deactivateEditMode} />
+      <input
+        autoFocus
+        value={status}
+        onChange={onStatusChange}
+        onBlur={deactivateEditMode}
+      />
     </div>
   );
 
   const statusSpan = () => (
     <div>
-      <span onDoubleClick={activateEditMode}>{props.status}</span>
+      <span onDoubleClick={activateEditMode}>
+        {props.status}
+      </span>
     </div>
   );
 

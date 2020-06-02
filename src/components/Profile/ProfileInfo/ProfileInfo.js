@@ -46,7 +46,7 @@ const ProfileInfo = (props) => {
           ? (
             <ProfileDataForm
               initialValues={profile}
-              goToEditMode={() => { setEditMode(true); }}
+              goToEditMode={() => setEditMode(true)}
               onSubmit={onSubmit}
               profile={profile}
             />
@@ -54,7 +54,7 @@ const ProfileInfo = (props) => {
           : (
             <ProfileData
               profile={profile}
-              goToEditMode={() => { setEditMode(true); }}
+              goToEditMode={() => setEditMode(true)}
               isOwner={isOwner}
             />
           )}
