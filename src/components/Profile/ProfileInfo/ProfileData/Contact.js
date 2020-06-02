@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from '../ProfileInfo.module.css';
+import style from './Contact.module.css';
 
 const Contact = (props) => {
   const { contactTitle, contactValue } = props;
