@@ -13,7 +13,7 @@ const Users = (props) => {
     pageSize,
     currentPage,
     onPageChanged,
-    totalUsersCount,
+    totalItemsCount,
     followingInProgress,
   } = props;
 
@@ -33,7 +33,7 @@ const Users = (props) => {
   return (
     <div>
       <Paginator
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalItemsCount}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChanged={onPageChanged}
@@ -49,7 +49,7 @@ Users.defaultProps = {
   pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
+  totalItemsCount: PropTypes.number,
   followingInProgress: PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };
@@ -60,7 +60,7 @@ Users.propTypes = {
   pageSize: PropTypes.number,
   onPageChanged: PropTypes.func,
   currentPage: PropTypes.number,
-  totalUsersCount: PropTypes.number,
+  totalItemsCount: PropTypes.number,
   followingInProgress: PropTypes.instanceOf(Array),
   users: PropTypes.instanceOf(Array),
 };

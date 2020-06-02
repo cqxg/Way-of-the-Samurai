@@ -1,7 +1,7 @@
 import { DEFAULT_LIKES_VALUE, NEXT_ID } from '../../utils/constants';
 
 import {
-  ADD_POST, SET_USER_PROFILE, SET_STATUS, DELETE_POST,
+  ADD_POST, SET_USER_PROFILE, SET_STATUS, DELETE_POST, SAVE_PHOTO_SUCCESS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -40,7 +40,7 @@ const profileReducer = (state = initialState, action) => {
     case DELETE_POST: {
       return {
         ...state,
-        posts: state.posts.filter((post) => post.id != action.payload),
+        posts: state.posts.filter((post) => post.id !== action.payload),
       };
     }
 
@@ -57,6 +57,12 @@ const profileReducer = (state = initialState, action) => {
         status: action.payload,
       };
     }
+
+    case SAVE_PHOTO_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.payload },
+      };
 
     default:
       return state;

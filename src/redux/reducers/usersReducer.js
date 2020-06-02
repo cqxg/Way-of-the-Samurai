@@ -11,7 +11,7 @@ import {
 const initialState = {
   users: [],
   pageSize: 5,
-  totalUsersCount: 0,
+  totalItemsCount: 0,
   currentPage: 1,
   isFetching: false,
   followingInProgress: [],
@@ -56,7 +56,7 @@ const usersReducer = (state = initialState, action) => {
     case SET_TOTAL_USERS_COUNT:
       return {
         ...state,
-        totalUsersCount: action.payload,
+        totalItemsCount: action.payload,
       };
 
     case TOGGLE_IS_FETCHING:

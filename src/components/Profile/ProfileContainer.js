@@ -4,13 +4,19 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { getUserProfile, getStatus, updateStatus } from '../../redux/actions/thunks';
+import {
+  getUserProfile,
+  getStatus,
+  updateStatus,
+  savePhoto,
+  saveProfile,
+} from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
 
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
-  componentDidMount() {
+  profileUpdate = () => {
     const { props } = this;
     let { userId } = props.match.params;
 
@@ -20,16 +26,38 @@ class ProfileContainer extends Component {
         props.history.push(ROUTES.LOGIN);
       }
     }
-
     props.getUserProfile(userId);
     props.getStatus(userId);
   }
 
+  componentDidMount() {
+    this.profileUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.profileUpdate();
+    }
+  }
+
   render() {
-    const { profile, status, updateStatus } = this.props;
+    const {
+      profile,
+      status,
+      updateStatus,
+      savePhoto,
+      match,
+    } = this.props;
 
     return (
-      <Profile {...this.props} profile={profile} status={status} updateStatus={updateStatus} />
+      <Profile
+        {...this.props}
+        savePhoto={savePhoto}
+        profile={profile}
+        status={status}
+        updateStatus={updateStatus}
+        isOwner={!match.params.userId}
+      />
     );
   }
 }
@@ -42,7 +70,9 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  connect(mapStateToProps, {
+    getUserProfile, getStatus, updateStatus, savePhoto, saveProfile,
+  }),
   withRouter,
 )(ProfileContainer);
 

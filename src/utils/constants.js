@@ -25,6 +25,8 @@ const I18N_KEYS = {
   SET_EN: 'en',
   RU: 'RU',
   EN: 'EN',
+  PREV: 'PREV',
+  NEXT: 'NEXT',
 };
 
 const TRANSLATIONS = {
@@ -45,6 +47,8 @@ const TRANSLATIONS = {
     [I18N_KEYS.ADD_POST]: 'Добавить пост',
     [I18N_KEYS.RU]: 'РУС',
     [I18N_KEYS.EN]: 'АНГЛ',
+    [I18N_KEYS.PREV]: 'ПРЕД',
+    [I18N_KEYS.NEXT]: 'СЛЕД',
   },
 
   EN: {
@@ -64,6 +68,8 @@ const TRANSLATIONS = {
     [I18N_KEYS.ADD_POST]: 'Add post',
     [I18N_KEYS.RU]: 'RU',
     [I18N_KEYS.EN]: 'EN',
+    [I18N_KEYS.PREV]: 'PREV',
+    [I18N_KEYS.NEXT]: 'NEXT',
   },
 };
 

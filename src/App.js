@@ -1,22 +1,22 @@
 import React, { Suspense, Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Loader from './utils/loader';
 import { ROUTES } from './utils/url-utils';
 import { initializeApp } from './redux/actions/thunks';
 
-import HeaderContainer from './components/Header/HeaderContainer';
-import Navbar from './components/Navbar/Navbar';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import UsersContainer from './components/Users/UsersContainer';
-import Settings from './components/Settings/Settings';
-import Login from './components/Login/Login';
-
 import './App.css';
+
+const HeaderContainer = React.lazy(() => import('./components/Header/HeaderContainer'));
+const Navbar = React.lazy(() => import('./components/Navbar/Navbar'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const News = React.lazy(() => import('./components/News/News'));
+const Music = React.lazy(() => import('./components/Music/Music'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
+const Login = React.lazy(() => import('./components/Login/Login'));
 
 class App extends Component {
   componentDidMount() {
@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     return (
-      <Suspense fallback="loading">
+      <Suspense fallback="Loading...">
         <BrowserRouter>
           <div className="app-wrapper">
             <HeaderContainer />
