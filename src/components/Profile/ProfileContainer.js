@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import {
-  getUserProfile, getStatus, updateStatus, savePhoto, saveProfile,
+  getUserProfile, 
+  getStatus, 
+  updateStatus, 
+  savePhoto, 
+  saveProfile,
 } from '../../redux/actions/thunks';
 import { ROUTES } from '../../utils/url-utils';
 
