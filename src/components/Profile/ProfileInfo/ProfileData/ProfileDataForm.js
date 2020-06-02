@@ -1,9 +1,9 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 
-import Contact from './Contact';
-
 import { createField, Input, Textarea } from '../../../../utils/FormControl/formsControls';
+
+import Contact from './Contact';
 
 const ProfileDataForm = (props) => {
   const { profile, handleSubmit } = props;
