@@ -6,8 +6,7 @@ const Contact = (props) => {
   const { contactTitle, contactValue } = props;
   return (
     <div className={style.contact}>
-      <b>{contactTitle}</b>
-:
+      <b>{contactTitle}: </b>
       {contactValue}
     </div>
   );

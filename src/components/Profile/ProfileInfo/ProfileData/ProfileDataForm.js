@@ -7,13 +7,20 @@ import {
   Textarea,
 } from '../../../../utils/FormControl/formsControls';
 
-import Contact from './Contact';
-
 const ProfileDataForm = (props) => {
   const { profile, handleSubmit } = props;
 
   const contacts = Object.keys(profile.contacts);
-  const contactsMap = contacts.map((key) => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />);
+
+  const contactsInputRender = (key) => {
+    return (
+      <div key={key}>
+        <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
+      </div>
+    )
+  };
+
+  const contactsMap = contacts.map((key) => contactsInputRender(key));
 
   const fullnameRender = () => (
     <div>
