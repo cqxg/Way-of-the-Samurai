@@ -7,14 +7,16 @@ import {
   Textarea,
 } from '../../../../utils/FormControl/formsControls';
 
+import style from './ProfileDataForm.module.css';
+
 const ProfileDataForm = (props) => {
-  const { profile, handleSubmit } = props;
+  const { profile, handleSubmit, error } = props;
 
   const contacts = Object.keys(profile.contacts);
 
   const contactsInputRender = (key) => {
     return (
-      <div key={key}>
+      <div key={key} className={style.contact}>
         <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
       </div>
     )
@@ -60,6 +62,10 @@ const ProfileDataForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div><button>save</button></div>
+      {error &&
+        <div className={style.formSummaryError}>
+          {error}
+        </div>}
       {fullnameRender()}
       {forJobRender()}
       {skillsRender()}
