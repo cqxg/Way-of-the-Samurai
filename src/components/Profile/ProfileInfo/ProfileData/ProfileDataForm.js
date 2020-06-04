@@ -17,7 +17,7 @@ const ProfileDataForm = (props) => {
   const contactsInputRender = (key) => {
     return (
       <div key={key} className={style.contact}>
-        <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
+        <b>{key}: {createField(key, `contacts.${key}`, [], Input)}</b>
       </div>
     )
   };
