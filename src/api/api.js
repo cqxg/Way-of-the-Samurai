@@ -68,4 +68,8 @@ const authAPI = {
   },
 };
 
+const securityAPI = {
+
+};
+
 export { usersAPI, authAPI };
