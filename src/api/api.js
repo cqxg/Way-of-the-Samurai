@@ -69,7 +69,9 @@ const authAPI = {
 };
 
 const securityAPI = {
+  getCaptchaUrl() {
 
+  }
 };
 
 export { usersAPI, authAPI };
