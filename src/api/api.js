@@ -70,7 +70,7 @@ const authAPI = {
 
 const securityAPI = {
   getCaptchaUrl() {
-
+    return instance.get(ROUTES.GET_CAPTCHA);
   }
 };
 
