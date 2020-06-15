@@ -2,7 +2,7 @@ import { stopSubmit } from 'redux-form';
 
 import { WELL } from '../../utils/constants';
 
-import { usersAPI, authAPI } from '../../api/api';
+import { usersAPI, authAPI, securityAPI } from '../../api/api';
 
 import {
   setUsers,
@@ -42,6 +42,13 @@ const login = (email, password, rememberMe) => async (dispatch) => {
     const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
     dispatch(stopSubmit('login', { _error: mess }));
   }
+};
+
+const getCaptchaUrl = () => async (dispatch) => {
+  const response = await securityAPI.getCaptchaUrl();
+  const captchaUrl = response.data.url;
+
+  // dispatch(stopSubmit('login', { _error: mess }));
 };
 
 const logout = () => async (dispatch) => {

@@ -74,4 +74,4 @@ const securityAPI = {
   }
 };
 
-export { usersAPI, authAPI };
+export { usersAPI, authAPI, securityAPI };
