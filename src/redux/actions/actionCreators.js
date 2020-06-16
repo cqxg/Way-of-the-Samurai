@@ -13,6 +13,7 @@ import {
   SAVE_PHOTO_SUCCESS,
   TOGGLE_IS_FETCHING,
   SET_TOTAL_USERS_COUNT,
+  SET_CAPTCHA_URL_SUCCESS,
   UPDATE_NEW_MESSAGE_BODY,
   TOGGLE_FOLLOWING_PROGRESS,
 } from './actionTypes';
@@ -30,6 +31,7 @@ const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: curr
 const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: isFetching });
 const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, payload: body });
 const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, payload: newMessageBody });
+const getCaptchaUrlSuccess = (captchaUrl) => ({ type: SET_CAPTCHA_URL_SUCCESS, payload: captchaUrl });
 const setTotalUsersCount = (totalItemsCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: totalItemsCount });
 const toggleFollowingProgress = (isFetching, userID) => ({ type: TOGGLE_FOLLOWING_PROGRESS, payload: { isFetching, userID } });
 const setAuthUserData = (userId, email, login, isAuth) => ({
@@ -38,7 +40,6 @@ const setAuthUserData = (userId, email, login, isAuth) => ({
     userId, email, login, isAuth,
   },
 });
-
 export {
   setUsers,
   setStatus,
@@ -52,6 +53,7 @@ export {
   savePhotoSuccess,
   setTotalUsersCount,
   sendMessageCreator,
+  getCaptchaUrlSuccess,
   addPostActionCreator,
   deletePostActionCreator,
   toggleFollowingProgress,
