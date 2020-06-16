@@ -16,6 +16,7 @@ import {
   toggleIsFetching,
   savePhotoSuccess,
   setTotalUsersCount,
+  getCaptchaUrlSuccess,
   toggleFollowingProgress,
 } from './actionCreators';
 
@@ -39,6 +40,9 @@ const login = (email, password, rememberMe) => async (dispatch) => {
   if (response.data.resultCode === WELL) {
     dispatch(getAuthUserData());
   } else {
+    if (response.data.resultCode === 10) {
+      dispatch(getCaptchaUrl())
+    }
     const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
     dispatch(stopSubmit('login', { _error: mess }));
   }
@@ -47,8 +51,7 @@ const login = (email, password, rememberMe) => async (dispatch) => {
 const getCaptchaUrl = () => async (dispatch) => {
   const response = await securityAPI.getCaptchaUrl();
   const captchaUrl = response.data.url;
-
-  // dispatch(stopSubmit('login', { _error: mess }));
+  dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
 
 const logout = () => async (dispatch) => {
@@ -130,6 +133,7 @@ export {
   savePhoto,
   saveProfile,
   updateStatus,
+  getCaptchaUrl,
   initializeApp,
   getUserProfile,
   getAuthUserData,

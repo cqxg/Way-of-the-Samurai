@@ -40,6 +40,7 @@ const setAuthUserData = (userId, email, login, isAuth) => ({
     userId, email, login, isAuth,
   },
 });
+
 export {
   setUsers,
   setStatus,
