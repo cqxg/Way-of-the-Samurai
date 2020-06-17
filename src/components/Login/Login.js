@@ -11,7 +11,7 @@ import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
   const { t } = useTranslation();
-  const { login, isAuth } = props;
+  const { login, isAuth, captchaUrl } = props;
 
   const onSubmit = (formData) => {
     const { email, password, rememberMe } = formData;
@@ -25,12 +25,13 @@ const Login = (props) => {
   return (
     <div>
       <h1>{t(I18N_KEYS.LOGIN)}</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl} />
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
+  captchaUrl: state.auth.captchaUrl,
   isAuth: state.auth.isAuth,
 });
 
