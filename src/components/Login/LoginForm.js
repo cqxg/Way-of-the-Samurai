@@ -10,7 +10,7 @@ import style from '../../utils/FormControl/formsControls.module.css';
 
 const LoginForm = (props) => {
   const { t } = useTranslation();
-  const { handleSubmit, error } = props;
+  const { handleSubmit, error, captchaUrl } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -24,6 +24,9 @@ const LoginForm = (props) => {
         <Field name="rememberMe" type="checkbox" component="input" />
         <span>{t(I18N_KEYS.REMEMBER_ME)}</span>
       </div>
+
+      {captchaUrl ? <img src={captchaUrl} /> : null}
+
       {error && (
         <div className={style.formSummaryError}>
           {error}
