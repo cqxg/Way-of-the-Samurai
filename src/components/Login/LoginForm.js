@@ -25,13 +25,14 @@ const LoginForm = (props) => {
         <span>{t(I18N_KEYS.REMEMBER_ME)}</span>
       </div>
 
-      {captchaUrl ? <img src={captchaUrl} /> : null}
+      {captchaUrl && <img src={captchaUrl} />}
 
       {error && (
         <div className={style.formSummaryError}>
           {error}
         </div>
       )}
+
       <div>
         <button>{t(I18N_KEYS.LOGIN)}</button>
       </div>
@@ -41,4 +42,4 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
-export default LoginReduxForm;
+export default (LoginReduxForm);

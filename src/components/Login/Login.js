@@ -10,6 +10,7 @@ import { I18N_KEYS } from '../../utils/constants';
 import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
+  debugger
   const { t } = useTranslation();
   const { login, isAuth, captchaUrl } = props;
 
@@ -31,8 +32,8 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  captchaUrl: state.auth.captchaUrl,
   isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
 });
 
 export default connect(mapStateToProps, { login })(Login);

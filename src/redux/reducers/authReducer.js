@@ -11,11 +11,15 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
-    case SET_CAPTCHA_URL_SUCCESS:
-
       return {
         ...state,
         ...action.payload,
+      };
+
+    case SET_CAPTCHA_URL_SUCCESS:
+      return {
+        ...state,
+        captchaUrl: action.payload,
       };
 
     default:
