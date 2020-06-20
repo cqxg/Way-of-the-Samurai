@@ -14,8 +14,8 @@ const Login = (props) => {
   const { login, isAuth, captchaUrl } = props;
 
   const onSubmit = (formData) => {
-    const { email, password, rememberMe } = formData;
-    login(email, password, rememberMe);
+    const { email, password, rememberMe, captcha } = formData;
+    login(email, password, rememberMe, captcha);
   };
 
   if (isAuth) {

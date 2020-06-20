@@ -1,10 +1,10 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 
 import { required } from '../../utils/validators';
-import { Input } from '../../utils/FormControl/formsControls';
 import { I18N_KEYS } from '../../utils/constants';
+import { Input } from '../../utils/FormControl/formsControls';
 import { createField } from '../../utils/FormControl/formsControls';
 
 import style from '../../utils/FormControl/formsControls.module.css';
