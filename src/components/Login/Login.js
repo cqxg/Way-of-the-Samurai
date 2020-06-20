@@ -10,7 +10,6 @@ import { I18N_KEYS } from '../../utils/constants';
 import LoginReduxForm from './LoginForm';
 
 const Login = (props) => {
-  debugger
   const { t } = useTranslation();
   const { login, isAuth, captchaUrl } = props;
 
