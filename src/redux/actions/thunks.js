@@ -1,6 +1,6 @@
 import { stopSubmit } from 'redux-form';
 
-import { WELL } from '../../utils/constants';
+import { WELL, TRY_AGAIN } from '../../utils/constants';
 
 import { usersAPI, authAPI, securityAPI } from '../../api/api';
 
@@ -40,7 +40,7 @@ const login = (email, password, rememberMe, captcha) => async (dispatch) => {
   if (response.data.resultCode === WELL) {
     dispatch(getAuthUserData());
   } else {
-    if (response.data.resultCode === 10) {
+    if (response.data.resultCode === TRY_AGAIN) {
       dispatch(getCaptchaUrl())
     }
     const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
