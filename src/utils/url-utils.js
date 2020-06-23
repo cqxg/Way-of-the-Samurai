@@ -16,6 +16,7 @@ const ROUTES = {
   USERS_PAGE: 'users?page=',
   PROFILE_STATUS: 'profile/status/',
   PROFILE_USER_ID: '/profile/:userId?',
+  GET_CAPTCHA: 'security/get-captcha-url'
 };
 
 export {

@@ -1,8 +1,8 @@
 import { stopSubmit } from 'redux-form';
 
-import { WELL } from '../../utils/constants';
+import { WELL, TRY_AGAIN } from '../../utils/constants';
 
-import { usersAPI, authAPI } from '../../api/api';
+import { usersAPI, authAPI, securityAPI } from '../../api/api';
 
 import {
   setUsers,
@@ -16,6 +16,7 @@ import {
   toggleIsFetching,
   savePhotoSuccess,
   setTotalUsersCount,
+  getCaptchaUrlSuccess,
   toggleFollowingProgress,
 } from './actionCreators';
 
@@ -34,14 +35,23 @@ const getAuthUserData = () => async (dispatch) => {
   }
 };
 
-const login = (email, password, rememberMe) => async (dispatch) => {
-  const response = await authAPI.login(email, password, rememberMe);
+const login = (email, password, rememberMe, captcha) => async (dispatch) => {
+  const response = await authAPI.login(email, password, rememberMe, captcha);
   if (response.data.resultCode === WELL) {
     dispatch(getAuthUserData());
   } else {
+    if (response.data.resultCode === TRY_AGAIN) {
+      dispatch(getCaptchaUrl())
+    }
     const mess = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
     dispatch(stopSubmit('login', { _error: mess }));
   }
+};
+
+const getCaptchaUrl = () => async (dispatch) => {
+  const response = await securityAPI.getCaptchaUrl();
+  const captchaUrl = response.data.url;
+  dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
 
 const logout = () => async (dispatch) => {
@@ -123,6 +133,7 @@ export {
   savePhoto,
   saveProfile,
   updateStatus,
+  getCaptchaUrl,
   initializeApp,
   getUserProfile,
   getAuthUserData,

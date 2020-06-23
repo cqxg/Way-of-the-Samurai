@@ -1,10 +1,11 @@
-import { SET_USER_DATA } from '../actions/actionTypes';
+import { SET_USER_DATA, SET_CAPTCHA_URL_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
   userId: null,
   email: null,
   login: null,
   isAuth: false,
+  captchaUrl: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+
+    case SET_CAPTCHA_URL_SUCCESS:
+      return {
+        ...state,
+        captchaUrl: action.payload,
       };
 
     default:
